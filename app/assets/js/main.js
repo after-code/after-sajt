@@ -3,7 +3,7 @@
     var WIDTH, HEIGHT, VIEW_ANGLE, ASPECT, NEAR, FAR;
 
     container = document.querySelector('.viewport');
-
+// var TWEEN = require('tween.js');
     clock = new THREE.Clock();
 
     WIDTH = window.innerWidth,
@@ -31,7 +31,7 @@
 
     camera = new THREE.PerspectiveCamera(VIEW_ANGLE, ASPECT, NEAR, FAR);
     mirrorCamera = new THREE.CubeCamera( 1, 10, 1024);
-    camera.position.set(0.583239170758964, 12.772924857820813 , -2.347812310674576);
+    camera.position.set( 0.9438040162673711, 10.003468049378036, -0.47581897317684135);
     camera.rotation.x = -Math.PI / 12;
 
     scene.add(camera);
@@ -100,7 +100,7 @@
     { color: 0x000000}
     );
     var yellow_material = new THREE.MeshLambertMaterial(
-    { color: 0xFFFF00}
+    { color: 0x54D1AF}
     );
     var maze = new THREE.Mesh(
       maze_geometry,
@@ -189,9 +189,40 @@
   yellowShape.position.set(-3, 1.5, -1);
   yellowShape.rotation.y = -Math.PI/4;
 
-
+  var position = camera.position;
   center2.add(mazeShape, mazeShape2, mazeShape3, yellowShape, center);
+  var tween =  new TWEEN.Tween( position ).to( {
+  					x: 3.2082860101275177, y: 12.158120414010359, z: -3.299546768215996 }, 8000 )
+  					.easing( TWEEN.Easing.Quartic.InOut ).delay(2000).start();
+  var tween2 =  new TWEEN.Tween( position ).to( {
+  					x: -4.217951970039052, y: 11.951513296555966, z: -2.8931317116041537 }, 8000 )
+  					.easing( TWEEN.Easing.Quartic.InOut );
+  var tween3 =  new TWEEN.Tween( position ).to( {
+  					x: -0.000009226082225396355, y: 12.999999999993499, z: 0.000009158570126944982}, 8000 )
+  					.easing( TWEEN.Easing.Quartic.InOut );
 
+
+
+  tween.chain(tween2);
+  tween2.chain(tween3);
+  tween3.chain(tween);
+
+// new position
+  tween.onUpdate(function(){
+      camera.position.x = position.x;
+      camera.position.y = position.y;
+      camera.position.z = position.z;
+  });
+  tween2.onUpdate(function(){
+      camera.position.x = position.x;
+      camera.position.y = position.y;
+      camera.position.z = position.z;
+  });
+  tween3.onUpdate(function(){
+      camera.position.x = position.x;
+      camera.position.y = position.y;
+      camera.position.z = position.z;
+  });
   maze2.position.x = -0.5;
   maze2.position.z = -0.5;
   maze2.rotation.y = Math.PI/2;
@@ -223,12 +254,13 @@
       center2.add(floor);
 center2.add( mirrorMesh );
       scene.fog = new THREE.FogExp2( 0x9999ff, 0.00025 );
+      vasa = 0;
       render();
     // });
     center2.direction = 1;
     function render() {
      var time = clock.getElapsedTime();
-
+      camera.lookAt(center2.position);
     	floor.visible = true;
 
       floor.visible = false;
@@ -236,20 +268,26 @@ center2.add( mirrorMesh );
       mirrorCamera.rotation.set (0,0,0);
       //Render the scene
       // center2.rotation.y += 0.003;
-      if (center2.rotation.x > 0.2){
-        center2.rotation.x-= 0.001;
-      } else {
-        center2.rotation.x+= 0.001;
-      }
-
-      if (center2.rotation.y > 1){
-        center2.direction =-1;
-      } else {
-        center2.direction =1;
-      }
-      center2.rotation.y +=  center2.direction * 0.003;
+      // if (center2.rotation.x > 0.2){
+      //   center2.rotation.x-= 0.001;
+      // } else {
+      //   center2.rotation.x+= 0.001;
+      // }
+      //
+      // if (center2.rotation.y > 1){
+      //   center2.direction =-1;
+      // } else {
+      //   center2.direction =1;
+      // }
+      // center2.rotation.y +=  center2.direction * 0.003;
       groundMirror.updateTextureMatrix();
       groundMirror.render();
       renderer.render( scene, camera );
+     TWEEN.update();
+
+     vasa++;
+     if(vasa<4){
+      //  console.log(cameraPath);
+     }
      requestAnimationFrame(render);
     }

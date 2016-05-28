@@ -31,7 +31,8 @@
 
     camera = new THREE.PerspectiveCamera(VIEW_ANGLE, ASPECT, NEAR, FAR);
     mirrorCamera = new THREE.CubeCamera( 1, 10, 1024);
-    camera.position.set( 0.9438040162673711, 10.003468049378036, -0.47581897317684135);
+    camera.position.set( 0.5105396863227961, 3.643376153074933, -1.3890251433637397);
+
     camera.rotation.x = -Math.PI / 12;
 
     scene.add(camera);
@@ -39,9 +40,9 @@
 		controls.target.set(0,0,0);
 		controls.update();
     controls.maxPolarAngle = Math.PI/2-0.094;
-    controls.enablePan = false;
+    // controls.enablePan = false;
     controls.maxDistance = 13;
-    controls.minDistance = 5.5;
+    // controls.minDistance = 5.5;
 
 
     light = new THREE.DirectionalLight(0xffffff);
@@ -188,40 +189,112 @@
   // yellowShape.position.z = 2;
   yellowShape.position.set(-3, 1.5, -1);
   yellowShape.rotation.y = -Math.PI/4;
+  var view = {
+    position: camera.position,
+    rotation : {
+      x: camera.rotation.x,
+      y:camera.rotation.y,
+      z:camera.rotation.z
+    }
+  };
+  var rotation = {
+    x: -3.047493474219677 ,
+    y: -0.04584905340038268,
+    z: -3.137267058875789
+  }
+  //  view.position = camera.position;
+  //  view.rotation = camera.rotation;
 
-  var position = camera.position;
+  var fov = {};
+  fov.uno = 10;
+
+  camera.fov =30;
+  var vasa = 40;
+  camera.updateProjectionMatrix();
   center2.add(mazeShape, mazeShape2, mazeShape3, yellowShape, center);
-  var tween =  new TWEEN.Tween( position ).to( {
-  					x: 3.2082860101275177, y: 12.158120414010359, z: -3.299546768215996 }, 8000 )
-  					.easing( TWEEN.Easing.Quartic.InOut ).delay(2000).start();
-  var tween2 =  new TWEEN.Tween( position ).to( {
-  					x: -4.217951970039052, y: 11.951513296555966, z: -2.8931317116041537 }, 8000 )
+  var tween =  new TWEEN.Tween( view.position ).to( {
+  					x: 3.2082860101275177, y: 12.158120414010359, z: -3.299546768215996 }, 4000 )
+  					.easing( TWEEN.Easing.Quartic.Out );
+
+  var tween5 =  new TWEEN.Tween( rotation ).to({x: -1.8357997839283406, y:0.24936767630562154, z:-3.8795619318345995},2500 )
+  					.easing( TWEEN.Easing.Quartic.Out );
+
+  var tween7 =  new TWEEN.Tween( rotation ).to({x: -1.8357997839283406, y:0.24936767630562154, z:2.4036233753449867},5000 )
+  					.easing( TWEEN.Easing.Quartic.Out );
+
+
+  var tween6 =  new TWEEN.Tween( view.position ).to({	x: 3.2082860101275177, y: 12.158120414010359, z: -15.299546768215996},5000 )
+  					.easing( TWEEN.Easing.Quartic.Out );
+
+  var tween2 =  new TWEEN.Tween( view.position ).to( {
+  					x: -4.217951970039052, y: 11.951513296555966, z: -2.8931317116041537 }, 3000 )
   					.easing( TWEEN.Easing.Quartic.InOut );
-  var tween3 =  new TWEEN.Tween( position ).to( {
-  					x: -0.000009226082225396355, y: 12.999999999993499, z: 0.000009158570126944982}, 8000 )
+  var tween3 =  new TWEEN.Tween( view.position ).to( {
+  					x: -0.000009226082225396355, y: 12.999999999993499, z: 0.000009158570126944982}, 3000 )
   					.easing( TWEEN.Easing.Quartic.InOut );
 
+  var tween4 =  new TWEEN.Tween( fov ).to( {uno:40}, 1400 )
+            .easing( TWEEN.Easing.Quadratic.In );
 
-
+  tween4.start();
+  tween4.chain(tween, tween5);
+  // tween6.start();
+  // tween5.start();
+  // tween4.chain(tween5, tween6);
+  // tween6.chain(tween);
+  // tween.chain(tween7);
   tween.chain(tween2);
   tween2.chain(tween3);
-  tween3.chain(tween);
+  // tween3.chain(tween);
 
 // new position
   tween.onUpdate(function(){
-      camera.position.x = position.x;
-      camera.position.y = position.y;
-      camera.position.z = position.z;
+      camera.position.x = view.position.x;
+      camera.position.y = view.position.y;
+      camera.position.z = view.position.z;
+
+      //
+      // camera.rotation.x = rotation.x;
+      // camera.rotation.y = rotation.y;
+      // camera.rotation.z = rotation.z;
+      // console.log(rotation);
+      // camera.lookAt(center2.position);
+  });
+  tween6.onUpdate(function(){
+      camera.position.x = view.position.x;
+      camera.position.y = view.position.y;
+      camera.position.z = view.position.z;
+  });
+  tween5.onUpdate(function(){
+      camera.rotation.x = rotation.x;
+      camera.rotation.y = rotation.y;
+      camera.rotation.z = rotation.z;
+      console.log(rotation);
+      // camera.lookAt(center2.position);
+  });
+  tween7.onUpdate(function(){
+      camera.rotation.x = rotation.x;
+      camera.rotation.y = rotation.y;
+      camera.rotation.z = rotation.z;
+      console.log(rotation);
+      // camera.lookAt(center2.position);
   });
   tween2.onUpdate(function(){
-      camera.position.x = position.x;
-      camera.position.y = position.y;
-      camera.position.z = position.z;
+      camera.position.x = view.position.x;
+      camera.position.y = view.position.y;
+      camera.position.z = view.position.z;
+      camera.lookAt(center2.position);
   });
   tween3.onUpdate(function(){
-      camera.position.x = position.x;
-      camera.position.y = position.y;
-      camera.position.z = position.z;
+      camera.position.x = view.position.x;
+      camera.position.y = view.position.y;
+      camera.position.z = view.position.z;
+      camera.lookAt(center2.position);
+  });
+  tween4.onUpdate(function(){
+    console.log(fov);
+      camera.fov = fov.uno;
+      camera.updateProjectionMatrix();
   });
   maze2.position.x = -0.5;
   maze2.position.z = -0.5;
@@ -244,6 +317,12 @@
   center.add(maze, maze2, maze3, maze4, maze5, maze6);
   scene.add(center2);
 
+  var cameraPosX = 0.44426790438853775;
+  var cameraPosY = 3.6624066401248725;
+  var cameraPosZ =  -1.9126542045900217;
+  camera.position.set(0.44426790438853775,3.6624066401248725,  -1.9126542045900217);
+  camera.rotation.set(-3.047493474219677, -0.04584905340038268, -3.137267058875789);
+
       floor = new THREE.Mesh(
         floor_geometry,
         floor_material
@@ -258,9 +337,10 @@ center2.add( mirrorMesh );
       render();
     // });
     center2.direction = 1;
+    // camera.lookAt(mazeShape2.position);
     function render() {
      var time = clock.getElapsedTime();
-      camera.lookAt(center2.position);
+      // camera.lookAt(center2.position);
     	floor.visible = true;
 
       floor.visible = false;

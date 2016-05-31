@@ -101,7 +101,7 @@
     { color: 0x000000}
     );
     var yellow_material = new THREE.MeshLambertMaterial(
-    { color: 0x54D1AF}
+    { color: 0xff4646}
     );
     var maze = new THREE.Mesh(
       maze_geometry,
@@ -138,9 +138,9 @@
 
   mazeLineGeom.vertices.push(
     new THREE.Vector3(0, 0, 0 ),
-    new THREE.Vector3( 0, 0, 1 ),
+    new THREE.Vector3( 0, 0, 4 ),
     // new THREE.Vector3( -1, 0, 1 ),
-    new THREE.Vector3( -1, 0, 0 )
+    new THREE.Vector3( -4, 0, 0 )
   );
   mazeLineGeom2.vertices.push(
     new THREE.Vector3(0, 0, 0 ),
@@ -179,7 +179,7 @@
   var mazeShape3 = new THREE.Mesh( mazeLineGeom3, maze_material );
   var yellowShape = new THREE.Mesh( yellowGeom, yellow_material );
 
-
+var mazeCont = new THREE.Mesh();
   mazeShape.position.y = 2;
   mazeShape2.position.y = 3;
   mazeShape2.position.x = 0;
@@ -207,23 +207,38 @@
 
   var fov = {};
   fov.uno = 10;
-
+  var position2 = {
+    x:0,
+    y:0,
+    z:0
+  }
   camera.fov =30;
   var vasa = 40;
   camera.updateProjectionMatrix();
   center2.add(mazeShape, mazeShape2, mazeShape3, yellowShape, center);
-  var tween =  new TWEEN.Tween( view.position ).to( {
-  					x: 3.2082860101275177, y: 12.158120414010359, z: -3.299546768215996 }, 4000 )
+  var tween =  new TWEEN.Tween( view.position).to( {
+  					z: -10  }, 1400 )
+  					.easing( TWEEN.Easing.Quadratic.Out );
+
+  var tween5 =  new TWEEN.Tween( view.position ).to({ y:15.24936767630562154},1200 )
+  					.easing( TWEEN.Easing.Quadratic.In );
+
+  var tween7 =  new TWEEN.Tween( rotation ).to({x: -2.2554387824359834},1200 )
+  					.easing( TWEEN.Easing.Quadratic.In );
+
+  var tween8 =  new TWEEN.Tween( rotation ).to({x: -1.8876330848263423, y: 0.30203039260633513, z: 2.4048065724721672 -Math.PI *2},1500 )
   					.easing( TWEEN.Easing.Quartic.Out );
 
-  var tween5 =  new TWEEN.Tween( rotation ).to({x: -1.8357997839283406, y:0.24936767630562154, z:-3.8795619318345995},2500 )
+  var tween6 =  new TWEEN.Tween( view.position ).to({	x: 5,  z: -5}, 1500 )
   					.easing( TWEEN.Easing.Quartic.Out );
 
-  var tween7 =  new TWEEN.Tween( rotation ).to({x: -1.8357997839283406, y:0.24936767630562154, z:2.4036233753449867},5000 )
-  					.easing( TWEEN.Easing.Quartic.Out );
+  var tween9 =  new TWEEN.Tween( rotation ).to({x: -1.570797026242877, y: 7.053619697217657e-7, z: 2.3586584817828173 -Math.PI *2},1500 )
+  					.easing( TWEEN.Easing.Quartic.In );
 
+  var tween10 =  new TWEEN.Tween( view.position ).to({	x: 0.18717662734015728, y:13.039731858009107,  z: 0.04883000162822242}, 1500 )
+  					.easing( TWEEN.Easing.Quartic.In );
 
-  var tween6 =  new TWEEN.Tween( view.position ).to({	x: 3.2082860101275177, y: 12.158120414010359, z: -15.299546768215996},5000 )
+  var tween11 =  new TWEEN.Tween( position2 ).to({	x: 2, y:0 , z:2}, 1500 )
   					.easing( TWEEN.Easing.Quartic.Out );
 
   var tween2 =  new TWEEN.Tween( view.position ).to( {
@@ -237,17 +252,25 @@
             .easing( TWEEN.Easing.Quadratic.In );
 
   tween4.start();
-  tween4.chain(tween, tween5);
-  // tween6.start();
-  // tween5.start();
+  tween4.chain(tween);
+  tween.chain(tween5, tween7);
+  tween7.chain(tween6, tween8);
+  tween8.chain(tween9, tween10);
+  tween10.chain(tween11);
   // tween4.chain(tween5, tween6);
   // tween6.chain(tween);
   // tween.chain(tween7);
-  tween.chain(tween2);
-  tween2.chain(tween3);
+  // tween.chain(tween2);
+  // tween2.chain(tween3);
   // tween3.chain(tween);
 
 // new position
+tween11.onUpdate(function(){
+  mazeCont.position.x = position2.x;
+  mazeCont.position.y = position2.y;
+  mazeCont.position.z = position2.z;
+  console.log(position2);
+});
   tween.onUpdate(function(){
       camera.position.x = view.position.x;
       camera.position.y = view.position.y;
@@ -258,7 +281,7 @@
       // camera.rotation.y = rotation.y;
       // camera.rotation.z = rotation.z;
       // console.log(rotation);
-      // camera.lookAt(center2.position);
+      // camera.lookAt(mazeShape2.position);
   });
   tween6.onUpdate(function(){
       camera.position.x = view.position.x;
@@ -276,7 +299,25 @@
       camera.rotation.x = rotation.x;
       camera.rotation.y = rotation.y;
       camera.rotation.z = rotation.z;
-      console.log(rotation);
+      // camera.lookAt(center2.position);
+  });
+  tween8.onUpdate(function(){
+      camera.rotation.x = rotation.x;
+      camera.rotation.y = rotation.y;
+      camera.rotation.z = rotation.z;
+
+      // camera.lookAt(center2.position);
+  });
+  tween9.onUpdate(function(){
+      camera.position.x = view.position.x;
+      camera.position.y = view.position.y;
+      camera.position.z = view.position.z;
+  });
+  tween10.onUpdate(function(){
+      camera.rotation.x = rotation.x;
+      camera.rotation.y = rotation.y;
+      camera.rotation.z = rotation.z;
+
       // camera.lookAt(center2.position);
   });
   tween2.onUpdate(function(){
@@ -292,9 +333,10 @@
       camera.lookAt(center2.position);
   });
   tween4.onUpdate(function(){
-    console.log(fov);
+    // console.log(fov);
       camera.fov = fov.uno;
       camera.updateProjectionMatrix();
+        // camera.lookAt(mazeShape2.position);
   });
   maze2.position.x = -0.5;
   maze2.position.z = -0.5;
@@ -314,7 +356,9 @@
   maze6.position.z = 0.5;
   maze6.rotation.y = Math.PI/4;
   center.position.z = 0.5;
-  center.add(maze, maze2, maze3, maze4, maze5, maze6);
+  var mazeCont = new THREE.Mesh();
+  mazeCont.add(maze, maze2, maze3, maze4, maze5, maze6);
+  center.add(mazeCont);
   scene.add(center2);
 
   var cameraPosX = 0.44426790438853775;

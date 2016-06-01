@@ -22,10 +22,10 @@
     renderer = new THREE.WebGLRenderer({antialias: true});
 
     renderer.setSize(WIDTH, HEIGHT);
-    renderer.shadowMapEnabled = true;
-    renderer.shadowMapSoft = true;
-    renderer.shadowMapType = THREE.PCFShadowMap;
-    renderer.shadowMapAutoUpdate = true;
+    // renderer.shadowMapEnabled = true;
+    // renderer.shadowMapSoft = true;
+    // renderer.shadowMapType = THREE.PCFShadowMap;
+    // renderer.shadowMapAutoUpdate = true;
     renderer.setClearColor( 0xffffff, 1 );
     container.appendChild(renderer.domElement);
 
@@ -44,39 +44,39 @@
     controls.maxDistance = 13;
     // controls.minDistance = 5.5;
 
-
-    light = new THREE.DirectionalLight(0xffffff);
-    light.intensity = 0.17;
-    light.position.set(100, 100, -150);
-    light.castShadow = true;
-    light.shadowCameraLeft = -3;
-    light.shadowCameraTop = -3;
-    light.shadowCameraRight = 2;
-    light.shadowCameraBottom = 2;
-    light.shadowCameraNear = 1;
-    light.shadowCameraFar = 400;
-    light.shadowBias = -.0001
-    light.shadowMapWidth = light.shadowMapHeight = 1024;
-    light.shadowDarkness = .001;
-    // light.shadow.bias = 1;
+    //
+    // light = new THREE.DirectionalLight(0xffffff);
+    // light.intensity = 0.17;
+    // light.position.set(100, 100, -150);
+    // light.castShadow = true;
+    // light.shadowCameraLeft = -3;
+    // light.shadowCameraTop = -3;
+    // light.shadowCameraRight = 2;
+    // light.shadowCameraBottom = 2;
+    // light.shadowCameraNear = 1;
+    // light.shadowCameraFar = 400;
+    // light.shadowBias = -.0001
+    // light.shadowMapWidth = light.shadowMapHeight = 1024;
+    // light.shadowDarkness = .001;
+    // // light.shadow.bias = 1;
 
 
     var ambient = new THREE.AmbientLight( 0xFFFFFF);
     var point = new THREE.PointLight( 0xFFFFFF, 0.3, 1000 );
     // point.castShadow = true;
-    point.shadowCameraLeft = -2;
-    point.shadowCameraTop = -2;
-    point.shadowCameraRight = 2;
-    point.shadowCameraBottom = 2;
-    point.shadowCameraNear = 1;
-    point.shadowCameraFar = 1000;
-    point.shadowBias = -.0001
-    point.shadowMapWidth = point.shadowMapHeight = 256;
-    point.shadowDarkness = .001;
+    // point.shadowCameraLeft = -2;
+    // point.shadowCameraTop = -2;
+    // point.shadowCameraRight = 2;
+    // point.shadowCameraBottom = 2;
+    // point.shadowCameraNear = 1;
+    // point.shadowCameraFar = 1000;
+    // point.shadowBias = -.0001
+    // point.shadowMapWidth = point.shadowMapHeight = 256;
+    // point.shadowDarkness = .001;
     // point.intensity = 0.9;
     ambient.intensity = 0.9;
-    scene.add(light);
-    scene.add(ambient, point);
+    // scene.add(light);
+    scene.add(ambient);
     point.position.x = 1;
     point.position.y = 3;
     point.position.z = 5;
@@ -87,7 +87,7 @@
     var floor_geometry = new THREE.BoxGeometry( 10, 0.001, 10);
     var floor_material = new THREE.MeshBasicMaterial( { envMap: mirrorCamera.renderTarget } );
 
-        var planeGeo = new THREE.PlaneBufferGeometry( 100.1, 100.1 );
+        var planeGeo = new THREE.PlaneBufferGeometry( 10, 10 );
         var groundMirror = new THREE.Mirror( renderer, camera, { clipBias: 1, textureWidth: WIDTH, textureHeight: HEIGHT, color: 0xECECEC } );
         var texture = groundMirror.material;
         var mirrorMesh = new THREE.Mesh( planeGeo, texture );
@@ -212,7 +212,7 @@ var mazeCont = new THREE.Mesh();
     y:0,
     z:0
   }
-  camera.fov =30;
+  camera.fov =10;
   var vasa = 40;
   camera.updateProjectionMatrix();
   center2.add(mazeShape, mazeShape2, mazeShape3, yellowShape, center);
@@ -251,7 +251,7 @@ var mazeCont = new THREE.Mesh();
   var tween4 =  new TWEEN.Tween( fov ).to( {uno:40}, 1400 )
             .easing( TWEEN.Easing.Quadratic.In );
 
-  tween4.start();
+  tween4.delay(2500).start();
   tween4.chain(tween);
   tween.chain(tween5, tween7);
   tween7.chain(tween6, tween8);
@@ -269,7 +269,6 @@ tween11.onUpdate(function(){
   mazeCont.position.x = position2.x;
   mazeCont.position.y = position2.y;
   mazeCont.position.z = position2.z;
-  console.log(position2);
 });
   tween.onUpdate(function(){
       camera.position.x = view.position.x;
@@ -292,7 +291,6 @@ tween11.onUpdate(function(){
       camera.rotation.x = rotation.x;
       camera.rotation.y = rotation.y;
       camera.rotation.z = rotation.z;
-      console.log(rotation);
       // camera.lookAt(center2.position);
   });
   tween7.onUpdate(function(){
@@ -385,26 +383,9 @@ center2.add( mirrorMesh );
     function render() {
      var time = clock.getElapsedTime();
       // camera.lookAt(center2.position);
-    	floor.visible = true;
-
       floor.visible = false;
       mirrorCamera.position.copy( floor.position );
       mirrorCamera.rotation.set (0,0,0);
-      //Render the scene
-      // center2.rotation.y += 0.003;
-      // if (center2.rotation.x > 0.2){
-      //   center2.rotation.x-= 0.001;
-      // } else {
-      //   center2.rotation.x+= 0.001;
-      // }
-      //
-      // if (center2.rotation.y > 1){
-      //   center2.direction =-1;
-      // } else {
-      //   center2.direction =1;
-      // }
-      // center2.rotation.y +=  center2.direction * 0.003;
-      groundMirror.updateTextureMatrix();
       groundMirror.render();
       renderer.render( scene, camera );
      TWEEN.update();

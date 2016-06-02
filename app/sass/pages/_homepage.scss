@@ -1,0 +1,154 @@
+body {
+  font-family: "Roboto", sans-serif;
+  color:#333;
+  font-weight: 300;
+}
+* {
+  margin:0;
+  padding:0;
+}
+.mask  {
+  width: 100%;
+  height: 100vh;
+  position: absolute;;
+  top: 0;
+  background-image: url('/assets/img/dotted-texture2.png');
+  opacity: 0.3;
+}
+.viewport__container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+h2, h3 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+ul {
+  margin:0;
+  padding: 0;
+  width: 100%;
+  text-align: center;
+}
+li {
+  list-style-type: none;
+  display: inline-block;
+  margin:10px;
+}
+.header {
+  height: 70px;
+  line-height: 70px;
+  padding:0px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 9999;
+}
+.after-logo {
+  width: 150px;
+  margin-top:-30px;
+  margin-left: -10px;
+}
+.text-block {
+  max-width: 540px;
+  margin-bottom: cvp(69px,1200px);
+  @include breakpoint(large){
+    margin-bottom:69px;
+  }
+}
+.text-block--centered {
+  display: inline-block;
+  float: none;
+  text-align: left;
+}
+.text-block__order {
+  font-size: cvp(23px, 1200px);
+  margin-bottom: cvp(12px, 1200px);
+  color: #ff4646;
+  @include breakpoint(large){
+    font-size: 23px;
+    margin-bottom:12px;
+  }
+}
+.text-block__heading {
+  font-weight: 900;
+  margin-bottom: cvp(64px, 1200px);
+  font-size: cvp(68px, 1200px);
+  @include breakpoint(large){
+    font-size: 68px;
+    margin-bottom: 64px;
+  }
+}
+.text-block__heading--small {
+  font-weight: 900;
+  margin-bottom: cvp(33px, 1200px);
+  font-size: cvp(23px, 1200px);
+  @include breakpoint(large){
+    font-size: 23px;
+    margin-bottom:33px;
+  }
+}
+.text-block__text {
+  font-size: cvp(16px, 1200px);
+  line-height: cvp(29px, 1200px);
+  @include breakpoint(large){
+    font-size: 16px;
+    line-height: 29px;
+  }
+}
+.button {
+  border: 1px solid #ff4646;
+  display: block;
+  float: left;
+  color: #ff4646;
+  padding: 14px 25px;
+  margin-top: cvp(63px, 1200px);
+  font-size: cvp(16px, 1200px);
+  @include breakpoint(large){
+    margin-top: 50px;
+    font-size: 16px;
+  }
+}
+.iphone {
+  margin-top: cvp( 119px, 1200px);
+  max-width: 100%;
+  width: 72%;
+  margin-right: 28%;
+  @include breakpoint(large){
+    margin-top:  119px;
+  }
+}
+.graphic-container {
+  width: 100%;
+  overflow: hidden;
+}
+.graphic-container__item {
+  width: 30%;
+  margin:2.5%;
+  float: left;
+  img {
+    width: 100%;
+  }
+}
+.first {
+  margin-left:0;
+}
+.last {
+  margin-right: 0;
+}
+.soundcloud {
+  width: 100%;
+  float: left;
+  text-align: center;
+  img {
+    width: 60%;
+    margin-top:-300px;
+    margin-bottom: 300px;
+    max-width: 1200px;
+  }
+}
+.blue-background {
+  background: #2E3192;
+  width: 100%;
+  height: 500px;
+}

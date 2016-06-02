@@ -1,0 +1,32 @@
+.main-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.section {
+  // height: 100vh;
+  width: 100%;
+  float: left;
+  overflow: hidden;
+  margin-bottom:150px;
+  margin-top:150px;
+}
+.section--padding {
+  padding: 0 10%;
+}
+.section--division {
+  float: left;
+  overflow: hidden;
+}
+.section__division--40 {
+  @extend .section--division;
+  width: 44%;
+}
+.section__division--60 {
+  @extend .section--division;
+  width: 56%;
+  float: right;
+}
+.text-centered {
+  text-align: center;
+}

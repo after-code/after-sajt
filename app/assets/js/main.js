@@ -14,6 +14,9 @@
     NEAR = 1,
     FAR = 10000;
 
+
+    var controlsActive = false;
+
     scene = new THREE.Scene();
 
     scene.rotation.x = 0;
@@ -36,13 +39,17 @@
     camera.rotation.x = -Math.PI / 12;
 
     scene.add(camera);
-    controls = new THREE.OrbitControls( camera, renderer.domElement );
-		controls.target.set(0,0,0);
-		controls.update();
-    controls.maxPolarAngle = Math.PI/2-0.094;
-    // controls.enablePan = false;
-    controls.maxDistance = 13;
-    // controls.minDistance = 5.5;
+
+    if (controlsActive){
+      controls = new THREE.OrbitControls( camera, renderer.domElement );
+      controls.target.set(0,0,0);
+      controls.update();
+      controls.maxPolarAngle = Math.PI/2-0.094;
+      // controls.enablePan = false;
+      controls.maxDistance = 13;
+      // controls.minDistance = 5.5;
+    }
+
 
     //
     // light = new THREE.DirectionalLight(0xffffff);
@@ -287,7 +294,7 @@ var mazeCont = new THREE.Mesh();
   tween7.chain(tween6, tween8);
   tween8.chain(tween9, tween10);
   tween10.delay(400).chain(tween12);
-  tween12.chain(tween13);
+  // tween12.chain(tween13);
 
   // tween13.chain(tween14);
   // tween11.chain(tween12);

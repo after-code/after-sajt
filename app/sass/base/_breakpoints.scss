@@ -1,0 +1,14 @@
+@mixin breakpoint($point) {
+  @if $point == mobile {
+     @media (max-width: 1000px)  { @content ; }
+  }
+  @if $point == large {
+     @media (min-width: 1170px)  { @content ; }
+  }
+  @if $point == iphone4 {
+     @media (min-device-width : 320px) and (max-height: 450px) { @content ; }
+  }
+  @if $point == iphone6 {
+     @media (min-device-width : 375px) and (max-device-width : 667px) { @content ; }
+  }
+}

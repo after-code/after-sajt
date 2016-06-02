@@ -27,7 +27,7 @@ gulp.task("scripts",function(){
 // /////////////////////////////////////////////////
 
 gulp.task("styles",function(){
-    gulp.src("app/assets/scss/**/*.scss")
+    gulp.src("app/sass/**/*.scss")
     .pipe(plumber())
     .pipe(sass({
       style:"compressed"
@@ -61,8 +61,8 @@ gulp.task('browser-sync', function(){
 // /////////////////////////////////////////////////
 
 gulp.task("watch",function(){
-  gulp.watch("app/assets/js/**/*.js",['scripts']);
-  gulp.watch("app/assets/scss/**/*.scss",['styles']);
+  gulp.watch("app/js/**/*.js",['scripts']);
+  gulp.watch("app/sass/**/*.scss",['styles']);
   gulp.watch("app/**/*.html",['html']);
 });
 
@@ -70,4 +70,4 @@ gulp.task("watch",function(){
 // /////////////////////////////////////////////////
 // Default Task
 // /////////////////////////////////////////////////
-gulp.task("default",['scripts' , 'styles', 'html', 'browser-sync', 'watch']);
+gulp.task("default",[ 'styles', 'html', 'browser-sync', 'watch']);

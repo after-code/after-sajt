@@ -3,6 +3,11 @@ body {
   color:#333;
   font-weight: 300;
   overflow-x: hidden;
+  overflow-y: hidden;
+  position: relative;
+  @include breakpoint(mobile){
+    overflow-x: scroll;
+  }
 }
 * {
   margin:0;
@@ -104,6 +109,7 @@ li {
   width: 30px;
   background-repeat: no-repeat;
   background-position: center;
+  cursor: pointer;
 }
 .text-block {
   max-width: 540px;

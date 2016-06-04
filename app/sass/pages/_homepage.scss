@@ -2,6 +2,7 @@ body {
   font-family: "Roboto", sans-serif;
   color:#333;
   font-weight: 300;
+  overflow-x: hidden;
 }
 * {
   margin:0;
@@ -10,23 +11,42 @@ body {
 .mask  {
   width: 100%;
   height: 100vh;
-  position: absolute;;
+  position: absolute;
   top: 0;
-  background-image: url('/assets/img/dotted-texture2.png');
-  opacity: 0.3;
+  background-image: url('/assets/img/dotted-texture22.png');
+  opacity: 0.41;
+  z-index: 2;
+  -webkit-animation: twich 2s infinite forwards;
+}
+@keyframes twich {
+    0%   {background-image: url('/assets/img/dotted-texture22.png');}
+    // 49%   {background-image: url('/assets/img/dotted-texture22.png');}
+    50%  {background-image: url('/assets/img/dotted-texture20.png');}
+    // 99%  {background-image: url('/assets/img/dotted-texture20.png');}
 }
 .viewport__container {
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   position: relative;
 }
 .main-heading {
   width: 100%;
   text-align: center;
   position: absolute;
-  bottom: 350px;
-  font-size: 75px;
-  font-weight: 500px;
+  opacity: 0;
+  bottom: 20vh;
+  font-size: cvp(78px,1200px);
+  font-weight: 900;
+  color: #222;
+  line-height: cvp(98px,1200px);
+  @include breakpoint(large){
+    font-size: 78px;
+    line-height: 98px;
+    // bottom:304px;
+  }
+}
+a {
+  text-decoration: none;
 }
 h2, h3 {
   text-align: center;
@@ -50,12 +70,40 @@ li {
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 9999;
+  z-index: 2;
+  @include breakpoint(mobile){
+    position: absolute;
+  }
 }
 .after-logo {
   width: 150px;
   margin-top:-30px;
   margin-left: -10px;
+  @include breakpoint(mobile){
+    width: 104px;
+  }
+}
+.fold-actions {
+  position: absolute;
+  bottom:-84px;
+  height: 84px;
+  line-height: 84px;;
+  background: #222;
+  text-align: center;
+  z-index: 99;
+  width: 100%;
+  @include breakpoint(mobile){
+    display: none;
+  }
+}
+.arrow {
+  display: inline-block;
+  height: 100%;
+  background-image: url("/assets/img/arrow.png");
+  height: 84px;
+  width: 30px;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 .text-block {
   max-width: 540px;
@@ -63,6 +111,11 @@ li {
   @include breakpoint(large){
     margin-bottom:69px;
   }
+  @include breakpoint(mobile){
+    font-size: 15px;
+    line-height: 26px;
+  }
+
 }
 .text-block--centered {
   display: inline-block;
@@ -77,6 +130,10 @@ li {
     font-size: 23px;
     margin-bottom:12px;
   }
+  @include breakpoint(mobile){
+    font-size:22px;
+    margin-bottom: 15px;
+  }
 }
 .text-block__heading {
   font-weight: 500;
@@ -85,6 +142,9 @@ li {
   @include breakpoint(large){
     font-size: 68px;
     margin-bottom: 64px;
+  }
+  @include breakpoint(mobile){
+    font-size:32px;
   }
 }
 .text-block__heading--small {
@@ -95,6 +155,9 @@ li {
     font-size: 23px;
     margin-bottom:33px;
   }
+  @include breakpoint(mobile){
+    font-size:22px;
+  }
 }
 .text-block__text {
   font-size: cvp(16px, 1200px);
@@ -103,6 +166,12 @@ li {
     font-size: 16px;
     line-height: 29px;
   }
+  @include breakpoint(mobile){
+    font-size: 15px;
+    line-height: 27px;
+    margin-top: 16px;
+  }
+
 }
 .button {
   border: 1px solid #ff4646;
@@ -117,6 +186,10 @@ li {
     margin-top: 50px;
     font-size: 16px;
   }
+  @include breakpoint(mobile){
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
 }
 .iphone {
   margin-top: cvp( 119px, 1200px);
@@ -125,6 +198,15 @@ li {
   margin-right: 28%;
   @include breakpoint(large){
     margin-top:  119px;
+  }
+  @include breakpoint(mobile){
+    margin-top: 50px;
+    max-width: 100%;
+    width: 84%;
+    margin: 0 auto;
+    float: none;
+    display: block;
+    margin-top: 50px;
   }
 }
 .graphic-container {
@@ -154,6 +236,10 @@ li {
     margin-top:-300px;
     margin-bottom: 300px;
     max-width: 1200px;
+    @include breakpoint(mobile){
+      width: 90%;
+      margin-top: -350px;
+    }
   }
 }
 .blue-background {

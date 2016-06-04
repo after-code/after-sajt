@@ -294,6 +294,7 @@ var mazeCont = new THREE.Mesh();
   tween7.chain(tween6, tween8);
   tween8.chain(tween9, tween10);
   tween10.delay(400).chain(tween12);
+  tween12.onComplete(showActions);
   // tween12.chain(tween13);
 
   // tween13.chain(tween14);

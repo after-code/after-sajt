@@ -74,9 +74,20 @@ html {
   overflow: hidden;
   margin-bottom: 150px;
   margin-top: 150px; }
+  @media (max-width: 1000px) {
+    .section {
+      margin-top: 100px;
+      margin-bottom: 0px; } }
 
 .section--padding {
   padding: 0 10%; }
+  @media (max-width: 1000px) {
+    .section--padding {
+      padding: 0 5%; } }
+
+@media (max-width: 1000px) {
+  .section--padding-mobile {
+    padding: 0 5%; } }
 
 .section--division, .section__division--40, .section__division--60 {
   float: left;
@@ -84,10 +95,16 @@ html {
 
 .section__division--40 {
   width: 44%; }
+  @media (max-width: 1000px) {
+    .section__division--40 {
+      width: 100%; } }
 
 .section__division--60 {
   width: 56%;
   float: right; }
+  @media (max-width: 1000px) {
+    .section__division--60 {
+      width: 100%; } }
 
 .text-centered {
   text-align: center; }
@@ -95,7 +112,8 @@ html {
 body {
   font-family: "Roboto", sans-serif;
   color: #333;
-  font-weight: 300; }
+  font-weight: 300;
+  overflow-x: hidden; }
 
 * {
   margin: 0;
@@ -106,21 +124,39 @@ body {
   height: 100vh;
   position: absolute;
   top: 0;
-  background-image: url("/assets/img/dotted-texture2.png");
-  opacity: 0.3; }
+  background-image: url("/assets/img/dotted-texture22.png");
+  opacity: 0.41;
+  z-index: 2;
+  -webkit-animation: twich 2s infinite forwards; }
+
+@keyframes twich {
+  0% {
+    background-image: url("/assets/img/dotted-texture22.png"); }
+  50% {
+    background-image: url("/assets/img/dotted-texture20.png"); } }
 
 .viewport__container {
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   position: relative; }
 
 .main-heading {
   width: 100%;
   text-align: center;
   position: absolute;
-  bottom: 350px;
-  font-size: 75px;
-  font-weight: 500px; }
+  opacity: 0;
+  bottom: 20vh;
+  font-size: 6.5vw;
+  font-weight: 900;
+  color: #222;
+  line-height: 8.16667vw; }
+  @media (min-width: 1170px) {
+    .main-heading {
+      font-size: 78px;
+      line-height: 98px; } }
+
+a {
+  text-decoration: none; }
 
 h2, h3 {
   text-align: center;
@@ -144,12 +180,40 @@ li {
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 9999; }
+  z-index: 2; }
+  @media (max-width: 1000px) {
+    .header {
+      position: absolute; } }
 
 .after-logo {
   width: 150px;
   margin-top: -30px;
   margin-left: -10px; }
+  @media (max-width: 1000px) {
+    .after-logo {
+      width: 104px; } }
+
+.fold-actions {
+  position: absolute;
+  bottom: -84px;
+  height: 84px;
+  line-height: 84px;
+  background: #222;
+  text-align: center;
+  z-index: 99;
+  width: 100%; }
+  @media (max-width: 1000px) {
+    .fold-actions {
+      display: none; } }
+
+.arrow {
+  display: inline-block;
+  height: 100%;
+  background-image: url("/assets/img/arrow.png");
+  height: 84px;
+  width: 30px;
+  background-repeat: no-repeat;
+  background-position: center; }
 
 .text-block {
   max-width: 540px;
@@ -157,6 +221,10 @@ li {
   @media (min-width: 1170px) {
     .text-block {
       margin-bottom: 69px; } }
+  @media (max-width: 1000px) {
+    .text-block {
+      font-size: 15px;
+      line-height: 26px; } }
 
 .text-block--centered {
   display: inline-block;
@@ -171,6 +239,10 @@ li {
     .text-block__order {
       font-size: 23px;
       margin-bottom: 12px; } }
+  @media (max-width: 1000px) {
+    .text-block__order {
+      font-size: 22px;
+      margin-bottom: 15px; } }
 
 .text-block__heading {
   font-weight: 500;
@@ -180,6 +252,9 @@ li {
     .text-block__heading {
       font-size: 68px;
       margin-bottom: 64px; } }
+  @media (max-width: 1000px) {
+    .text-block__heading {
+      font-size: 32px; } }
 
 .text-block__heading--small {
   font-weight: 500;
@@ -189,6 +264,9 @@ li {
     .text-block__heading--small {
       font-size: 23px;
       margin-bottom: 33px; } }
+  @media (max-width: 1000px) {
+    .text-block__heading--small {
+      font-size: 22px; } }
 
 .text-block__text {
   font-size: 1.33333vw;
@@ -197,6 +275,11 @@ li {
     .text-block__text {
       font-size: 16px;
       line-height: 29px; } }
+  @media (max-width: 1000px) {
+    .text-block__text {
+      font-size: 15px;
+      line-height: 27px;
+      margin-top: 16px; } }
 
 .button {
   border: 1px solid #ff4646;
@@ -211,6 +294,10 @@ li {
     .button {
       margin-top: 50px;
       font-size: 16px; } }
+  @media (max-width: 1000px) {
+    .button {
+      font-size: 18px;
+      margin-bottom: 20px; } }
 
 .iphone {
   margin-top: 9.91667vw;
@@ -220,6 +307,15 @@ li {
   @media (min-width: 1170px) {
     .iphone {
       margin-top: 119px; } }
+  @media (max-width: 1000px) {
+    .iphone {
+      margin-top: 50px;
+      max-width: 100%;
+      width: 84%;
+      margin: 0 auto;
+      float: none;
+      display: block;
+      margin-top: 50px; } }
 
 .graphic-container {
   width: 100%;
@@ -247,6 +343,10 @@ li {
     margin-top: -300px;
     margin-bottom: 300px;
     max-width: 1200px; }
+    @media (max-width: 1000px) {
+      .soundcloud img {
+        width: 90%;
+        margin-top: -350px; } }
 
 .blue-background {
   background: #2E3192;

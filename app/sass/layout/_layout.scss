@@ -10,9 +10,21 @@
   overflow: hidden;
   margin-bottom:150px;
   margin-top:150px;
+  @include breakpoint(mobile){
+    margin-top:100px;
+    margin-bottom: 0px;
+  }
 }
 .section--padding {
   padding: 0 10%;
+  @include breakpoint(mobile){
+    padding: 0 5%;
+  }
+}
+.section--padding-mobile {
+  @include breakpoint(mobile){
+    padding: 0 5%;
+  }
 }
 .section--division {
   float: left;
@@ -21,11 +33,17 @@
 .section__division--40 {
   @extend .section--division;
   width: 44%;
+  @include breakpoint(mobile){
+    width: 100%;
+  }
 }
 .section__division--60 {
   @extend .section--division;
   width: 56%;
   float: right;
+  @include breakpoint(mobile){
+    width: 100%;
+  }
 }
 .text-centered {
   text-align: center;

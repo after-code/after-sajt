@@ -20,6 +20,14 @@ body {
   height: 100%;
   position: relative;
 }
+.main-heading {
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  bottom: 350px;
+  font-size: 75px;
+  font-weight: 500px;
+}
 h2, h3 {
   text-align: center;
   margin-bottom: 20px;
@@ -71,7 +79,7 @@ li {
   }
 }
 .text-block__heading {
-  font-weight: 900;
+  font-weight: 500;
   margin-bottom: cvp(64px, 1200px);
   font-size: cvp(68px, 1200px);
   @include breakpoint(large){
@@ -80,7 +88,7 @@ li {
   }
 }
 .text-block__heading--small {
-  font-weight: 900;
+  font-weight: 500;
   margin-bottom: cvp(33px, 1200px);
   font-size: cvp(23px, 1200px);
   @include breakpoint(large){
@@ -104,6 +112,7 @@ li {
   padding: 14px 25px;
   margin-top: cvp(63px, 1200px);
   font-size: cvp(16px, 1200px);
+  cursor:pointer;
   @include breakpoint(large){
     margin-top: 50px;
     font-size: 16px;

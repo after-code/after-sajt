@@ -125,20 +125,39 @@ body {
   padding: 0; }
 
 .mask {
-  width: 100%;
-  height: 100vh;
+  width: 300%;
+  height: 216vh;
   position: absolute;
-  top: 0;
-  background-image: url("/assets/img/dotted-texture22.png");
-  opacity: 0.41;
+  top: -150%;
+  transform: translateX(50%);
+  left: -165%;
+  background-image: url("/assets/img/dotted-texture21.png");
+  opacity: 0.21;
+  -webkit-transform: translateX(-10%) rotate(-30deg);
   z-index: 2;
-  -webkit-animation: twich 2s infinite forwards; }
+  -webkit-animation: twich 2s infinite forwards, tilt 2s infinite forwards; }
 
 @keyframes twich {
   0% {
-    background-image: url("/assets/img/dotted-texture22.png"); }
+    background-image: url("/assets/img/dotted-texture21.png");
+    left: 2px; }
   50% {
-    background-image: url("/assets/img/dotted-texture20.png"); } }
+    background-image: url("/assets/img/dotted-texture28.png");
+    left: 0px; } }
+
+@keyframes tilt {
+  0% {
+    left: -2px; }
+  20% {
+    left: -4px; }
+  40% {
+    left: -6px; }
+  60% {
+    left: -8px; }
+  80% {
+    left: -10px; }
+  100% {
+    left: -12px; } }
 
 .viewport__container {
   width: 100vw;

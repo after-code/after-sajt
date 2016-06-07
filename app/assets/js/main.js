@@ -12,8 +12,9 @@
     VIEW_ANGLE = 45,
     ASPECT = WIDTH / HEIGHT,
     NEAR = 1,
-    FAR = 10000;
+    FAR = 100;
 
+    // alert(window.innerWidth);
 
     var controlsActive = false;
 
@@ -25,6 +26,7 @@
     renderer = new THREE.WebGLRenderer({antialias: true});
 
     renderer.setSize(WIDTH, HEIGHT);
+    renderer.setPixelRatio( window.devicePixelRatio );
     // renderer.shadowMapEnabled = true;
     // renderer.shadowMapSoft = true;
     // renderer.shadowMapType = THREE.PCFShadowMap;
@@ -52,37 +54,9 @@
 
 
     //
-    // light = new THREE.DirectionalLight(0xffffff);
-    // light.intensity = 0.17;
-    // light.position.set(100, 100, -150);
-    // light.castShadow = true;
-    // light.shadowCameraLeft = -3;
-    // light.shadowCameraTop = -3;
-    // light.shadowCameraRight = 2;
-    // light.shadowCameraBottom = 2;
-    // light.shadowCameraNear = 1;
-    // light.shadowCameraFar = 400;
-    // light.shadowBias = -.0001
-    // light.shadowMapWidth = light.shadowMapHeight = 1024;
-    // light.shadowDarkness = .001;
-    // // light.shadow.bias = 1;
-
 
     var ambient = new THREE.AmbientLight( 0xFFFFFF);
     var point = new THREE.PointLight( 0xFFFFFF, 0.3, 1000 );
-    // point.castShadow = true;
-    // point.shadowCameraLeft = -2;
-    // point.shadowCameraTop = -2;
-    // point.shadowCameraRight = 2;
-    // point.shadowCameraBottom = 2;
-    // point.shadowCameraNear = 1;
-    // point.shadowCameraFar = 1000;
-    // point.shadowBias = -.0001
-    // point.shadowMapWidth = point.shadowMapHeight = 256;
-    // point.shadowDarkness = .001;
-    // point.intensity = 0.9;
-    ambient.intensity = 0.9;
-    // scene.add(light);
     scene.add(ambient);
     point.position.x = 1;
     point.position.y = 3;
@@ -109,9 +83,10 @@
     var yellow_material = new THREE.MeshLambertMaterial(
     { color: 0xff4646 }
   );
-    var textured_material = new THREE.MeshLambertMaterial(
-    { map: THREE.ImageUtils.loadTexture('assets/img/dotted-texture5.png')}
-    );
+    var textured_material = new THREE.MeshLambertMaterial({
+    // { map: THREE.ImageUtils.loadTexture('assets/img/dotted-texture5.png')}
+      color:0x000000
+    });
       var circle_material = new THREE.MeshLambertMaterial( { color: 0xffff00} );
     var maze = new THREE.Mesh(
       maze_geometry,
@@ -429,29 +404,21 @@ tween12.onUpdate(function(){
         floor_material
       );
       mirrorCamera.position = floor.position;
-      floor.receiveShadow = true;
-      // mesh.add(line);
       center2.add(floor);
-center2.add( mirrorMesh );
-      scene.fog = new THREE.FogExp2( 0x9999ff, 0.00025 );
-      vasa = 0;
+      center2.add( mirrorMesh );
       render();
+      floor.visible = false;
     // });
     center2.direction = 1;
+    var time;
     // camera.lookAt(mazeShape2.position);
     function render() {
-     var time = clock.getElapsedTime();
-      // camera.lookAt(center2.position);
-      floor.visible = false;
+      time = clock.getElapsedTime();
       mirrorCamera.position.copy( floor.position );
-      mirrorCamera.rotation.set (0,0,0);
       groundMirror.render();
       renderer.render( scene, camera );
      TWEEN.update();
 
-     vasa++;
-     if(vasa<4){
-      //  console.log(cameraPath);
-     }
      requestAnimationFrame(render);
     }
+    console.log("bg");

@@ -113,8 +113,7 @@ body {
   font-family: "Roboto", sans-serif;
   color: #333;
   font-weight: 300;
-  overflow-x: hidden;
-  overflow-y: hidden;
+  overflow: hidden;
   position: relative; }
   @media (max-width: 1000px) {
     body {
@@ -125,25 +124,21 @@ body {
   padding: 0; }
 
 .mask {
-  width: 300%;
-  height: 216vh;
+  width: 100%;
+  height: 100vh;
   position: absolute;
-  top: -150%;
-  transform: translateX(50%);
-  left: -165%;
-  background-image: url("/assets/img/dotted-texture21.png");
-  opacity: 0.21;
-  -webkit-transform: translateX(-10%) rotate(-30deg);
+  top: 0%;
+  left: 0%;
+  background-image: url("../../assets/img/dotted-texture22.png");
+  opacity: 0.41;
   z-index: 2;
-  -webkit-animation: twich 2s infinite forwards, tilt 2s infinite forwards; }
+  -webkit-animation: twich 2s infinite forwards; }
 
 @keyframes twich {
   0% {
-    background-image: url("/assets/img/dotted-texture21.png");
-    left: 2px; }
+    background-image: url("../../assets/img/dotted-texture22.png"); }
   50% {
-    background-image: url("/assets/img/dotted-texture28.png");
-    left: 0px; } }
+    background-image: url("../../assets/img/dotted-texture20.png"); } }
 
 @keyframes tilt {
   0% {
@@ -160,9 +155,11 @@ body {
     left: -12px; } }
 
 .viewport__container {
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   position: relative; }
+  .viewport__container canvas {
+    width: 100%; }
 
 .main-heading {
   width: 100%;
@@ -225,6 +222,7 @@ li {
   background: #222;
   text-align: center;
   z-index: 99;
+  cursor: pointer;
   width: 100%; }
   @media (max-width: 1000px) {
     .fold-actions {
@@ -233,7 +231,7 @@ li {
 .arrow {
   display: inline-block;
   height: 100%;
-  background-image: url("/assets/img/arrow.png");
+  background-image: url("../../assets/img/arrow.png");
   height: 84px;
   width: 30px;
   background-repeat: no-repeat;

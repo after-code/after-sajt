@@ -109,6 +109,9 @@ html {
 .text-centered {
   text-align: center; }
 
+.main-wrapper {
+  width: 100%; }
+
 body {
   font-family: "Roboto", sans-serif;
   color: #333;
@@ -119,9 +122,15 @@ body {
     body {
       overflow-x: scroll; } }
 
+::-webkit-scrollbar {
+  display: none; }
+
 * {
   margin: 0;
   padding: 0; }
+
+.main-wrapper {
+  overflow: hidden; }
 
 .mask {
   width: 100%;
@@ -207,19 +216,29 @@ li {
       position: absolute; } }
 
 .after-logo {
-  width: 150px;
-  margin-top: -30px;
-  margin-left: -10px; }
+  width: 4%;
+  margin-top: -27px;
+  margin-left: -9px; }
   @media (max-width: 1000px) {
     .after-logo {
       width: 104px; } }
+  @media (min-width: 1170px) {
+    .after-logo {
+      width: 122px; } }
+
+.fold-actions__container {
+  position: fixed;
+  top: 100vh;
+  width: 100%;
+  height: 6%;
+  z-index: 2222; }
 
 .fold-actions {
-  position: absolute;
-  bottom: -84px;
-  height: 84px;
-  line-height: 84px;
-  background: #222;
+  position: relative;
+  top: 0%;
+  height: 100%;
+  line-height: 6%;
+  background: rgba(255, 255, 255, 0.61);
   text-align: center;
   z-index: 99;
   cursor: pointer;
@@ -232,11 +251,12 @@ li {
   display: inline-block;
   height: 100%;
   background-image: url("../../assets/img/arrow.png");
-  height: 84px;
+  height: 100%;
   width: 30px;
   background-repeat: no-repeat;
   background-position: center;
-  cursor: pointer; }
+  cursor: pointer;
+  background-size: 15px; }
 
 .text-block {
   max-width: 540px;

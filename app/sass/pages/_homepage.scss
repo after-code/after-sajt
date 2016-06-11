@@ -54,7 +54,6 @@ body {
   }
 }
 .main-heading {
-  width: 100%;
   text-align: center;
   position: absolute;
   opacity: 0;
@@ -63,9 +62,14 @@ body {
   font-weight: 900;
   color: #222;
   line-height: cvp(98px,1200px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 87%;
+  text-align: left;
   @include breakpoint(large){
     font-size: 78px;
     line-height: 98px;
+    width: 1050px;
     // bottom:304px;
   }
 }
@@ -211,12 +215,10 @@ li {
 
 }
 .button {
-  border: 1px solid #ff4646;
   display: block;
   float: left;
   color: #ff4646;
-  padding: 14px 25px;
-  margin-top: cvp(63px, 1200px);
+  margin-top: cvp(43px, 1200px);
   font-size: cvp(16px, 1200px);
   cursor:pointer;
   @include breakpoint(large){
@@ -250,13 +252,35 @@ li {
   width: 100%;
   overflow: hidden;
 }
+.graphic-container--left,
+.graphic-container--right {
+  width: 50%;
+  float: left;
+}
+.graphic-container--left {
+  padding-right:2%;
+}
+.graphic-container--right {
+  padding-left:2%;
+  margin-top:10%;
+}
 .graphic-container__item {
-  width: 30%;
-  margin:2.5%;
+  width: 100%;
+  margin-bottom:7.6%;
   float: left;
   img {
     width: 100%;
   }
+}
+.graphic-container__item--type1 {
+  width: 85%;
+  float: right;
+  margin-left:15%;
+}
+.graphic-container__item--type2 {
+  width: 85%;
+  float: left;
+  margin-right:15%;
 }
 .first {
   margin-left:0;
@@ -264,23 +288,148 @@ li {
 .last {
   margin-right: 0;
 }
+.soundcloud__container {
+  float: left;
+  position: relative;
+  width: 100%;
+}
 .soundcloud {
   width: 100%;
+  padding:0 10%;
   float: left;
+  position: relative;
+  margin-top:14%;
   text-align: center;
   img {
-    width: 60%;
-    margin-top:-300px;
+    width:100%;
     margin-bottom: 300px;
-    max-width: 1200px;
     @include breakpoint(mobile){
-      width: 90%;
-      margin-top: -350px;
+      margin-bottom: 50px;
+      margin-top: 20px;
     }
   }
 }
+.soundcloud--left,
+.soundcloud--right {
+  float: left;
+  // margin-top:-300px;
+}
+.soundcloud--left {
+  width:58%;
+  padding-right:5%;
+  @include breakpoint(mobile){
+    width: 100%;
+  }
+}
+.soundcloud--right {
+  width: 42%;
+  text-align: left;
+  float: right;
+  @include breakpoint(mobile){
+    width: 100%;
+  }
+}
 .blue-background {
-  background: #2E3192;
+  background: #f2f2f2;
   width: 100%;
-  height: 500px;
+  position: absolute;
+  top:0;
+  height: 49%;
+  // max-height: 371px
+  @include breakpoint(mobile){
+    display: none;
+  }
+}
+.footer {
+  width: 100%;
+  border-top:1px solid #f2f2f2;
+  float: left;
+  padding: 5%;
+  @include breakpoint(mobile){
+    padding-top: 54px;
+  }
+}
+.footer-elements {
+  width: 100%;
+}
+.footer-elements__item {
+  display: inline-block;
+  width: 24%;
+  list-style-type: none;
+  vertical-align: top;
+  margin:0;
+  .after-logo, .we-are {
+    display: block;
+    float: left;
+    margin:0;
+  }
+  .after-logo {
+    width: 92px;
+    margin-right: 27px;
+  }
+  @include breakpoint(mobile){
+    width:100%;
+  }
+}
+.footer-elements__item:nth-child(3){
+  width: 15%;
+  @include breakpoint(mobile){
+    width: 100%;
+  }
+}
+.footer-elements__item:nth-child(4){
+  width: 35%;
+  @include breakpoint(mobile){
+    width: 100%;
+  }
+}
+.footer-nav__element {
+  display: block;
+  margin-bottom: 15px;
+  text-align: left;
+  // color: #ccc;
+}
+.footer-elements__contact {
+  float: left;
+  text-align: left;
+  p {
+    margin-bottom:6px;
+  }
+  a {
+    color:#ff4646;
+  }
+}
+.map {
+  float: left;
+  margin-right:20px;
+  width: 33%;
+  max-width: 150px;
+  @include breakpoint(mobile){
+    display: none;
+  }
+}
+.footer-social__item {
+  background-repeat: no-repeat;
+  width: 30px;
+  height: 20px;
+  display: block;
+  margin: 0;
+  margin-right: 13px;
+  float: left;
+  margin-top: 20px;
+}
+.footer-social {
+  margin-top:60px;
+}
+.fb {
+    background-image: url(../../assets/img/fb.png);
+}
+.twitter {
+    background-image: url(../../assets/img/twitt.png);
+}
+.gplus {
+    background-image: url(../../assets/img/gplus.png);
+}
+.insta {
+    background-image: url(../../assets/img/insta.png);
 }

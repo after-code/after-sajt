@@ -7,7 +7,7 @@ $(window).load(function(){
     , target = $('body')
     , wrapper = target.find('.main-wrapper')
     , easing = "ease-out" //css easing
-    , duration = "1s" //duration ms(millisecond) or s(second)
+    , duration = "0.9s" //duration ms(millisecond) or s(second)
     , top = 0
     , kineticScroll = {
       _init: function() {

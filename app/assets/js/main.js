@@ -11,8 +11,9 @@
 
     VIEW_ANGLE = 45,
     ASPECT = WIDTH / HEIGHT,
-    NEAR = 1,
-    FAR = 100;
+    NEAR = 0.01,
+    FAR = 100,
+    mouseLinked = false;
 
     // alert(window.innerWidth);
     var mousePosition = {
@@ -21,11 +22,13 @@
     };
     document.addEventListener("mousemove", function(event){
           mousePosition.x = event.clientX / 1000;
-          mousePosition.y = 5 + event.clientY / 1000;
+          mousePosition.y = 8 + event.clientY / 1000;
           // console.log(mousePosition);
     });
 
     var controlsActive = false;
+
+    var cameraInertia = 0;
 
     scene = new THREE.Scene();
 
@@ -210,7 +213,8 @@ var mazeCont = new THREE.Mesh(centerGeometry, maze_material);
   //  view.rotation = camera.rotation;
   var cameraPosition = {
     x: 0.88717662734015728,
-    y: 12.039731858009107
+    y: 12.039731858009107,
+    z:0
   };
   var lastPosition = {
     x: 0.88717662734015728,
@@ -279,6 +283,12 @@ var mazeCont = new THREE.Mesh(centerGeometry, maze_material);
   var tweenMouse =  new TWEEN.Tween( cameraPosition ).to( mousePosition, 5400 )
             .easing( TWEEN.Easing.Quadratic.In );
 
+var cameraAfter  = {
+  y:0
+};
+  var idleCamera =  new TWEEN.Tween( cameraPosition ).to( { y:10  },6400 ).repeat( Infinity ).yoyo(true)
+            .easing( TWEEN.Easing.Cubic.InOut );
+
   tween4.delay(2500).start();
   tween4.chain(tween);
   tween.chain(tween5, tween7);
@@ -287,11 +297,16 @@ var mazeCont = new THREE.Mesh(centerGeometry, maze_material);
   tween10.delay(400).chain(tween12);
   tween12.onComplete(showActions);
   tween12.chain(tweenMouse);
+  // tweenMouse.chain(idleCamera);
   // tween12.chain(tween13);
   tweenMouse.onComplete(function(){
     cameraPosition.x = lastPosition.x;
     cameraPosition.y = lastPosition.z;
-    tweenMouse.start();
+    cameraPosition.z = camera.position.z;
+    cameraAfter.y = cameraPosition.y;
+    console.log('matora poziciaaj'+cameraAfter.y);
+    idleCamera.start();
+    // mouseLinked = true;
   });
   // tweenMouse.start();
   // tween13.chain(tween14);
@@ -302,7 +317,19 @@ var mazeCont = new THREE.Mesh(centerGeometry, maze_material);
   // tween.chain(tween2);
   // tween2.chain(tween3);
   // tween3.chain(tween);
+  idleCamera.onUpdate(function(){
+      camera.position.y = cameraPosition.y ;
+      // console.log(cameraPosition.y );
+  });
 
+tweenMouse.onUpdate(function(){
+  camera.position.x = cameraPosition.x;
+  camera.position.y = cameraPosition.y ;
+  camera.lookAt(center2.position);
+  lastPosition.x = cameraPosition.x;
+  lastPosition.z = cameraPosition.y;
+  // console.log(cameraPosition)
+});
 // new position
 tween11.onUpdate(function(){
   mazeCont.position.x = position2.x;
@@ -367,14 +394,7 @@ tween12.onUpdate(function(){
     camera.rotation.y = rotation.y;
     camera.rotation.z = rotation.z;
   });
-  tweenMouse.onUpdate(function(){
-    camera.position.x = cameraPosition.x;
-    camera.position.y = cameraPosition.y ;
-    camera.lookAt(center2.position);
-    lastPosition.x = cameraPosition.x;
-    lastPosition.z = cameraPosition.y;
-    // console.log(cameraPosition)
-  });
+
   tween10.onUpdate(function(){
 
       camera.position.x = view.position.x;
@@ -449,7 +469,37 @@ tween12.onUpdate(function(){
       groundMirror.render();
       renderer.render( scene, camera );
      TWEEN.update();
+    if (mouseLinked){
+      // camera.position.x = mousePosition.x;
+      // if (camera.position.x < 1.5){
+        if (cameraInertia >= 0 && cameraInertia < 0.5){
+          cameraInertia+= Math.abs(mousePosition.x - window.innerWidth/2000)/400;
+        } else if (cameraInertia <0){
+          cameraInertia = 0;
+        }
 
+        if (cameraInertia >0.002){
+          cameraInertia -=0.001;
+        }
+        if (mousePosition.x > window.innerWidth / 2000 ){
+              camera.position.x += cameraInertia;
+        } else{
+              camera.position.x -= cameraInertia;
+              // console.log('right');
+        }
+        // if (camera.position.x > window.innerWidth / 2000) {
+        //   camera.position.x -= 0.01;
+        //   camera.position.z -= 0.01;
+        // } else if (camera.position.x < window.innerWidth / 2000){
+        //   camera.position.x += 0.01;
+        //   camera.position.z += 0.01;
+        // }
+      // }
+      // camera.position.z = mousePosition.x - 1.5;
+      // camera.position.y = mousePosition.y;
+      // camera.lookAt(center2.position);
+      console.log(cameraInertia);
+    }
      requestAnimationFrame(render);
     }
     console.log("bg");

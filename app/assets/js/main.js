@@ -15,6 +15,15 @@
     FAR = 100;
 
     // alert(window.innerWidth);
+    var mousePosition = {
+      x:0,
+      y:0
+    };
+    document.addEventListener("mousemove", function(event){
+          mousePosition.x = event.clientX / 1000;
+          mousePosition.y = 5 + event.clientY / 1000;
+          // console.log(mousePosition);
+    });
 
     var controlsActive = false;
 
@@ -27,10 +36,6 @@
 
     renderer.setSize(WIDTH, HEIGHT);
     renderer.setPixelRatio( window.devicePixelRatio );
-    // renderer.shadowMapEnabled = true;
-    // renderer.shadowMapSoft = true;
-    // renderer.shadowMapType = THREE.PCFShadowMap;
-    // renderer.shadowMapAutoUpdate = true;
     renderer.setClearColor( 0xffffff, 1 );
     container.appendChild(renderer.domElement);
 
@@ -61,7 +66,6 @@
     point.position.x = 1;
     point.position.y = 3;
     point.position.z = 5;
-    loader = new THREE.JSONLoader();
     scene.add(mirrorCamera);
     var mesh, container;
     var floor_geometry = new THREE.BoxGeometry( 10, 0.001, 10);
@@ -113,8 +117,9 @@
       maze_material
     );
   // maze2
-  var center = new THREE.Mesh();
-  var center2 = new THREE.Mesh();
+  var centerGeometry = new THREE.BoxGeometry(0.0000001,0.0000001,0.0000001);
+  var center = new THREE.Mesh(centerGeometry);
+  var center2 = new THREE.Mesh(centerGeometry);
   var mazeLineGeom = new THREE.Geometry();
   var mazeLineGeom2 = new THREE.Geometry();
   var mazeLineGeom3 = new THREE.Geometry();
@@ -173,7 +178,7 @@
   var mazeShape3 = new THREE.Mesh( mazeLineGeom3, maze_material );
   var yellowShape = new THREE.Mesh( yellowGeom, yellow_material );
 
-var mazeCont = new THREE.Mesh();
+var mazeCont = new THREE.Mesh(centerGeometry, maze_material);
   mazeShape.position.y = 2;
   mazeShape2.position.y = 3;
   mazeShape2.position.x = 0;
@@ -195,14 +200,22 @@ var mazeCont = new THREE.Mesh();
     x: -3.047493474219677 ,
     y: -0.04584905340038268,
     z: -3.137267058875789
-  }
+  };
   var rotation2 = {
     x:  -1.6467429167580074 ,
     y: 0.07239749524230163,
     z: -3.913465086216434
-  }
+  };
   //  view.position = camera.position;
   //  view.rotation = camera.rotation;
+  var cameraPosition = {
+    x: 0.88717662734015728,
+    y: 12.039731858009107
+  };
+  var lastPosition = {
+    x: 0.88717662734015728,
+    y: 12.039731858009107
+  };
 
   var fov = {};
   fov.uno = 10;
@@ -218,7 +231,7 @@ var mazeCont = new THREE.Mesh();
     z: -1
   }
   camera.updateProjectionMatrix();
-  center2.add(mazeShape, mazeShape2, mazeShape3, yellowShape, center);
+  center2.add(mazeShape, mazeShape2, mazeShape3, yellowShape);
   var tween =  new TWEEN.Tween( view.position).to( {
   					z: -10  }, 1400 )
   					.easing( TWEEN.Easing.Quadratic.Out );
@@ -235,10 +248,10 @@ var mazeCont = new THREE.Mesh();
   var tween6 =  new TWEEN.Tween( view.position ).to({	x: 5,  z: -5}, 1500 )
   					.easing( TWEEN.Easing.Quartic.Out );
 
-  var tween9 =  new TWEEN.Tween( rotation ).to({x: -1.570797026242877, y: 7.053619697217657e-7, z: 2.3586584817828173 -Math.PI *2},1500 )
+  var tween9 =  new TWEEN.Tween( rotation ).to({x: -1.6454100468212487, y: 6.356535846627996  -Math.PI *2, z: 2.3661085397270294 -Math.PI *2},1700 )
   					.easing( TWEEN.Easing.Quartic.In );
 
-  var tween10 =  new TWEEN.Tween( view.position ).to({	x: 0.88717662734015728, y:12.039731858009107,  z: -0.9}, 1000 )
+  var tween10 =  new TWEEN.Tween( view.position ).to({	x: 0.88717662734015728, y:12.039731858009107,  z: -0.9}, 1300 )
   					.easing( TWEEN.Easing.Quartic.In );
 
   var tween11 =  new TWEEN.Tween( position2 ).to({	x: 2, y:0 , z:2}, 1500 )
@@ -263,6 +276,9 @@ var mazeCont = new THREE.Mesh();
   var tween4 =  new TWEEN.Tween( fov ).to( {uno:40}, 1400 )
             .easing( TWEEN.Easing.Quadratic.In );
 
+  var tweenMouse =  new TWEEN.Tween( cameraPosition ).to( mousePosition, 5400 )
+            .easing( TWEEN.Easing.Quadratic.In );
+
   tween4.delay(2500).start();
   tween4.chain(tween);
   tween.chain(tween5, tween7);
@@ -270,8 +286,14 @@ var mazeCont = new THREE.Mesh();
   tween8.chain(tween9, tween10);
   tween10.delay(400).chain(tween12);
   tween12.onComplete(showActions);
+  tween12.chain(tweenMouse);
   // tween12.chain(tween13);
-
+  tweenMouse.onComplete(function(){
+    cameraPosition.x = lastPosition.x;
+    cameraPosition.y = lastPosition.z;
+    tweenMouse.start();
+  });
+  // tweenMouse.start();
   // tween13.chain(tween14);
   // tween11.chain(tween12);
   // tween4.chain(tween5, tween6);
@@ -341,14 +363,23 @@ tween12.onUpdate(function(){
       // camera.lookAt(center2.position);
   });
   tween9.onUpdate(function(){
+    camera.rotation.x = rotation.x;
+    camera.rotation.y = rotation.y;
+    camera.rotation.z = rotation.z;
+  });
+  tweenMouse.onUpdate(function(){
+    camera.position.x = cameraPosition.x;
+    camera.position.y = cameraPosition.y ;
+    camera.lookAt(center2.position);
+    lastPosition.x = cameraPosition.x;
+    lastPosition.z = cameraPosition.y;
+    // console.log(cameraPosition)
+  });
+  tween10.onUpdate(function(){
+
       camera.position.x = view.position.x;
       camera.position.y = view.position.y;
       camera.position.z = view.position.z;
-  });
-  tween10.onUpdate(function(){
-      camera.rotation.x = rotation.x;
-      camera.rotation.y = rotation.y;
-      camera.rotation.z = rotation.z;
 
       // camera.lookAt(center2.position);
   });
@@ -388,11 +419,11 @@ tween12.onUpdate(function(){
   maze6.position.z = 0.5;
   maze6.rotation.y = Math.PI/4;
   center.position.z = 0.5;
-  var mazeCont = new THREE.Mesh();
+  // var mazeCont = new THREE.Mesh();
   mazeCont.add(maze, maze2, maze3, maze4, maze5, maze6);
   center.add(mazeCont);
+  center2.add(center);
   scene.add(center2);
-
   var cameraPosX = 0.44426790438853775;
   var cameraPosY = 3.6624066401248725;
   var cameraPosZ =  -1.9126542045900217;
@@ -413,7 +444,7 @@ tween12.onUpdate(function(){
     var time;
     // camera.lookAt(mazeShape2.position);
     function render() {
-      time = clock.getElapsedTime();
+      // time = clock.getElapsedTime();
       mirrorCamera.position.copy( floor.position );
       groundMirror.render();
       renderer.render( scene, camera );

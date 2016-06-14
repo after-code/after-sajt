@@ -1,11 +1,11 @@
 var foldShown = false;
 function showActions(){
   setTimeout(function(){
-    $(".fold-actions").animate({"top":"-100%"},900, 'easeInOutExpo', function(){
+    $(".fold-actions").animate({"top":"-100%"},600, 'easeInOutCubic', function(){
       foldShown = true;
     });
-    $(".main-heading").animate({"opacity":"1"},900, 'easeInOutExpo');
-  },400);
+    $(".main-heading").animate({"opacity":"1"},600, 'easeInOutCubic');
+  },100);
 }
 var first = true;
 

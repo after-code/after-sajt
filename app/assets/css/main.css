@@ -181,8 +181,7 @@ body {
   line-height: 8.16667vw;
   left: 50%;
   transform: translateX(-50%);
-  width: 87%;
-  text-align: left; }
+  width: 87%; }
   @media (min-width: 1170px) {
     .main-heading {
       font-size: 78px;

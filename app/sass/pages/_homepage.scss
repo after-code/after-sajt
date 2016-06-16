@@ -65,7 +65,7 @@ body {
   left: 50%;
   transform: translateX(-50%);
   width: 87%;
-  text-align: left;
+  // text-align: left;
   @include breakpoint(large){
     font-size: 78px;
     line-height: 98px;

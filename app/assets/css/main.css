@@ -141,6 +141,7 @@ body {
   top: 0%;
   left: 0%;
   background-image: url("../../assets/img/dotted-texture22.png");
+  background-size: 7px;
   opacity: 0.41;
   z-index: 2;
   -webkit-animation: twich 2s infinite forwards; }

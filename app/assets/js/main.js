@@ -281,12 +281,12 @@ var mazeCont = new THREE.Mesh(centerGeometry, maze_material);
             .easing( TWEEN.Easing.Quadratic.In );
 
   var tweenMouse =  new TWEEN.Tween( cameraPosition ).to( mousePosition, 5400 )
-            .easing( TWEEN.Easing.Quadratic.In );
+            .easing( TWEEN.Easing.Quadratic.InOut );
 
 var cameraAfter  = {
   y:0
 };
-  var idleCamera =  new TWEEN.Tween( cameraPosition ).to( { y:10  },6400 ).repeat( Infinity ).yoyo(true)
+  var idleCamera =  new TWEEN.Tween( cameraPosition ).to( { y:10  },4444 ).repeat( Infinity ).yoyo(true)
             .easing( TWEEN.Easing.Cubic.InOut );
 
   tween4.delay(2500).start();

@@ -16,6 +16,7 @@
     mouseLinked = false;
 
     // alert(window.innerWidth);
+    var animationFrame;
     var mousePosition = {
       x:0,
       y:0
@@ -500,7 +501,7 @@ tween12.onUpdate(function(){
       // camera.lookAt(center2.position);
       console.log(cameraInertia);
     }
-     requestAnimationFrame(render);
+     animationFrame = requestAnimationFrame(render);
     }
     console.log("bg");
 

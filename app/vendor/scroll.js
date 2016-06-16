@@ -37,6 +37,8 @@ $(window).load(function(){
       },
       _scroll: function() {
         top = win.scrollTop();
+        $('.animateThis').css({top:top/2-900+'px'});
+        // $('.animateThis2').css({top:top/10+'px'});
         wrapper.css('transform', 'translateY(-' + top + 'px)');
       }
     };

@@ -60,6 +60,8 @@ a:hover, a:active, a:focus {
   src: url("/ui/uni-sans-heavy.otf") format("opentype"); }
 
 html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   font-family: "Roboto", sans-serif;
   font-size: 16px; }
 

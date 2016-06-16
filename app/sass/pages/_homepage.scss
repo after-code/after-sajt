@@ -34,11 +34,15 @@ body {
 }
 .animateThis {
   position: relative;
-  -webkit-transition: all 900ms ease-out;
-  -o-transition: all 900ms ease-out;
-  transition: all 900ms ease-out;
-  margin-top:-100px;
-  margin-bottom: 100px;
+  -webkit-transition: all 400ms ease-in-out  ;
+  -o-transition: all 400ms ease-in-out  ;
+  transition: all 400ms ease-in-out  ;
+  // margin-top:-100px;
+  // margin-bottom: 100px;
+}
+.animateThis2 {
+  @extend .animateThis;
+
 }
 @keyframes twich {
   0% {background-image: url("../../assets/img/dotted-texture22.png"); }
@@ -186,7 +190,7 @@ li {
   }
 }
 .text-block__heading {
-  font-weight: 500;
+  font-weight: bold;
   margin-bottom: cvp(64px, 1200px);
   font-size: cvp(68px, 1200px);
   @include breakpoint(large){
@@ -259,10 +263,10 @@ li {
 }
 .graphic-container {
   width: 100%;
-  overflow: hidden;
+  // overflow: hidden;
   width: 100%;
-  overflow: hidden;
-  margin-top: 55px;
+  // overflow: hidden;
+  // margin-top: 55px;
   float: left;
   padding: 0 10%;
 }
@@ -270,17 +274,18 @@ li {
 .graphic-container--right {
   width: 50%;
   float: left;
+  margin-bottom: 33%;
 }
 .graphic-container--left {
-  padding-right:2%;
+  padding-right:6%;
 }
 .graphic-container--right {
-  padding-left:2%;
+  padding-left:6%;
   margin-top:10%;
 }
 .graphic-container__item {
   width: 100%;
-  margin-bottom:7.6%;
+  margin-bottom:22.6%;
   float: left;
   img {
     width: 100%;
@@ -446,4 +451,12 @@ li {
 }
 .insta {
     background-image: url(../../assets/img/insta.png);
+}
+.shapes-background {
+  background-image: url(../../assets/img/shapes-background.png);
+  background-size: 100%;
+  background-size: 100%;
+  background-position: 0 11vw;
+  margin-bottom: 0;
+  background-repeat: no-repeat;
 }

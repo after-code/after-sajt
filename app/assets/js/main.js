@@ -16,6 +16,7 @@
     mouseLinked = false;
 
     // alert(window.innerWidth);
+    var rendering = true;
     var animationFrame;
     var mousePosition = {
       x:0,
@@ -465,6 +466,7 @@ tween12.onUpdate(function(){
     var time;
     // camera.lookAt(mazeShape2.position);
     function render() {
+      // console.log("rendering");
       // time = clock.getElapsedTime();
       mirrorCamera.position.copy( floor.position );
       groundMirror.render();
@@ -488,20 +490,11 @@ tween12.onUpdate(function(){
               camera.position.x -= cameraInertia;
               // console.log('right');
         }
-        // if (camera.position.x > window.innerWidth / 2000) {
-        //   camera.position.x -= 0.01;
-        //   camera.position.z -= 0.01;
-        // } else if (camera.position.x < window.innerWidth / 2000){
-        //   camera.position.x += 0.01;
-        //   camera.position.z += 0.01;
-        // }
-      // }
-      // camera.position.z = mousePosition.x - 1.5;
-      // camera.position.y = mousePosition.y;
-      // camera.lookAt(center2.position);
       console.log(cameraInertia);
     }
-     animationFrame = requestAnimationFrame(render);
+      if (rendering){
+        animationFrame = requestAnimationFrame(render);
+      }
     }
     console.log("bg");
 

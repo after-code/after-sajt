@@ -7,7 +7,7 @@ $(window).load(function(){
     , target = $('body')
     , wrapper = target.find('.main-wrapper')
     , easing = "ease-out" //css easing
-    , duration = "0.9s" //duration ms(millisecond) or s(second)
+    , duration = "0.4s" //duration ms(millisecond) or s(second)
     , top = 0
     , kineticScroll = {
       _init: function() {
@@ -37,7 +37,19 @@ $(window).load(function(){
       },
       _scroll: function() {
         top = win.scrollTop();
-        $('.animateThis').css({top:top/2-900+'px'});
+
+        if (top > $(".viewport__container").height()+100){
+          rendering = false;
+          cancelAnimationFrame(animationFrame);
+          console.log(rendering);
+        } else  {
+          rendering = true;
+          console.log(rendering);
+        }
+        if (rendering){
+          render();
+        }
+        $('.animateThis').css({top:top/13 - 80 +'px'});
         // $('.animateThis2').css({top:top/10+'px'});
         wrapper.css('transform', 'translateY(-' + top + 'px)');
       }

@@ -10,6 +10,8 @@ $base__line: 20 !default;
     src: url('/ui/uni-sans-heavy.otf') format('opentype'),
 }
 html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   font-family: $text__family--Roboto;
 	font-size: $base__font-size;
 }

@@ -37,22 +37,7 @@ $(window).load(function(){
       },
       _scroll: function() {
         top = win.scrollTop();
-
-        if (top > $(".viewport__container").height()+100){
-          rendering = false;
-          cancelAnimationFrame(animationFrame);
-          console.log(rendering);
-        } else  {
-          rendering = true;
-          console.log(rendering);
-        }
-        if (rendering){
-          render();
-        }
-        $('.animateThis').css({top:top/13 - 80 +'px'});
-        // $('.animateThis2').css({top:top/10+'px'});
         wrapper.css('transform', 'translateY(-' + top + 'px)');
-      }
     };
 
     if (typeof window.ontouchstart == 'undefined') {

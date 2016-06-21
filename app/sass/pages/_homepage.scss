@@ -117,7 +117,7 @@ li {
   }
 }
 .after-logo {
-  width: 4%;
+  width: 104px;
   margin-top: -27px;
   margin-left: -9px;
   @include breakpoint(mobile){
@@ -269,12 +269,12 @@ li {
   // margin-top: 55px;
   float: left;
   padding: 0 10%;
+  margin-top: 50px;
 }
 .graphic-container--left,
 .graphic-container--right {
   width: 50%;
   float: left;
-  margin-bottom: 33%;
 }
 .graphic-container--left {
   padding-right:6%;
@@ -456,7 +456,7 @@ li {
   background-image: url(../../assets/img/shapes-background.png);
   background-size: 100%;
   background-size: 100%;
-  background-position: 0 11vw;
+  background-position: 0 73%;
   margin-bottom: 0;
   background-repeat: no-repeat;
 }

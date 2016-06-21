@@ -67,7 +67,8 @@ html {
 
 .main-container {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1260px;
+  padding: 30px;
   margin: 0 auto; }
   @media (min-width: 1170px) {
     .main-container {
@@ -231,7 +232,7 @@ li {
       position: absolute; } }
 
 .after-logo {
-  width: 4%;
+  width: 104px;
   margin-top: -27px;
   margin-left: -9px; }
   @media (max-width: 1000px) {
@@ -377,13 +378,13 @@ li {
   width: 100%;
   width: 100%;
   float: left;
-  padding: 0 10%; }
+  padding: 0 10%;
+  margin-top: 50px; }
 
 .graphic-container--left,
 .graphic-container--right {
   width: 50%;
-  float: left;
-  margin-bottom: 33%; }
+  float: left; }
 
 .graphic-container--left {
   padding-right: 6%; }
@@ -556,6 +557,6 @@ li {
   background-image: url(../../assets/img/shapes-background.png);
   background-size: 100%;
   background-size: 100%;
-  background-position: 0 11vw;
+  background-position: 0 73%;
   margin-bottom: 0;
   background-repeat: no-repeat; }

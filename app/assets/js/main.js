@@ -25,7 +25,7 @@
     document.addEventListener("mousemove", function(event){
           mousePosition.x = event.clientX / 1000;
           mousePosition.y = 8 + event.clientY / 1000;
-          // console.log(mousePosition);
+          console.log(mousePosition);
     });
 
     var controlsActive = false;
@@ -73,8 +73,8 @@
     point.position.z = 5;
     scene.add(mirrorCamera);
     var mesh, container;
-    var floor_geometry = new THREE.BoxGeometry( 10, 0.001, 10);
-    var floor_material = new THREE.MeshBasicMaterial( { envMap: mirrorCamera.renderTarget } );
+    // var floor_geometry = new THREE.BoxGeometry( 10, 0.001, 10);
+    // var floor_material = new THREE.MeshBasicMaterial( { envMap: mirrorCamera.renderTarget } );
 
         var planeGeo = new THREE.PlaneBufferGeometry( 10, 10 );
         var groundMirror = new THREE.Mirror( renderer, camera, { clipBias: 1, textureWidth: WIDTH, textureHeight: HEIGHT, color: 0xECECEC } );
@@ -452,51 +452,18 @@ tween12.onUpdate(function(){
   camera.position.set(0.44426790438853775,3.6624066401248725,  -1.9126542045900217);
   camera.rotation.set(-3.047493474219677, -0.04584905340038268, -3.137267058875789);
 
-      floor = new THREE.Mesh(
-        floor_geometry,
-        floor_material
-      );
-      mirrorCamera.position = floor.position;
-      center2.add(floor);
       center2.add( mirrorMesh );
       render();
-      floor.visible = false;
-    // });
     center2.direction = 1;
     var time;
-    // camera.lookAt(mazeShape2.position);
     function render() {
-      // console.log("rendering");
-      // time = clock.getElapsedTime();
-      mirrorCamera.position.copy( floor.position );
       groundMirror.render();
       renderer.render( scene, camera );
      TWEEN.update();
-    if (mouseLinked){
-      // camera.position.x = mousePosition.x;
-      // if (camera.position.x < 1.5){
-        if (cameraInertia >= 0 && cameraInertia < 0.5){
-          cameraInertia+= Math.abs(mousePosition.x - window.innerWidth/2000)/400;
-        } else if (cameraInertia <0){
-          cameraInertia = 0;
-        }
-
-        if (cameraInertia >0.002){
-          cameraInertia -=0.001;
-        }
-        if (mousePosition.x > window.innerWidth / 2000 ){
-              camera.position.x += cameraInertia;
-        } else{
-              camera.position.x -= cameraInertia;
-              // console.log('right');
-        }
-      console.log(cameraInertia);
-    }
       if (rendering){
         animationFrame = requestAnimationFrame(render);
       }
     }
-    console.log("bg");
 
 /**/
 

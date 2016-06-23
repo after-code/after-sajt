@@ -5,6 +5,9 @@
   @if $point == large {
      @media (min-width: 1170px)  { @content ; }
   }
+  @if $point == xlarge {
+     @media (min-width: 1681px)  { @content ; }
+  }
   @if $point == iphone4 {
      @media (min-device-width : 320px) and (max-height: 450px) { @content ; }
   }

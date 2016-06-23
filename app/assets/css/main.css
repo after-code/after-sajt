@@ -1,4 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,900,700,500,300);
+@import url(https://fonts.googleapis.com/css?family=VT323);
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -226,10 +227,21 @@ li {
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 2; }
+  z-index: 17; }
   @media (max-width: 1000px) {
     .header {
       position: absolute; } }
+
+.header__links {
+  float: right;
+  width: auto;
+  height: 100%;
+  line-height: 40px;
+  margin-right: 20px; }
+
+.header__link a {
+  color: #333;
+  margin-right: 20px; }
 
 .after-logo {
   width: 104px;
@@ -368,7 +380,7 @@ li {
     .iphone {
       margin-top: 50px;
       max-width: 100%;
-      width: 84%;
+      width: 50%;
       margin: 0 auto;
       float: none;
       display: block;
@@ -469,7 +481,7 @@ li {
   width: 100%;
   border-top: 1px solid #f2f2f2;
   float: left;
-  padding: 5%; }
+  padding: 3% 5%; }
   @media (max-width: 1000px) {
     .footer {
       padding-top: 54px; } }
@@ -522,7 +534,7 @@ li {
 .map {
   float: left;
   margin-right: 20px;
-  width: 33%;
+  width: 27%;
   max-width: 150px; }
   @media (max-width: 1000px) {
     .map {
@@ -560,3 +572,42 @@ li {
   background-position: 0 73%;
   margin-bottom: 0;
   background-repeat: no-repeat; }
+
+.about-page {
+  overflow: scroll; }
+  .about-page .text-block {
+    padding-top: 150px;
+    padding-right: 100px; }
+    @media (min-width: 1681px) {
+      .about-page .text-block {
+        padding-top: 170px; } }
+    @media (max-width: 1000px) {
+      .about-page .text-block {
+        padding: 60px 10px 0; } }
+
+.container {
+  width: 100%;
+  margin-top: 12%;
+  margin-bottom: 5%; }
+  .container li {
+    display: inline-block;
+    margin: 0 2.3%;
+    vertical-align: top; }
+    .container li .text-block {
+      text-align: left; }
+  @media (min-width: 1681px) {
+    .container {
+      margin-bottom: 10%; } }
+  @media (max-width: 1000px) {
+    .container {
+      margin-top: 0px;
+      padding-top: 100px; } }
+
+.big-a {
+  width: 220px; }
+  @media (min-width: 1681px) {
+    .big-a {
+      width: auto; } }
+  @media (max-width: 1000px) {
+    .big-a {
+      width: 150px; } }

@@ -379,6 +379,7 @@ li {
   padding: 3% 5%;
   @include breakpoint(mobile){
     padding-top: 54px;
+    padding: 7% 5%;
   }
 }
 .footer-elements {
@@ -455,6 +456,7 @@ li {
 }
 .fb {
     background-image: url(../../assets/img/fb.png);
+    margin-top: 17px;
 }
 .twitter {
     background-image: url(../../assets/img/twitt.png);

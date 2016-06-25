@@ -92,6 +92,24 @@ html {
     .section--padding {
       padding: 0 5%; } }
 
+.section--phones {
+  text-align: center;
+  background: #f2f2f2;
+  margin: 0;
+  padding-top: 150px;
+  padding-bottom: 150px; }
+  @media (max-width: 1000px) {
+    .section--phones {
+      height: 500px;
+      padding: 45px 0 70px; }
+      .section--phones img {
+        height: 100%;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-top: 20px;
+        margin-bottom: 20px; } }
+
 @media (max-width: 1000px) {
   .section--padding-mobile {
     padding: 0 5%; } }
@@ -484,7 +502,8 @@ li {
   padding: 3% 5%; }
   @media (max-width: 1000px) {
     .footer {
-      padding-top: 54px; } }
+      padding-top: 54px;
+      padding: 7% 5%; } }
 
 .footer-elements {
   width: 100%; }
@@ -554,7 +573,8 @@ li {
   margin-top: 60px; }
 
 .fb {
-  background-image: url(../../assets/img/fb.png); }
+  background-image: url(../../assets/img/fb.png);
+  margin-top: 17px; }
 
 .twitter {
   background-image: url(../../assets/img/twitt.png); }
@@ -611,3 +631,129 @@ li {
   @media (max-width: 1000px) {
     .big-a {
       width: 150px; } }
+
+.lab-page {
+  background: #222222;
+  overflow: auto; }
+  .lab-page .header__link a {
+    color: #7e7e7e; }
+  .lab-page .after-logo {
+    width: 80px;
+    margin-left: 0.9%;
+    margin-top: 1.2%; }
+  .lab-page .main-container {
+    padding: 3%;
+    margin: 0 auto;
+    padding-top: 15%; }
+  .lab-page .footer {
+    border-top: 1px solid #4a4a4a; }
+  .lab-page .footer-elements__contact p {
+    color: #4a4a4a; }
+  .lab-page .fb {
+    background-image: url(../../assets/img/fb-dark.png); }
+  .lab-page .twitter {
+    background-image: url(../../assets/img/twitter-dark.png); }
+  .lab-page .gplus {
+    background-image: url(../../assets/img/gplus-dark.png); }
+  .lab-page .insta {
+    background-image: url(../../assets/img/insta-dark.png); }
+
+.lab-projects-container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding-bottom: 25%; }
+  @media (max-width: 1000px) {
+    .lab-projects-container {
+      padding-top: 14%; } }
+
+.lab-projects-container__heading {
+  text-align: left;
+  color: white;
+  font-size: 39px;
+  font-weight: 600;
+  margin-bottom: 5%;
+  color: white; }
+
+.lab-project {
+  position: relative;
+  margin-bottom: 4%; }
+  @media (max-width: 1000px) {
+    .lab-project {
+      overflow: hidden;
+      height: 500px; } }
+
+.lab-project__heading {
+  font-size: 80px;
+  font-weight: bold;
+  color: white; }
+  @media (max-width: 1000px) {
+    .lab-project__heading {
+      font-size: 35px; } }
+
+.lab-project__media {
+  height: 100%; }
+  .lab-project__media img {
+    width: 100%; }
+    @media (max-width: 1000px) {
+      .lab-project__media img {
+        width: auto;
+        height: 100%;
+        position: relative;
+        z-index: 0;
+        left: 50%;
+        -webkit-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+        -o-transform: translateX(-50%);
+        transform: translateX(-50%); } }
+
+.lab-project__mask {
+  position: absolute; }
+  @media (max-width: 1000px) {
+    .lab-project__mask {
+      z-index: 1; } }
+
+.lab-project__content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding-left: 4%;
+  padding-bottom: 7%; }
+  @media (max-width: 1000px) {
+    .lab-project__content {
+      z-index: 2; } }
+
+.lab-project__text {
+  font-size: 23px;
+  color: white;
+  font-weight: 500;
+  margin-top: 10px; }
+  @media (max-width: 1000px) {
+    .lab-project__text {
+      font-size: 22px; } }
+
+.lab-mask, .lab-project__mask {
+  position: absolute;
+  background: black;
+  opacity: 0.3;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0; }
+
+.line, .line--gray, .line--white {
+  position: relative; }
+  .line:after, .line--gray:after, .line--white:after {
+    position: absolute;
+    width: 90px;
+    height: 4px;
+    top: calc(50% - 1.5px);
+    margin-left: 20px;
+    background: black;
+    content: ''; }
+
+.line--gray:after {
+  background: #424242; }
+
+.line--white:after {
+  background: white; }

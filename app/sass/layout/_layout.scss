@@ -25,6 +25,25 @@
     padding: 0 5%;
   }
 }
+.section--phones {
+  text-align: center;
+  background: #f2f2f2;
+  margin: 0;
+  padding-top: 150px;
+  padding-bottom: 150px;
+  @include breakpoint(mobile){
+    height: 500px;
+    padding: 45px 0 70px;
+    img {
+      height: 100%;
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+  }
+}
 .section--padding-mobile {
   @include breakpoint(mobile){
     padding: 0 5%;

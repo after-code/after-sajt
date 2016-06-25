@@ -29,7 +29,7 @@ hello@after.haus
 <link rel="stylesheet" href="assets/css/main.css"/>
 <link href='https://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
 </head>
-<body class='about-page'>
+<body class='lab-page'>
   <!-- Google Tag Manager -->
   <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-TTFN9B"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -40,32 +40,51 @@ hello@after.haus
   })(window,document,'script','dataLayer','GTM-TTFN9B');</script>
   <!-- End Google Tag Manager -->
   <div class="header">
-     <a href="/"><img src="assets/img/logo-after-black.svg" alt="" class="after-logo"></a>
+     <a href="/"><img src="assets/img/after-logo-gray.png" alt="" class="after-logo"></a>
     <ul class="header__links">
       <li class="header__link"><a href="/lab.html">Lab</a></li>
       <li class="header__link"><a href="/about.html">About</a></li>
       <!-- <li class="header__link">Contact</li> -->
     </ul>
   </div>
-  <ul class="container">
-    <li>
-      <img src="assets/img/letter-A.png" alt="" class='big-a'>
-    </li>
-    <li>
-      <div class="text-block">
-        <h5 class="text-block__heading--small">Who we are</h5>
-        <p class="text-block__text">We are creative people. <br />
-         <br /> Our skillset is consisted of UX, graphic and industrial designers, developers, architects, 2d-3d animators, psychologist, hardware / IoT experts.
-         <br /> This gives us ability to work on wide set of projects and clients.
-         <br /><br />We practice production approach of using common sense & teaming up with client - collaborate and learn in process of finding & producing final solution.
-       </p>
-      </div>
-    </li>
-  </ul>
+  <div class="main-container">
+    <div class="lab-projects-container">
+      <h2 class="lab-projects-container__heading line--white">Lab</h2>
+      <a href="/intro.html" target='_blank'>
+        <div class="lab-project">
+          <div class="lab-project__mask"></div>
+          <div class="lab-project__media">
+            <img src="assets/img/intro-background.png" alt="intro-background">
+          </div>
+          <div class="lab-project__content">
+            <h1 class="lab-project__heading">Intro</h1>
+            <p class="lab-project__text">After intro</p>
+          </div>
+        </div>
+      </a>
+      <a href="/nebojsa" target='_blank'>
+        <div class="lab-project">
+          <div class="lab-project__mask"></div>
+          <div class="lab-project__media">
+            <img src="assets/img/nebojsa-background.png" alt="nebojsa-background">
+          </div>
+          <div class="lab-project__content">
+            <h1 class="lab-project__heading">Небојша</h1>
+            <p class="lab-project__text">Arcade Shooter</p>
+          </div>
+        </div>
+      </a>
+
+
+
+
+
+    </div>
+  </div>
   <div class="footer">
     <ul class="footer-elements">
       <li class="footer-elements__item">
-        <img src="assets/img/after.png" alt="" class="after-logo">
+        <img src="assets/img/after-logo-gray.png" alt="" class="after-logo">
         <img src="assets/img/we-are.png" alt="" class="we-are">
       </li>
       <li class="footer-elements__item">
@@ -74,7 +93,7 @@ hello@after.haus
       </li>
       <li class="footer-elements__item"></li>
       <li class="footer-elements__item">
-        <img src="assets/img/map.png" alt="" class="map"><!-- link to google map -->
+        <img src="assets/img/map-black.png" alt="" class="map"><!-- link to google map -->
         <div class="footer-elements__contact">
           <p>,After</p>
           <p>Balkanska street 33</p>
@@ -90,6 +109,7 @@ hello@after.haus
       </li>
     </ul>
   </div>
+
 <script src='bower_components/jquery/dist/jquery.js'></script>
 <script type="text/javascript">
 $( document ).ready( function(){

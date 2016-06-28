@@ -21,11 +21,20 @@ $(document).bind('mousewheel', function(evt) {
   var scrollTop = $(window).scrollTop();
     if (first){
       changeScene();
+      showHeader();
       first = false;
       console.log('scrolling');
     }
+    if (scrollTop>=$(document).height()-$(window).height()-190){
+      $(".footer").addClass("shown");
+    } else {
+      $(".footer").removeClass("shown");
+    }
 
 });
+function showHeader(){
+  $('.header').addClass('shown');
+}
 $(window).on('unload', function() {
     $(window).scrollTop(0);
 });

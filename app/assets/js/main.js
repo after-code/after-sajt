@@ -25,7 +25,6 @@
     document.addEventListener("mousemove", function(event){
           mousePosition.x = event.clientX / 1000;
           mousePosition.y = 8 + event.clientY / 1000;
-          console.log(mousePosition);
     });
 
     var controlsActive = false;
@@ -295,6 +294,7 @@ var cameraAfter  = {
   tween4.chain(tween);
   tween.chain(tween5, tween7);
   tween7.chain(tween6, tween8);
+  tween10.onComplete(showHeader);
   tween8.chain(tween9, tween10);
   tween10.delay(400).chain(tween12);
   tween12.onComplete(showActions);

@@ -1,6 +1,6 @@
 body {
   font-family: "Roboto", sans-serif;
-  color:#333;
+  color:#222;
   font-weight: 300;
   overflow: hidden;
   position: relative;
@@ -105,16 +105,27 @@ li {
   margin:10px;
 }
 .header {
-  height: 70px;
-  line-height: 70px;
+  height: 64px;
+  line-height: 64px;
   padding:0px;
   position: fixed;
-  top: 0;
   width: 100%;
+  top: -64px;
+  -webkit-transition: top 900ms;
+  -o-transition: top 900ms;
+  transition: top 900ms;
   z-index: 17;
+  &.shown {
+    top: 0px;
+  }
+  background-color: rgba(255, 255, 255, 0.61);
   @include breakpoint(mobile){
     position: absolute;
+    top:0;
   }
+}
+.header--transparent {
+  background: transparent;
 }
 .header__links {
   float: right;
@@ -124,6 +135,10 @@ li {
   margin-right: 20px;
 }
 .header__link {
+  margin-top:0;
+  margin-bottom:0;
+  height: 100%;
+  line-height: 64px;
   a {
     color:#333;
     margin-right: 20px;
@@ -204,11 +219,11 @@ li {
 }
 .text-block__heading {
   font-weight: bold;
-  margin-bottom: cvp(64px, 1200px);
+  margin-bottom: cvp(44px, 1200px);
   font-size: cvp(68px, 1200px);
   @include breakpoint(large){
     font-size: 68px;
-    margin-bottom: 64px;
+    margin-bottom: 44px;
   }
   @include breakpoint(mobile){
     font-size:32px;
@@ -228,10 +243,10 @@ li {
 }
 .text-block__text {
   font-size: cvp(16px, 1200px);
-  line-height: cvp(29px, 1200px);
+  line-height: cvp(24px, 1200px);
   @include breakpoint(large){
     font-size: 16px;
-    line-height: 29px;
+    line-height: 24px;
   }
   @include breakpoint(mobile){
     font-size: 15px;
@@ -244,11 +259,11 @@ li {
   display: block;
   float: left;
   color: #ff4646;
-  margin-top: cvp(43px, 1200px);
+  margin-top: cvp(33px, 1200px);
   font-size: cvp(16px, 1200px);
   cursor:pointer;
   @include breakpoint(large){
-    margin-top: 50px;
+    margin-top: 30px;
     font-size: 16px;
   }
   @include breakpoint(mobile){
@@ -283,18 +298,32 @@ li {
   float: left;
   padding: 0 10%;
   margin-top: 50px;
+  @include breakpoint(mobile){
+    padding: 0;
+    margin-top:20px;
+  }
 }
 .graphic-container--left,
 .graphic-container--right {
   width: 50%;
   float: left;
+  @include breakpoint(mobile){
+    width: 100%;
+  }
 }
 .graphic-container--left {
   padding-right:6%;
+  @include breakpoint(mobile){
+    padding:0;
+  }
 }
 .graphic-container--right {
   padding-left:6%;
   margin-top:10%;
+  @include breakpoint(mobile){
+    padding:0;
+    margin-top:0;
+  }
 }
 .graphic-container__item {
   width: 100%;
@@ -303,16 +332,26 @@ li {
   img {
     width: 100%;
   }
+  @include breakpoint(mobile) {
+    margin-bottom:25px;
+  }
 }
 .graphic-container__item--type1 {
   width: 85%;
   float: right;
   margin-left:15%;
+  @include breakpoint(mobile){
+    width: 100%;
+    margin-left:0;
+  }
 }
 .graphic-container__item--type2 {
   width: 85%;
   float: left;
   margin-right:15%;
+  @include breakpoint(mobile){
+    width: 100%;
+  }
 }
 .first {
   margin-left:0;
@@ -334,7 +373,7 @@ li {
   text-align: center;
   img {
     width:100%;
-    margin-bottom: 300px;
+    margin-bottom: 150px;
     @include breakpoint(mobile){
       margin-bottom: 50px;
       margin-top: 20px;
@@ -361,22 +400,35 @@ li {
     width: 100%;
   }
 }
-.blue-background {
-  background: #f2f2f2;
-  width: 100%;
+.soundcloud__background {
+  // background: #f2f2f2;
+  width: 50%;
   position: absolute;
   top:0;
+  left:25%;
+  top:10%;
   height: 49%;
+  background-image: url("../../assets/img/soundcloud-lines.png");
+  background-repeat: no-repeat;
+  background-size: contain;
   // max-height: 371px
   @include breakpoint(mobile){
     display: none;
   }
 }
 .footer {
+  position: relative;
+  top:16vh;
   width: 100%;
   border-top:1px solid #f2f2f2;
   float: left;
   padding: 3% 5%;
+  -webkit-transition: all 400ms ease;
+  -o-transition: all 400ms ease;
+  transition: all 400ms ease;
+  &.shown {
+    top:0px;
+  }
   @include breakpoint(mobile){
     padding-top: 54px;
     padding: 7% 5%;

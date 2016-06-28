@@ -12,9 +12,9 @@
   &:after {
     position: absolute;
     width: 90px;
-    height: 4px;
-    top:calc(50% - 1.5px);
-    margin-left: 20px;
+    height: 2px;
+    top: calc(50% - -4px);
+    margin-left: 11px;
     background: black;
     content: '';
   }
@@ -29,5 +29,11 @@
   @extend .line;
   &:after {
     background: white;
+  }
+}
+.line--black {
+  @extend .line;
+  &:after {
+    background: #222222;
   }
 }

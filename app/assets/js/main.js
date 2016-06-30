@@ -18,14 +18,12 @@
     // alert(window.innerWidth);
     var rendering = true;
     var animationFrame;
-    var mousePosition = {
-      x:0,
-      y:0
-    };
-    document.addEventListener("mousemove", function(event){
-          mousePosition.x = event.clientX / 1000;
-          mousePosition.y = 8 + event.clientY / 1000;
-    });
+    // var mousePosition = {
+    //   x:0,
+    //   y:0
+    // };
+
+
 
     var controlsActive = false;
 
@@ -298,7 +296,15 @@ var cameraAfter  = {
   tween8.chain(tween9, tween10);
   tween10.delay(400).chain(tween12);
   tween12.onComplete(showActions);
-  tween12.chain(tweenMouse);
+  if(isMobile.any()==null){
+    tween12.chain(tweenMouse);
+  } else {
+    tween12.onComplete(function(){
+      deltaX = camera.position.x;
+      deltaY = camera.position.y;
+      manual = true;
+    });
+  }
   // tweenMouse.chain(idleCamera);
   // tween12.chain(tween13);
   tweenMouse.onComplete(function(){
@@ -307,7 +313,9 @@ var cameraAfter  = {
     cameraPosition.z = camera.position.z;
     cameraAfter.y = cameraPosition.y;
     console.log('matora poziciaaj'+cameraAfter.y);
-    idleCamera.start();
+    // manual = true;
+      idleCamera.start();
+
     // mouseLinked = true;
   });
   // tweenMouse.start();
@@ -460,6 +468,9 @@ tween12.onUpdate(function(){
       groundMirror.render();
       renderer.render( scene, camera );
      TWEEN.update();
+     if (manual){
+       camera.lookAt(center2.position);
+     }
       if (rendering){
         animationFrame = requestAnimationFrame(render);
       }

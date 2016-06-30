@@ -38,3 +38,54 @@ function showHeader(){
 $(window).on('unload', function() {
     $(window).scrollTop(0);
 });
+var isMobile = {
+    Android: function() {
+        return navigator.userAgent.match(/Android/i);
+    },
+    BlackBerry: function() {
+        return navigator.userAgent.match(/BlackBerry/i);
+    },
+    iOS: function() {
+        return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+    },
+    Opera: function() {
+        return navigator.userAgent.match(/Opera Mini/i);
+    },
+    Windows: function() {
+        return navigator.userAgent.match(/IEMobile/i);
+    },
+    any: function() {
+        return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+    }
+};
+var mousePosition = {
+  x:0,
+  y:0
+};
+var manual = false;
+var deltaX = 0, deltaY = 0;
+$(".status2").html(isMobile.any());
+if(window.DeviceOrientationEvent && isMobile.any()){
+  window.addEventListener("deviceorientation", orientation, false);
+}else{
+  console.log("DeviceOrientationEvent is not supported");
+}
+function orientation(event){
+  $('.status').html("Magnetometer: "
+    + Math.floor(event.alpha) + ", "
+    + Math.floor(event.beta) + ", "
+    + Math.floor(event.gamma)
+  );
+  if(manual){
+    setTimeout(function(){
+      camera.position.x = deltaX -event.gamma/200 ;
+      camera.position.y =  deltaY - event.beta/20 ;
+    },4)
+  }
+}
+if (isMobile.any()== null){
+  document.addEventListener("mousemove", function(event){
+        mousePosition.x = event.clientX / 1000;
+        mousePosition.y = 8 + event.clientY / 1000;
+  });
+}

@@ -1,6 +1,9 @@
 .lab-page {
   background: #222222;
   overflow: auto;
+  .header {
+    top:0;
+  }
   .header__link {
     a {
       color:#7e7e7e;

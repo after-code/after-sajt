@@ -650,6 +650,8 @@ li {
 
 .about-page {
   overflow: scroll; }
+  .about-page .header {
+    top: 0; }
   .about-page .text-block {
     padding-top: 150px;
     padding-right: 100px; }
@@ -690,6 +692,8 @@ li {
 .lab-page {
   background: #222222;
   overflow: auto; }
+  .lab-page .header {
+    top: 0; }
   .lab-page .header__link a {
     color: #7e7e7e; }
   .lab-page .after-logo {

@@ -10,14 +10,31 @@ function showActions(){
 var first = true;
 
 function changeScene(){
-  $("body").animate({scrollTop: $(".viewport").height()},600, 'easeInOutCubic', function(){
+  $("body, html").animate({scrollTop: $(".viewport").height()},600, 'easeInOutCubic', function(){
     $("body").css({"overflow-y":"scroll"});
     first = false;
     console.log('finished');
   });
-  $(".fold-actions").animate({"opacity":"0"}, 300).css({"display":"none"});
+  $(".fold-actions").animate({"opacity":"0"}, 300, function(){
+    $(".fold-actions").css({"display":"none"});
+  });
 }
 $(document).bind('mousewheel', function(evt) {
+  var scrollTop = $(window).scrollTop();
+    if (first){
+      changeScene();
+      showHeader();
+      first = false;
+      console.log('scrolling');
+    }
+    if (scrollTop>=$(document).height()-$(window).height()-190){
+      $(".footer").addClass("shown");
+    } else {
+      $(".footer").removeClass("shown");
+    }
+
+});
+$(document).bind('DOMMouseScroll', function(evt) {
   var scrollTop = $(window).scrollTop();
     if (first){
       changeScene();

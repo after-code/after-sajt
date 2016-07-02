@@ -15,7 +15,7 @@ function changeScene(){
     first = false;
     console.log('finished');
   });
-  $(".fold-actions").animate({"opacity":"0"}, 300);
+  $(".fold-actions").animate({"opacity":"0"}, 300).css({"display":"none"});
 }
 $(document).bind('mousewheel', function(evt) {
   var scrollTop = $(window).scrollTop();

@@ -254,7 +254,7 @@ function render(){
 		context.font='15px Press';
 		context.fillText("YOUR SCORE: "+score,width/2-220,height/2+50);
 		context.font='12px Press';
-		context.fillText("PRESS ENTER FOR NEW GAME",width/2-220,height/2+100);
+		context.fillText("ENTER the new game",width/2-220,height/2+100);
 		context.font='10px sans-serif';
 	}
 	context.fillStyle = player.color;

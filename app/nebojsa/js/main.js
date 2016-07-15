@@ -239,6 +239,7 @@ playerSprite.x = player.x;
 playerSprite.y = player.y;
 for (i in enemies){
 	for (j in bullets){
+
 		if (collision(enemies[i],bullets[j])){
 
 			var explosion = new sprite({
@@ -296,6 +297,10 @@ for (i in enemies){
 	}
 }
 for (i in bullets){
+	if (bullets[i].decay <4 && collision(bullets[i],player)){
+		bullets.splice(i,1);
+		player.health-=2;
+	}
 	vB = 22 //Speed of bullet
 	vBx = vB*Math.cos(bullets[i].angle); //Speed of bullet on x-axis
 	vBy = vB*Math.sin(bullets[i].angle); //Speed of bullet on y-axis

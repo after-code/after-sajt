@@ -1,6 +1,10 @@
 /*========================*\
 	#Canvas setup
 \*========================*/
+// window.onload(function(){
+//
+// })
+
 
 var canvas = document.getElementById("context");
 var context = canvas.getContext("2d"),
@@ -34,6 +38,78 @@ var gameIsOver = false;
 		shoot();
 		console.log(bullets);
 	}, false);
+/*========================*\
+  #Sprite animations and etc.
+\*========================*/
+var enemyColors = [ '#BE1E2D', '#00AEEF','#8DC63F','#662D91','#Asd97C50','#FFF200','#726658','#F7941E','#F1F2F2', "#1C75BC"];
+var explosionImages = getImages(['image/death0.png','image/death1.png','image/death2.png','image/death3.png','image/death4.png','image/death5.png','image/death6.png','image/death7.png','image/death8.png','image/death9.png','image/Hero.png']);
+var playerImage = getImages(['image/Hero.png']);
+
+var italianoImage = new Image();
+italianoImage.src = "image/Burst-particles-1.png";
+var playerSpriteImage = new Image();
+playerSpriteImage.src = "image/Burst-particles-1.png";
+function sprite (options) {
+
+    var that = {},
+		frameIndex = 0,
+		tickCount = 0,
+		ticksPerFrame = options.ticksPerFrame || 1;;
+		numberOfFrames = options.numberOfFrames || 1;
+    that.context = options.context;
+    that.width = options.width;
+    that.height = options.height;
+    that.image = options.image;
+		that.loop = options.loop;
+		that.x = options.x;
+		that.y = options.y;
+		that.done = false;
+		that.update = function () {
+
+			tickCount += 1;
+
+			if (tickCount > ticksPerFrame) {
+
+				tickCount = 0;
+
+				// If the current frame index is in range
+        if (frameIndex < numberOfFrames - 1) {
+            // Go to the next frame
+            frameIndex += 1;
+				} else if (that.loop) {
+            frameIndex = 0;
+        } else {
+					that.done = true;
+				}
+			}
+		};
+		that.render = function () {
+
+		// Draw the animation
+		context.drawImage(
+			 that.image,
+			 frameIndex * that.width / numberOfFrames,
+			 0,
+			 that.width / numberOfFrames,
+			 that.height,
+			 that.x,
+			 that.y,
+			 that.width / numberOfFrames,
+			 that.height);
+		 };
+
+    return that;
+}
+
+
+
+
+
+
+
+
+
+
 
 /*========================*\
   #Variables
@@ -51,6 +127,7 @@ var loop,
     speed = 5,
     // Init images
   	images = [],
+		explosions = [],
   	requiredImages = 0,
 		mouseX,
 		mouseY,
@@ -59,16 +136,30 @@ var loop,
 	 vBx,
 	 vBy;
 var player = {
-  width:20,
-  height:20,
+  width:58,
+  height:45,
   y:100,
   x:50,
 	health:100,
+	image: playerImage,
 	color:'rgb('+Math.floor(Math.random()*255)+','+Math.floor(Math.random()*255)+','+Math.floor(Math.random()*255)+")",
   hand:{
-    rotation:0
+    rotation:0,
+		x :58,
+		y :6
   }
 }
+var playerSprite = new sprite({
+	context: context,
+	width: 671,
+	height: 48,
+	loop:true,
+	image: playerSpriteImage,
+	numberOfFrames: 14,
+	ticksPerFrame: 1,
+	x:player.x,
+	y:player.y
+});
 $("#context").css({"border-color":player.color});
 // initImages(["road1.png"]);
 var enemy = function(){
@@ -76,8 +167,15 @@ var enemy = function(){
 	this.y= 25 + Math.floor(Math.random()*12)*50;
 	this.width= 24;
 	this.height= 24;
-	this.color='rgb('+Math.floor(Math.random()*255)+','+Math.floor(Math.random()*255)+','+Math.floor(Math.random()*255)+')';
+	this.colorNumber = Math.floor(Math.random()*9);
+	this.color = enemyColors[this.colorNumber];
+	// this.color='rgb('+Math.floor(Math.random()*255)+','+Math.floor(Math.random()*255)+','+Math.floor(Math.random()*255)+')';
+	// this.color= 'red';
 	this.speed = 3;
+	this.getColorNumber = function(){
+		var number = Math.floor(Math.random()*10);
+		return number;
+	}
 }
 var sound_shoot = [];
 var sound_shoot_counter = 0;
@@ -95,8 +193,8 @@ for (var i=0;i<12;i++){
 }
 
 var bullet = function(x,y){
-	this.x = x;
-	this.y = y;
+	this.x = x + player.hand.x;
+	this.y = y +player.hand.y;
 	this.width= 3;
 	this.height= 3;
 	this.angle = player.hand.rotation * Math.PI / 180;
@@ -126,21 +224,45 @@ function update(){
 /* ---------------*\
    #Controls
 \* ---------------*/
+for (i in explosions){
+	explosions[i].update();
+	if (explosions[i].done){
+		explosions.splice(i,1);
+	}
+}
 bgpos-=speed;
 if (bgpos <= - width ){
   bgpos= 0;
 }
+playerSprite.update();
+playerSprite.x = player.x;
+playerSprite.y = player.y;
 for (i in enemies){
 	for (j in bullets){
 		if (collision(enemies[i],bullets[j])){
+
+			var explosion = new sprite({
+			    context: context,
+			    width: 671,
+			    height: 48,
+					loop:false,
+			    image: explosionImages[enemies[i].colorNumber],
+					numberOfFrames: 14,
+					ticksPerFrame: 1.5,
+					x:enemies[i].x-12,
+					y:enemies[i].y-12
+			});
 			enemies.splice(i,1);
+			explosions.push(explosion);
 			score++;
 			$(".score").html(score);
 			sound_explode[sound_explode_counter].play();
 			sound_explode_counter++;
 			sound_explode_counter = sound_explode_counter % 10;
+			break;
 		}
 	}
+
 }
 for (i in enemies){
 		if (enemies[i].x < player.x){
@@ -215,6 +337,7 @@ if(player.y >= height - player.height - 50){player.y=height-player.height -50; }
 
 }
 function render(){
+
   context.clearRect(0, 0, width, height);
 	context.fillStyle='black';
   context.fillRect(0, 0, width, 25);
@@ -229,23 +352,26 @@ function render(){
 	context.fillText(player.health+'%',210,16);
 
 	context.fillStyle=player.color;
-  context.fillRect(player.x, player.y, player.width, player.height);
+  // context.fillRect(player.x, player.y, player.width, player.height);
+	context.drawImage(explosionImages[10], player.x, player.y);
+	// playerSprite.render();
   context.save();
-  context.translate(player.x, player.y);
+  context.translate(player.x + player.hand.x, player.y + player.hand.y);
   context.rotate(player.hand.rotation * Math.PI/180);
   context.fillStyle='red';
   context.globalAlpha=0.1;
-  context.fillRect(0, -1, 2500, 1);
-  context.fillRect(0, 1, 2500, 1);
-  context.globalAlpha=0.5;
+  // context.fillRect(0, -1, 25, 1);
+  // context.fillRect(0, 1, 25, 1);
+  context.globalAlpha=0.3;
   context.fillRect(0, 0, 2500, 1);
   context.globalAlpha=1;
-  context.fillStyle='cyan';
-  context.fillRect(0, 0 , 50, 4);
+  context.fillStyle='white';
+  // context.fillRect(0, 0 , 50, 4);
   context.fillStyle='black';
   context.restore();
   context.fillStyle='black';
   context.fillRect(0, height - 50, width, 50);
+
 
   for (i in enemies){
     var enemy = enemies[i];
@@ -272,6 +398,12 @@ function render(){
 	context.fillStyle = player.color;
 	context.fillRect(mouseX-10, mouseY, 21, 1);
 	context.fillRect(mouseX, mouseY-10, 1, 21);
+	for (i in explosions){
+		explosions[i].render();
+	}
+	// debug hand position
+	// context.fillStyle="red";
+	// context.fillRect(player.x+player.hand.x, player.y + player.hand.y,3, 3);
 }
 function initImages(paths){
 	requiredImages = paths.length;
@@ -287,8 +419,8 @@ function initImages(paths){
 	}
 }
 function findMouseAngle(){
-	deltaX = mouseX - player.x;
-	deltaY = mouseY- player.y;
+	deltaX = mouseX - player.x - player.hand.x;
+	deltaY = mouseY - player.y - player.hand.y;
 	player.hand.rotation =   180/Math.PI * Math.atan2(deltaY, deltaX);
 	console.log("searching");
 }
@@ -323,6 +455,15 @@ function vCollision(first, second){
 function gameOver(){
 	gameIsOver = true;
 }
+function getImages(paths){
+	var images = [];
+	for (i in paths){
+		var image = new Image();
+		image.src = paths[i];
+		images.push(image)
+	}
+	return images;
+}
 function newGame(){
 	bullets = [];
 	enemies = [];
@@ -332,4 +473,5 @@ function newGame(){
 	player.y = 100;
 }
 findMouseAngle();
-start();
+jQuery(window).load(start);
+// start();

@@ -42,7 +42,7 @@ var gameIsOver = false;
   #Sprite animations and etc.
 \*========================*/
 var enemyColors = [ '#BE1E2D', '#00AEEF','#8DC63F','#662D91','#Asd97C50','#FFF200','#726658','#F7941E','#F1F2F2', "#1C75BC"];
-var explosionImages = getImages(['image/death0.png','image/death1.png','image/death2.png','image/death3.png','image/death4.png','image/death5.png','image/death6.png','image/death7.png','image/death8.png','image/death9.png','image/Hero.png']);
+var explosionImages = getImages(['image/Burst-particles-3.png','image/death1.png','image/death2.png','image/death3.png','image/death4.png','image/death5.png','image/death6.png','image/death7.png','image/death8.png','image/death9.png','image/Hero.png']);
 var playerImage = getImages(['image/Hero.png']);
 
 var italianoImage = new Image();
@@ -136,8 +136,8 @@ var loop,
 	 vBx,
 	 vBy;
 var player = {
-  width:58,
-  height:45,
+  width:24,
+  height:24,
   y:100,
   x:50,
 	health:100,
@@ -145,8 +145,8 @@ var player = {
 	color:'rgb('+Math.floor(Math.random()*255)+','+Math.floor(Math.random()*255)+','+Math.floor(Math.random()*255)+")",
   hand:{
     rotation:0,
-		x :58,
-		y :6
+		x :0,
+		y :0
   }
 }
 var playerSprite = new sprite({
@@ -169,6 +169,7 @@ var enemy = function(){
 	this.height= 24;
 	this.colorNumber = Math.floor(Math.random()*9);
 	this.color = enemyColors[this.colorNumber];
+	this.image = explosionImages[this.colorNumber];
 	// this.color='rgb('+Math.floor(Math.random()*255)+','+Math.floor(Math.random()*255)+','+Math.floor(Math.random()*255)+')';
 	// this.color= 'red';
 	this.speed = 3;
@@ -244,16 +245,17 @@ for (i in enemies){
 
 			var explosion = new sprite({
 			    context: context,
-			    width: 671,
-			    height: 48,
+			    width: 719,
+			    height: 90,
 					loop:false,
-			    image: explosionImages[enemies[i].colorNumber],
-					numberOfFrames: 14,
-					ticksPerFrame: 1.5,
-					x:enemies[i].x-12,
-					y:enemies[i].y-12
+				  image: explosionImages[enemies[i].colorNumber],
+					numberOfFrames: 8,
+					ticksPerFrame: 2,
+					x:enemies[i].x-32,
+					y:enemies[i].y-32
 			});
 			enemies.splice(i,1);
+			bullets.splice(j,1);
 			explosions.push(explosion);
 			score++;
 			$(".score").html(score);
@@ -290,10 +292,6 @@ for (i in enemies){
 		enemies.splice(i,1);
 
 		player.health -= 25;
-		if (player.health <= 0){
-			player.health = 0;
-			gameOver();
-		}
 	}
 }
 for (i in bullets){
@@ -323,6 +321,10 @@ for (i in bullets){
 	}
 }
 
+if (player.health <= 0){
+	player.health = 0;
+	gameOver();
+}
 
 if(keys[37] || keys[65] && !gameIsOver){player.x-=5;findMouseAngle();} // Left
 if(keys[39] || keys[68] && !gameIsOver){player.x+=5;findMouseAngle();} // Right
@@ -339,6 +341,7 @@ if(player.x < 0){player.x=0} // Left margin
 if(player.y <= 25){player.y=25} // Top margin
 if(player.x >= width - player.width){player.x=width - player.width}  // Right margin
 if(player.y >= height - player.height - 50){player.y=height-player.height -50; } // Left margin
+
 
 }
 function render(){
@@ -357,8 +360,8 @@ function render(){
 	context.fillText(player.health+'%',210,16);
 
 	context.fillStyle=player.color;
-  // context.fillRect(player.x, player.y, player.width, player.height);
-	context.drawImage(explosionImages[10], player.x, player.y);
+  context.fillRect(player.x, player.y, player.width, player.height);
+	// context.drawImage(explosionImages[10], player.x, player.y);
 	// playerSprite.render();
   context.save();
   context.translate(player.x + player.hand.x, player.y + player.hand.y);
@@ -371,7 +374,7 @@ function render(){
   context.fillRect(0, 0, 2500, 1);
   context.globalAlpha=1;
   context.fillStyle='white';
-  // context.fillRect(0, 0 , 50, 4);
+  context.fillRect(0, 0 , 50, 4);
   context.fillStyle='black';
   context.restore();
   context.fillStyle='black';
@@ -380,8 +383,9 @@ function render(){
 
   for (i in enemies){
     var enemy = enemies[i];
-		context.fillStyle=enemy.color;
-    context.fillRect(enemy.x, enemy.y, enemy.width, enemy.height);
+		// context.fillStyle=enemy.color;
+    // context.fillRect(enemy.x, enemy.y, enemy.width, enemy.height);
+		context.drawImage(enemy.image,0, 0,90,90,enemy.x - 32, enemy.y - 32, 90, 90);
   }
 	context.fillStyle='white';
 	for (i in bullets){
@@ -476,6 +480,8 @@ function newGame(){
 	gameIsOver = false;
 	player.x = 50;
 	player.y = 100;
+	score = 0;
+	$(".score").html(score);
 }
 findMouseAngle();
 jQuery(window).load(start);

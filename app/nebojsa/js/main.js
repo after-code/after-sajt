@@ -16,11 +16,41 @@ canvas.style.width = canvas.width + "px";
 canvas.style.height = canvas.height + "px";
 var score = 0;
 var gameIsOver = false;
+var gameStatus = 0;
+
+
+
+
+
+/*========================*\
+  #Variables
+\*========================*/
+var loop,
+    counter = 0,
+    gameIsOver =false,
+    enemies = [],
+		bullets = [],
+    gameSpeed = 1,
+    keys = [],
+    bgpos = 0,
+    deltaX = 1,
+    deltaY = 1,
+    speed = 5,
+    // Init images
+  	images = [],
+		explosions = [],
+  	requiredImages = 120,
+		mouseX,
+		mouseY,
+  	doneImages = 0;
 
   // Add keys to array
 
   window.addEventListener("keydown", function(e){
   	keys[e.keyCode] = true;
+		if (e.keyCode == 13 && gameStatus == 1){
+			gameStatus = 2;
+		}
   }, false);
 
   // Remove keys from array
@@ -36,14 +66,14 @@ var gameIsOver = false;
   }, false);
 	window.addEventListener("click", function(e){
 		shoot();
-		console.log(bullets);
 	}, false);
 /*========================*\
   #Sprite animations and etc.
 \*========================*/
 var enemyColors = [ '#BE1E2D', '#00AEEF','#8DC63F','#662D91','#Asd97C50','#FFF200','#726658','#F7941E','#F1F2F2', "#1C75BC"];
-var explosionImages = getImages(['image/Burst-particles-3.png','image/death1.png','image/death2.png','image/death3.png','image/death4.png','image/death5.png','image/death6.png','image/death7.png','image/death8.png','image/death9.png','image/Hero.png']);
-var playerImage = getImages(['image/Hero.png']);
+var explosionImages = initImages(['image/burst-particles-3.png','image/death1.png','image/death2.png','image/death3.png','image/death4.png','image/death5.png','image/death6.png','image/death7.png','image/death8.png','image/death9.png','image/Hero.png']);
+var playerImage;
+// initImages(['http://placehold.it/20000x20000','image/burst-particles-3.png','image/death1.png','image/death2.png','image/death3.png','image/death4.png','image/death5.png','image/death6.png','image/death7.png','image/death8.png','image/death9.png','image/Hero.png']);
 
 var italianoImage = new Image();
 italianoImage.src = "image/Burst-particles-1.png";
@@ -108,30 +138,6 @@ function sprite (options) {
 
 
 
-
-
-
-/*========================*\
-  #Variables
-\*========================*/
-var loop,
-    counter = 0,
-    gameIsOver =false,
-    enemies = [],
-		bullets = [],
-    gameSpeed = 1,
-    keys = [],
-    bgpos = 0,
-    deltaX = 1,
-    deltaY = 1,
-    speed = 5,
-    // Init images
-  	images = [],
-		explosions = [],
-  	requiredImages = 0,
-		mouseX,
-		mouseY,
-  	doneImages = 0;
 	var vB,
 	 vBx,
 	 vBy;
@@ -284,9 +290,15 @@ for (i in enemies){
     enemies.splice(i,1);
   }
 }
-if (counter % 50 == 0 ){
-  enemies.push(new enemy());
+// GameStatus 0
+
+// GameStatus 2
+if (gameStatus == 2){
+	if (counter % 50 == 0 ){
+		enemies.push(new enemy());
+	}
 }
+
 for (i in enemies){
 	if (collision(enemies[i],player)){
 		enemies.splice(i,1);
@@ -342,13 +354,18 @@ if(player.y <= 25){player.y=25} // Top margin
 if(player.x >= width - player.width){player.x=width - player.width}  // Right margin
 if(player.y >= height - player.height - 50){player.y=height-player.height -50; } // Left margin
 
-
+// Game Status
+// 0 - loading
+// 1 - startingScreen
+// 2 - gamePlaying
+// 3 - gameOver
 }
 function render(){
-
-  context.clearRect(0, 0, width, height);
+	//canvas
+	context.clearRect(0, 0, width, height);
+	//top status bar
 	context.fillStyle='black';
-  context.fillRect(0, 0, width, 25);
+	context.fillRect(0, 0, width, 25);
 	context.fillText("Score",10,50);
 	context.fillStyle="red";
 	context.fillRect(5,10,200, 5);
@@ -359,79 +376,106 @@ function render(){
 	context.fillStyle='white';
 	context.fillText(player.health+'%',210,16);
 
-	context.fillStyle=player.color;
-  context.fillRect(player.x, player.y, player.width, player.height);
-	// context.drawImage(explosionImages[10], player.x, player.y);
-	// playerSprite.render();
-  context.save();
-  context.translate(player.x + player.hand.x, player.y + player.hand.y);
-  context.rotate(player.hand.rotation * Math.PI/180);
-  context.fillStyle='red';
-  context.globalAlpha=0.1;
-  // context.fillRect(0, -1, 25, 1);
-  // context.fillRect(0, 1, 25, 1);
-  context.globalAlpha=0.3;
-  context.fillRect(0, 0, 2500, 1);
-  context.globalAlpha=1;
-  context.fillStyle='white';
-  context.fillRect(0, 0 , 50, 4);
-  context.fillStyle='black';
-  context.restore();
-  context.fillStyle='black';
-  context.fillRect(0, height - 50, width, 50);
-
-
-  for (i in enemies){
-    var enemy = enemies[i];
-		// context.fillStyle=enemy.color;
-    // context.fillRect(enemy.x, enemy.y, enemy.width, enemy.height);
-		context.drawImage(enemy.image,0, 0,90,90,enemy.x - 32, enemy.y - 32, 90, 90);
-  }
-	context.fillStyle='white';
-	for (i in bullets){
-		var bullet = bullets[i];
-		context.fillRect(bullet.x, bullet.y, bullet.width, bullet.height);
-	}
-
-	context.fillStyle='purple';
-	if (gameIsOver){
-		context.fillStyle='white';
-		context.font='50px Press';
-		context.fillText("GAME OVER",width/2-220,height/2+25);
-		context.font='15px Press';
-		context.fillText("YOUR SCORE: "+score,width/2-220,height/2+50);
-		context.font='12px Press';
-		context.fillText("ENTER the new game",width/2-220,height/2+100);
-		context.font='10px sans-serif';
-	}
-	context.fillStyle = player.color;
-	context.fillRect(mouseX-10, mouseY, 21, 1);
-	context.fillRect(mouseX, mouseY-10, 1, 21);
-	for (i in explosions){
-		explosions[i].render();
-	}
 	// debug hand position
 	// context.fillStyle="red";
 	// context.fillRect(player.x+player.hand.x, player.y + player.hand.y,3, 3);
+	if (gameStatus == 0 ){
+		context.fillStyle = 'white';
+		context.fillRect(width/2 - 300, height/2, 600, 2);
+		context.fillStyle = 'red';
+		context.fillRect(width/2 - 300, height/2, 600/requiredImages*doneImages, 4);
+	} else if (gameStatus == 1){
+		context.fillStyle = 'white';
+		context.fillRect(width/2 - 300, height/2, 600, 2);
+		context.fillStyle = 'red';
+		context.fillRect(width/2 - 300, height/2, 600/requiredImages*doneImages, 4);
+		context.fillText("Score",10,height/2+100);
+	}	else if (gameStatus == 2) {
+		//player
+		context.fillStyle=player.color;
+		context.fillRect(player.x, player.y, player.width, player.height);
+		// context.drawImage(explosionImages[10], player.x, player.y);
+		// playerSprite.render();
+		context.save();
+		context.translate(player.x + player.hand.x, player.y + player.hand.y);
+		context.rotate(player.hand.rotation * Math.PI/180);
+		context.fillStyle='red';
+		context.globalAlpha=0.1;
+		// context.fillRect(0, -1, 25, 1);
+		// context.fillRect(0, 1, 25, 1);
+		context.globalAlpha=0.3;
+		context.fillRect(0, 0, 2500, 1);
+		context.globalAlpha=1;
+		context.fillStyle='white';
+		context.fillRect(0, 0 , 50, 4);
+		context.fillStyle='black';
+		context.restore();
+		context.fillStyle='black';
+		context.fillRect(0, height - 50, width, 50);
+
+
+		for (i in enemies){
+			var enemy = enemies[i];
+			// context.fillStyle=enemy.color;
+			// context.fillRect(enemy.x, enemy.y, enemy.width, enemy.height);
+			context.drawImage(enemy.image,0, 0,90,90,enemy.x - 32, enemy.y - 32, 90, 90);
+		}
+		context.fillStyle='white';
+		for (i in bullets){
+			var bullet = bullets[i];
+			context.fillRect(bullet.x, bullet.y, bullet.width, bullet.height);
+		}
+
+		context.fillStyle='purple';
+		if (gameIsOver){
+			context.fillStyle='white';
+			context.font='50px Press';
+			context.fillText("GAME OVER",width/2-220,height/2+25);
+			context.font='15px Press';
+			context.fillText("YOUR SCORE: "+score,width/2-220,height/2+50);
+			context.font='12px Press';
+			context.fillText("ENTER the new game",width/2-220,height/2+100);
+			context.font='10px sans-serif';
+		}
+		context.fillStyle = player.color;
+
+		for (i in explosions){
+			explosions[i].render();
+		}
+	}	else if (gameStatus == 3){
+
+	}
+	context.fillRect(mouseX-10, mouseY, 21, 1);
+	context.fillRect(mouseX, mouseY-10, 1, 21);
 }
 function initImages(paths){
 	requiredImages = paths.length;
+	var images = [];
 	for (i in paths) {
-		console.log(paths[i]);
 		var img = new Image();
-		img.src = '/image/'+paths[i];
+		img.src = paths[i];
 		images[i] = img;
+		images.push(img);
 		images[i].onload = function(){
 			doneImages++;
 			console.log(doneImages);
 		}
+	}
+	return images;
+}
+function checkImages(){
+	if (doneImages >= requiredImages){
+		gameStatus = 1;
+	} else {
+		setTimeout(function(){
+			checkImages();
+		}, 100);
 	}
 }
 function findMouseAngle(){
 	deltaX = mouseX - player.x - player.hand.x;
 	deltaY = mouseY - player.y - player.hand.y;
 	player.hand.rotation =   180/Math.PI * Math.atan2(deltaY, deltaX);
-	console.log("searching");
 }
 function findEnemyMovingAngle(enemy,player){
 	var deltaX = enemy.x - player.x;
@@ -464,15 +508,15 @@ function vCollision(first, second){
 function gameOver(){
 	gameIsOver = true;
 }
-function getImages(paths){
-	var images = [];
-	for (i in paths){
-		var image = new Image();
-		image.src = paths[i];
-		images.push(image)
-	}
-	return images;
-}
+// function getImages(paths){
+// 	var images = [];
+// 	for (i in paths){
+// 		var image = new Image();
+// 		image.src = paths[i];
+// 		images.push(image)
+// 	}
+// 	return images;
+// }
 function newGame(){
 	bullets = [];
 	enemies = [];
@@ -484,5 +528,7 @@ function newGame(){
 	$(".score").html(score);
 }
 findMouseAngle();
-jQuery(window).load(start);
-// start();
+
+// jQuery(window).load();
+start();
+checkImages();

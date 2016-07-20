@@ -179,6 +179,22 @@ body {
   -o-transition: all 400ms ease-in-out;
   transition: all 400ms ease-in-out; }
 
+.phones {
+  width: 100%;
+  display: block; }
+
+.section--phones {
+  padding: 0;
+  background: -moz-linear-gradient(top, rgba(255, 255, 255, 0) 0%, #f2f2f2 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, #f2f2f2 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #f2f2f2 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#f2f2f2',GradientType=0 ); }
+  .section--phones .main-container {
+    padding: 0; }
+
 @keyframes twich {
   0% {
     background-image: url("../../assets/img/dotted-texture22.png"); }

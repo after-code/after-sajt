@@ -381,14 +381,29 @@ function render(){
 	// context.fillRect(player.x+player.hand.x, player.y + player.hand.y,3, 3);
 	if (gameStatus == 0 ){
 		context.fillStyle = 'white';
-		context.fillRect(width/2 - 300, height/2, 600, 2);
-		context.fillStyle = 'red';
-		context.fillRect(width/2 - 300, height/2, 600/requiredImages*doneImages, 4);
+		context.font='35px Press';
+		context.fillText("Небојша",width/2 - 120,height/2-70);
+		context.font='10px Press';
+		context.fillText("LOADING",width/2 - 35,height/2-20);
+		context.font='10px sans-serif';
+		context.fillStyle = '#1b1b1b';
+		context.fillRect(width/2 - 250, height/2, 500, 6);
+		context.fillStyle = '#38b349';
+		context.fillRect(width/2 - 250, height/2, 500/requiredImages*doneImages, 6);
+		context.fillText("Score",10,height/2+100);
 	} else if (gameStatus == 1){
+
 		context.fillStyle = 'white';
-		context.fillRect(width/2 - 300, height/2, 600, 2);
-		context.fillStyle = 'red';
-		context.fillRect(width/2 - 300, height/2, 600/requiredImages*doneImages, 4);
+
+		context.font='35px Press';
+		context.fillText("Небојша",width/2 - 120,height/2-70);
+		context.font='10px Press';
+		context.fillText("LOADING",width/2 - 35,height/2-20);
+		context.font='10px sans-serif';
+		context.fillStyle = '#1b1b1b';
+		context.fillRect(width/2 - 250, height/2, 500, 6);
+		context.fillStyle = '#38b349';
+		context.fillRect(width/2 - 250, height/2, 500/requiredImages*doneImages, 6);
 		context.fillText("Score",10,height/2+100);
 	}	else if (gameStatus == 2) {
 		//player

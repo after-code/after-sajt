@@ -54,6 +54,50 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', e
     padding:0;
   }
 }
+.section--nebojsa {
+  background-color:black;
+  margin:0;
+  padding:150px 0;
+  .main-container {
+    position: relative;
+    background-image: url("../../assets/img/nebojsa-bck.png");
+  }
+  .text-block {
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
+  }
+  .text-block__heading {
+    font-family: $text__family--Press;
+    width: 100%;
+    color: white;
+    text-align: center;
+    font-size:50px;
+    margin-bottom: 24px;
+  }
+  .text-block__heading--small {
+    color:#666;
+    font-size:24px;
+    text-align: center;
+    margin-bottom: 77px;
+  }
+  .text-block__text {
+    color:#d4145a;
+    font-size:18px;
+    text-align: center;
+    margin-bottom: 42px;
+  }
+  .button {
+    display: inline-block;
+    float: none;
+    border: 1px solid white;
+    padding: 20px 56px;
+    color: white;
+
+  }
+
+}
+
 .animateThis2 {
   @extend .animateThis;
 
@@ -212,6 +256,9 @@ li {
     line-height: 26px;
   }
 
+}
+.powerNap {
+  padding-top:280px;
 }
 .text-block--centered {
   display: inline-block;

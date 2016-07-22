@@ -73,7 +73,7 @@ var loop,
   #Sprite animations and etc.
 \*========================*/
 var enemyColors = [ '#BE1E2D', '#00AEEF','#8DC63F','#662D91','#Asd97C50','#FFF200','#726658','#F7941E','#F1F2F2', "#1C75BC"];
-var images = initImages(['image/burst-particles-3.png','image/death1.png','image/death2.png','image/death3.png','image/death4.png','image/death5.png','image/death6.png','image/death7.png','image/death8.png','image/death9.png','image/Hero.png', 'image/comands.png', 'image/loading.png']);
+var images = initImages(['image/burst-particles-3.png','image/death1.png','image/death2.png','image/death3.png','image/death4.png','image/death5.png','image/death6.png','image/death7.png','image/death8.png','image/death9.png','image/Hero.png', 'image/commands.png', 'image/loading.png']);
 var playerImage;
 // initImages(['http://placehold.it/20000x20000','image/burst-particles-3.png','image/death1.png','image/death2.png','image/death3.png','image/death4.png','image/death5.png','image/death6.png','image/death7.png','image/death8.png','image/death9.png','image/Hero.png']);
 
@@ -396,9 +396,9 @@ function render(){
 		context.fillText("LOADING",width/2 - 35,height/2-20);
 		context.font='10px sans-serif';
 		context.fillStyle = '#1b1b1b';
-		context.fillRect(width/2 - 200, height/2, 368, 6);
+		context.fillRect(width/2 - 200, height/2, 400, 6);
 		context.fillStyle = '#38b349';
-		context.fillRect(width/2 - 200, height/2, 368/requiredImages*doneImages, 6);
+		context.fillRect(width/2 - 200, height/2, 400/(requiredImages+1)*doneImages, 6);
 	} else if (gameStatus == 1){
 
 		context.fillStyle = 'white';
@@ -406,13 +406,13 @@ function render(){
 		context.font='35px Press';
 		context.fillText("Небојша",width/2 - 120,height/2-70);
 		context.font='10px Press';
-		context.fillText("LOADING",width/2 - 35,height/2-20);
+		context.fillText("Press ENTER to play",width/2 - 95,height/2-20);
 		context.font='10px sans-serif';
 		context.fillStyle = '#1b1b1b';
-		context.fillRect(width/2 - 200, height/2, 368, 6);
+		context.fillRect(width/2 - 200, height/2, 400, 6);
 		context.fillStyle = '#38b349';
-		context.fillRect(width/2 - 200, height/2, 368/requiredImages*doneImages, 6);
-		context.drawImage(images[11],width/2 - 241.75, height/2+40, 463.5, 198);
+		context.fillRect(width/2 - 200, height/2, 400/(requiredImages+1)*doneImages, 6);
+		context.drawImage(images[11],width/2 - 192.75, height/2+40, 384, 164);
 	}	else if (gameStatus == 2) {
 		//player
 		context.fillStyle=player.color;

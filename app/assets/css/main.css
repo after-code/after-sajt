@@ -66,6 +66,20 @@ html {
   font-family: "Roboto", sans-serif;
   font-size: 16px; }
 
+@font-face {
+  font-family: 'Press';
+  font-style: normal;
+  font-weight: 400;
+  src: local("Press Start 2P"), local("PressStart2P-Regular"), url(https://fonts.gstatic.com/s/pressstart2p/v4/8Lg6LX8-ntOHUQnvQ0E7ozT1DHLc-lgcGofyQSe5eyY.woff2) format("woff2");
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+
+@font-face {
+  font-family: 'Press';
+  font-style: normal;
+  font-weight: 400;
+  src: local("Press Start 2P"), local("PressStart2P-Regular"), url(https://fonts.gstatic.com/s/pressstart2p/v4/8Lg6LX8-ntOHUQnvQ0E7o69WAFmVxfVhVkWhl-QDeAk.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000; }
+
 .main-container {
   width: 100%;
   max-width: 1260px;
@@ -194,6 +208,41 @@ body {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#f2f2f2',GradientType=0 ); }
   .section--phones .main-container {
     padding: 0; }
+
+.section--nebojsa {
+  background-color: black;
+  margin: 0;
+  padding: 150px 0; }
+  .section--nebojsa .main-container {
+    position: relative;
+    background-image: url("../../assets/img/nebojsa-bck.png"); }
+  .section--nebojsa .text-block {
+    width: 100%;
+    max-width: 100%;
+    text-align: center; }
+  .section--nebojsa .text-block__heading {
+    font-family: "Press", sans-serif;
+    width: 100%;
+    color: white;
+    text-align: center;
+    font-size: 50px;
+    margin-bottom: 24px; }
+  .section--nebojsa .text-block__heading--small {
+    color: #666;
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 77px; }
+  .section--nebojsa .text-block__text {
+    color: #d4145a;
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 42px; }
+  .section--nebojsa .button {
+    display: inline-block;
+    float: none;
+    border: 1px solid white;
+    padding: 20px 56px;
+    color: white; }
 
 @keyframes twich {
   0% {
@@ -349,6 +398,9 @@ li {
     .text-block {
       font-size: 15px;
       line-height: 26px; } }
+
+.powerNap {
+  padding-top: 280px; }
 
 .text-block--centered {
   display: inline-block;

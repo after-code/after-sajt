@@ -10,7 +10,7 @@ function showActions(){
 var first = true;
 
 function changeScene(){
-  $("body, html").animate({scrollTop: $(".viewport").height()},600, 'easeInOutCubic', function(){
+  $("body, html").animate({scrollTop: $(".viewport").height()-67},600, 'easeInOutCubic', function(){
     $("body").css({"overflow-y":"scroll"});
     first = false;
     console.log('finished');

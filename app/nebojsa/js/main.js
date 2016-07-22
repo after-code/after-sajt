@@ -8,8 +8,8 @@
 
 var canvas = document.getElementById("context");
 var context = canvas.getContext("2d"),
-	width = window.innerWidth - 200,
-	height = window.innerHeight - 300;
+	width = window.innerWidth - 100,
+	height = window.innerHeight - 200;
 canvas.width = width;
 canvas.height = height;
 canvas.style.width = canvas.width + "px";
@@ -50,6 +50,8 @@ var loop,
   	keys[e.keyCode] = true;
 		if (e.keyCode == 13 && gameStatus == 1){
 			gameStatus = 2;
+			splashMusic.pause();
+			splashMusic.currentTime = 0;
 		}
   }, false);
 
@@ -71,7 +73,7 @@ var loop,
   #Sprite animations and etc.
 \*========================*/
 var enemyColors = [ '#BE1E2D', '#00AEEF','#8DC63F','#662D91','#Asd97C50','#FFF200','#726658','#F7941E','#F1F2F2', "#1C75BC"];
-var explosionImages = initImages(['image/burst-particles-3.png','image/death1.png','image/death2.png','image/death3.png','image/death4.png','image/death5.png','image/death6.png','image/death7.png','image/death8.png','image/death9.png','image/Hero.png']);
+var images = initImages(['image/burst-particles-3.png','image/death1.png','image/death2.png','image/death3.png','image/death4.png','image/death5.png','image/death6.png','image/death7.png','image/death8.png','image/death9.png','image/Hero.png', 'image/comands.png', 'image/loading.png']);
 var playerImage;
 // initImages(['http://placehold.it/20000x20000','image/burst-particles-3.png','image/death1.png','image/death2.png','image/death3.png','image/death4.png','image/death5.png','image/death6.png','image/death7.png','image/death8.png','image/death9.png','image/Hero.png']);
 
@@ -79,6 +81,22 @@ var italianoImage = new Image();
 italianoImage.src = "image/Burst-particles-1.png";
 var playerSpriteImage = new Image();
 playerSpriteImage.src = "image/Burst-particles-1.png";
+var splashMusic = new Audio("music/splashSong.wav");
+splashMusic.addEventListener("ended", function(){
+	this.currentTime = 0;
+	this.play();
+},false);
+function checkAudio(){
+	if (splashMusic.readyState >= 3){
+		doneImages++;
+		splashMusic.play();
+	} else {
+		setTimeout(function(){
+			checkAudio();
+		},100);
+	}
+}
+checkAudio();
 function sprite (options) {
 
     var that = {},
@@ -175,7 +193,7 @@ var enemy = function(){
 	this.height= 24;
 	this.colorNumber = Math.floor(Math.random()*9);
 	this.color = enemyColors[this.colorNumber];
-	this.image = explosionImages[this.colorNumber];
+	this.image = images[this.colorNumber];
 	// this.color='rgb('+Math.floor(Math.random()*255)+','+Math.floor(Math.random()*255)+','+Math.floor(Math.random()*255)+')';
 	// this.color= 'red';
 	this.speed = 3;
@@ -231,7 +249,7 @@ function update(){
 /* ---------------*\
    #Controls
 \* ---------------*/
-for (i in explosions){
+for (var i in explosions){
 	explosions[i].update();
 	if (explosions[i].done){
 		explosions.splice(i,1);
@@ -244,36 +262,8 @@ if (bgpos <= - width ){
 playerSprite.update();
 playerSprite.x = player.x;
 playerSprite.y = player.y;
-for (i in enemies){
-	for (j in bullets){
-
-		if (collision(enemies[i],bullets[j])){
-
-			var explosion = new sprite({
-			    context: context,
-			    width: 719,
-			    height: 90,
-					loop:false,
-				  image: explosionImages[enemies[i].colorNumber],
-					numberOfFrames: 8,
-					ticksPerFrame: 2,
-					x:enemies[i].x-32,
-					y:enemies[i].y-32
-			});
-			enemies.splice(i,1);
-			bullets.splice(j,1);
-			explosions.push(explosion);
-			score++;
-			$(".score").html(score);
-			sound_explode[sound_explode_counter].play();
-			sound_explode_counter++;
-			sound_explode_counter = sound_explode_counter % 10;
-			break;
-		}
-	}
-
-}
-for (i in enemies){
+for (var i in enemies){
+		// console.count("enemies for loop");
 		if (enemies[i].x < player.x){
 			enemies[i].x+= enemies[i].speed*Math.abs(Math.cos(findEnemyMovingAngle(enemies[i],player)));
 		} else if (enemies[i].x > player.x+player.width){
@@ -284,13 +274,39 @@ for (i in enemies){
 		} else if (enemies[i].y > player.y+player.height){
 			enemies[i].y-=enemies[i].speed*Math.abs(Math.sin(findEnemyMovingAngle(enemies[i],player)));
 		}
+		if (enemies[i].x < -510){
+			enemies.splice(i,1);
+		}
+		if (collision(enemies[i],player)){
+			enemies.splice(i,1);
+			player.health -= 25;
+		}
 
-
-  if (enemies[i].x < -510){
-    enemies.splice(i,1);
-  }
-}
-// GameStatus 0
+		for (var j in bullets){
+			if (collision(enemies[i],bullets[j])){
+				var explosion = new sprite({
+					context: context,
+					width: 719,
+					height: 90,
+					loop:false,
+					image: images[enemies[i].colorNumber],
+					numberOfFrames: 8,
+					ticksPerFrame: 2,
+					x:enemies[i].x-32,
+					y:enemies[i].y-32
+				});
+				enemies.splice(i,1);
+				bullets.splice(j,1);
+				explosions.push(explosion);
+				score++;
+				$(".score").html(score);
+				sound_explode[sound_explode_counter].play();
+				sound_explode_counter++;
+				sound_explode_counter = sound_explode_counter % 10;
+				break;
+			}
+		}
+	}// GameStatus 0
 
 // GameStatus 2
 if (gameStatus == 2){
@@ -299,13 +315,6 @@ if (gameStatus == 2){
 	}
 }
 
-for (i in enemies){
-	if (collision(enemies[i],player)){
-		enemies.splice(i,1);
-
-		player.health -= 25;
-	}
-}
 for (i in bullets){
 	if (bullets[i].decay <4 && collision(bullets[i],player)){
 		bullets.splice(i,1);
@@ -342,7 +351,7 @@ if(keys[37] || keys[65] && !gameIsOver){player.x-=5;findMouseAngle();} // Left
 if(keys[39] || keys[68] && !gameIsOver){player.x+=5;findMouseAngle();} // Right
 if(keys[38] || keys[87] && !gameIsOver ){player.y-=5;findMouseAngle(); } // Up
 if(keys[40] || keys[83] && !gameIsOver ){player.y+=5;findMouseAngle(); } // Down
-if(keys[13] && gameIsOver){newGame();}
+if(keys[13] && gameIsOver){newGame();splashMusic.pause();splashMusic.currentTime = 0;}
 // if(keys[13] && gameIsOver){ chooseLevel(); } // Start new game
 
 /* ---------------*\
@@ -387,10 +396,9 @@ function render(){
 		context.fillText("LOADING",width/2 - 35,height/2-20);
 		context.font='10px sans-serif';
 		context.fillStyle = '#1b1b1b';
-		context.fillRect(width/2 - 250, height/2, 500, 6);
+		context.fillRect(width/2 - 200, height/2, 368, 6);
 		context.fillStyle = '#38b349';
-		context.fillRect(width/2 - 250, height/2, 500/requiredImages*doneImages, 6);
-		context.fillText("Score",10,height/2+100);
+		context.fillRect(width/2 - 200, height/2, 368/requiredImages*doneImages, 6);
 	} else if (gameStatus == 1){
 
 		context.fillStyle = 'white';
@@ -401,15 +409,15 @@ function render(){
 		context.fillText("LOADING",width/2 - 35,height/2-20);
 		context.font='10px sans-serif';
 		context.fillStyle = '#1b1b1b';
-		context.fillRect(width/2 - 250, height/2, 500, 6);
+		context.fillRect(width/2 - 200, height/2, 368, 6);
 		context.fillStyle = '#38b349';
-		context.fillRect(width/2 - 250, height/2, 500/requiredImages*doneImages, 6);
-		context.fillText("Score",10,height/2+100);
+		context.fillRect(width/2 - 200, height/2, 368/requiredImages*doneImages, 6);
+		context.drawImage(images[11],width/2 - 241.75, height/2+40, 463.5, 198);
 	}	else if (gameStatus == 2) {
 		//player
 		context.fillStyle=player.color;
 		context.fillRect(player.x, player.y, player.width, player.height);
-		// context.drawImage(explosionImages[10], player.x, player.y);
+		// context.drawImage(images[10], player.x, player.y);
 		// playerSprite.render();
 		context.save();
 		context.translate(player.x + player.hand.x, player.y + player.hand.y);
@@ -449,7 +457,11 @@ function render(){
 			context.font='15px Press';
 			context.fillText("YOUR SCORE: "+score,width/2-220,height/2+50);
 			context.font='12px Press';
-			context.fillText("ENTER the new game",width/2-220,height/2+100);
+			context.fillStyle = '#38b349';
+			context.fillText("ENTER",width/2-220,height/2+100);
+			context.fillStyle = 'white';
+			context.fillText("the new game",width/2-148,height/2+100);
+
 			context.font='10px sans-serif';
 		}
 		context.fillStyle = player.color;
@@ -479,7 +491,7 @@ function initImages(paths){
 	return images;
 }
 function checkImages(){
-	if (doneImages >= requiredImages){
+	if (doneImages >= requiredImages+1){
 		gameStatus = 1;
 	} else {
 		setTimeout(function(){
@@ -499,7 +511,7 @@ function findEnemyMovingAngle(enemy,player){
 	return moving_angle;
 }
 function shoot(){
-	if (!gameIsOver && bullets.length < 10){
+	if (!gameIsOver && bullets.length < 10  && gameStatus == 2){
 		bullets.push(new bullet(player.x,player.y));
 		sound_shoot[sound_shoot_counter].play();
 		sound_shoot_counter++;
@@ -522,6 +534,7 @@ function vCollision(first, second){
 }
 function gameOver(){
 	gameIsOver = true;
+	splashMusic.play();
 }
 // function getImages(paths){
 // 	var images = [];

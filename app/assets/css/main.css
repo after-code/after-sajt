@@ -216,6 +216,9 @@ body {
   .section--nebojsa .main-container {
     position: relative;
     background-image: url("../../assets/img/nebojsa-bck.png"); }
+    @media (max-width: 1000px) {
+      .section--nebojsa .main-container {
+        background-position: 17% 19%; } }
   .section--nebojsa .text-block {
     width: 100%;
     max-width: 100%;
@@ -227,6 +230,10 @@ body {
     text-align: center;
     font-size: 50px;
     margin-bottom: 24px; }
+    @media (max-width: 1000px) {
+      .section--nebojsa .text-block__heading {
+        margin-top: 8%;
+        font-size: 32px; } }
   .section--nebojsa .text-block__heading--small {
     color: #666;
     font-size: 24px;

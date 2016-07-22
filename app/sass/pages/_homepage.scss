@@ -61,6 +61,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', e
   .main-container {
     position: relative;
     background-image: url("../../assets/img/nebojsa-bck.png");
+    @include breakpoint(mobile){
+      background-position: 17% 19%;
+    }
   }
   .text-block {
     width: 100%;
@@ -74,6 +77,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', e
     text-align: center;
     font-size:50px;
     margin-bottom: 24px;
+    @include breakpoint(mobile){
+      margin-top: 8%;
+      font-size:32px;
+    }
   }
   .text-block__heading--small {
     color:#666;

@@ -117,16 +117,11 @@ html {
   padding-top: 150px;
   padding-bottom: 150px; }
   @media (max-width: 1000px) {
-    .section--phones {
-      height: 500px;
-      padding: 45px 0 70px; }
-      .section--phones img {
-        height: 100%;
-        position: relative;
-        left: 50%;
-        transform: translateX(-50%);
-        margin-top: 20px;
-        margin-bottom: 20px; } }
+    .section--phones img {
+      height: 100%;
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%); } }
 
 @media (max-width: 1000px) {
   .section--padding-mobile {
@@ -408,6 +403,9 @@ li {
 
 .powerNap {
   padding-top: 280px; }
+  @media (max-width: 1000px) {
+    .powerNap {
+      padding: 30px 10px; } }
 
 .text-block--centered {
   display: inline-block;

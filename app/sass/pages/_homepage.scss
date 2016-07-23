@@ -266,6 +266,10 @@ li {
 }
 .powerNap {
   padding-top:280px;
+
+   @include breakpoint(mobile){
+     padding: 30px 10px;
+   }
 }
 .text-block--centered {
   display: inline-block;

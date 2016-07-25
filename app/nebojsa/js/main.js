@@ -8,16 +8,30 @@
 
 var canvas = document.getElementById("context");
 var context = canvas.getContext("2d"),
-	width = window.innerWidth - 100,
-	height = window.innerHeight - 200;
+// width = window.innerWidth - 100,
+width = window.innerWidth,
+// height = window.innerHeight - 200;
+height = window.innerHeight;
 canvas.width = width;
 canvas.height = height;
 canvas.style.width = canvas.width + "px";
 canvas.style.height = canvas.height + "px";
+
+
+var canvas2 = document.getElementById("context2");
+var context2 = canvas2.getContext("2d"),
+// width = window.innerWidth - 100,
+width = window.innerWidth,
+// height = window.innerHeight - 200;
+height = window.innerHeight;
+canvas2.width = width;
+canvas2.height = height;
+canvas2.style.width = canvas2.width + "px";
+canvas2.style.height = canvas2.height + "px";
 var score = 0;
 var gameIsOver = false;
 var gameStatus = 0;
-
+var godMode = true;
 
 
 
@@ -277,7 +291,7 @@ for (var i in enemies){
 		if (enemies[i].x < -510){
 			enemies.splice(i,1);
 		}
-		if (collision(enemies[i],player)){
+		if (collision(enemies[i],player) && !godMode){
 			enemies.splice(i,1);
 			player.health -= 25;
 		}
@@ -316,7 +330,7 @@ if (gameStatus == 2){
 }
 
 for (i in bullets){
-	if (bullets[i].decay <4 && collision(bullets[i],player)){
+	if (bullets[i].decay <4 && collision(bullets[i],player) && !godMode){
 		bullets.splice(i,1);
 		player.health-=2;
 	}
@@ -398,7 +412,7 @@ function render(){
 		context.fillStyle = '#1b1b1b';
 		context.fillRect(width/2 - 200, height/2, 400, 6);
 		context.fillStyle = '#38b349';
-		context.fillRect(width/2 - 200, height/2, 400/(requiredImages+1)*doneImages, 6);
+		context.fillRect(width/2 - 200, height/2, 400/(requiredImages)*doneImages, 6);
 	} else if (gameStatus == 1){
 
 		context.fillStyle = 'white';
@@ -411,7 +425,7 @@ function render(){
 		context.fillStyle = '#1b1b1b';
 		context.fillRect(width/2 - 200, height/2, 400, 6);
 		context.fillStyle = '#38b349';
-		context.fillRect(width/2 - 200, height/2, 400/(requiredImages+1)*doneImages, 6);
+		context.fillRect(width/2 - 200, height/2, 400/(requiredImages)*doneImages, 6);
 		context.drawImage(images[11],width/2 - 192.75, height/2+40, 384, 164);
 	}	else if (gameStatus == 2) {
 		//player
@@ -491,7 +505,7 @@ function initImages(paths){
 	return images;
 }
 function checkImages(){
-	if (doneImages >= requiredImages+1){
+	if (doneImages >= requiredImages){
 		gameStatus = 1;
 	} else {
 		setTimeout(function(){

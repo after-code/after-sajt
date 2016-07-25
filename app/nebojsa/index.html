@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/style.css">
 <!-- <link href='https://fonts.googleapis.com/css?family=Press+Start+2P' rel='stylesheet' type='text/css'> -->
   <style>
@@ -29,17 +30,20 @@
     #context {
       cursor: none;
     }
+    html {
+      overflow: hidden;
+    }
     body {
       background: black;
       overflow:hidden;
       margin:0;
-      padding:15px;
+      /*padding:15px;*/
     }
     .container {
       width: 100%;
       /*margin:0 auto;*/
-      padding:35px;
-      padding-top:20px;
+      /*padding:35px;*/
+      /*padding-top:20px;*/
     }
     h3, h4 {
       text-align: left;
@@ -57,18 +61,34 @@
     .score {
       margin-top:10px;
     }
+    .status {
+      position: absolute;
+      top:30px;
+      right: 30px;
+      color:red;
+    }
+    #context2 {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
   </style>
   <title>Game title man</title>
 </head>
 <body>
-  <h3>Небојша </h3>
-  <h4>Score <div class="score">0</div></h4>
+  <div class="status" id='status'></div>
+  <!-- <h3>Небојша </h3>
+  <h4>Score <div class="score">0</div></h4> -->
   <div class="container">
     <canvas id='context' width='1000' height="700">
+    </canvas>
+    <canvas id='context2' width='1000' height="700">
     </canvas>
   </div>
 
   <script src='../bower_components/jquery/dist/jquery.js'> </script>
+  <script src='app/js/Vector2.js'></script>
   <script src='js/main.js'></script>
+  <script src='app/js/touchControl.js'></script>
 </body>
 </html>

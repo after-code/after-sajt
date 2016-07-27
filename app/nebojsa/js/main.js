@@ -4,7 +4,10 @@
 // window.onload(function(){
 //
 // })
-
+var leftVector = {
+  x:0,
+  y:0
+}
 
 var canvas = document.getElementById("context");
 var context = canvas.getContext("2d"),
@@ -259,10 +262,24 @@ function game(){
   update();
   render();
 }
+var maxSpeed = 200;
 function update(){
 /* ---------------*\
    #Controls
 \* ---------------*/
+// if (leftVector.x !=0 || leftVector.y !=0){
+  if (Math.abs(leftVector.x) <  maxSpeed) {
+    player.x += leftVector.x /20;
+  } else {
+    player.x += maxSpeed/20 * leftVector.x / Math.abs(leftVector.x);
+  }
+  if (Math.abs(leftVector.y) <  maxSpeed) {
+    player.y += leftVector.y /20;
+  } else {
+    player.y += maxSpeed/20 * leftVector.x / Math.abs(leftVector.x);
+  }
+// }
+
 for (var i in explosions){
 	explosions[i].update();
 	if (explosions[i].done){

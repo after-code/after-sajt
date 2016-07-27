@@ -84,12 +84,12 @@ function makeBullet() {
 
 	} else {
 
-		bullet = new Bullet(ship.pos.x, ship.pos.y, ship.angle);
-		bullets.push(bullet);
+		// bullet = new Bullet(ship.pos.x, ship.pos.y, ship.angle);
+		// bullets.push(bullet);
 
 	}
 
-	bullet.vel.plusEq(ship.vel);
+	// bullet.vel.plusEq(ship.vel);
 
 
 }
@@ -116,6 +116,7 @@ function makeBullet() {
  */
 
 function onTouchStart(e) {
+
   gameStatus = 2;
   $("status").html("touching");
 	for(var i = 0; i<e.changedTouches.length; i++){
@@ -129,9 +130,10 @@ function onTouchStart(e) {
 			leftVector.reset(0,0);
 			continue;
 		} else {
-      $("#status").html("puca");
-			makeBullet();
-
+      // mouseX = touch.clientX-document.getElementById("context").offsetLeft;
+      // mouseY = touch.clientY-document.getElementById("context").offsetTop;
+      // findMouseAngle();
+      // shoot();
 		}
 	}
 	touches = e.touches;
@@ -149,25 +151,10 @@ function onTouchMove(e) {
 			leftVector.copyFrom(leftTouchPos);
 			leftVector.minusEq(leftTouchStartPos);
 			// document.getElementById("status").innerHTML=  leftVector.x +':'+leftVector.y;
-      if (leftVector.x > 0) {
-        keys[39] = true;
-        keys[37] = false;
-      }
-      if (leftVector.x < 0) {
-        keys[37] = true;
-        keys[39] = false;
-      }
-      if (leftVector.y > 0) {
-        keys[40] = true;
-        keys[38] = false;
-      }
-      if (leftVector.y < 0) {
-        keys[38] = true;
-        keys[40] = false;
-      }
-			break;
+
+			// break;
 		}
-	}
+  }
 
 	touches = e.touches;
 
@@ -186,7 +173,10 @@ function onTouchEnd(e) {
 			leftVector.reset(0,0);
 			break;
 		} else {
-        $("#status").html("kljuca");
+        mouseX = touch.clientX-document.getElementById("context").offsetLeft;
+        mouseY = touch.clientY-document.getElementById("context").offsetTop;
+        findMouseAngle();
+        shoot();
     }
 	}
 

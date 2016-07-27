@@ -91,6 +91,7 @@ var bullet = function(x,y){
 }
 var start1;
 function start(){
+
   start1 = performance.now();
   loop = window.requestAnimationFrame(start)
   if (counter % gameSpeed == 0){
@@ -99,13 +100,20 @@ function start(){
   counter++;
 }
 function game(){
+
   update();
   render();
 }
 function update(){
+
 /* ---------------*\
    #Controls
 \* ---------------*/
+if (touchable){
+	player.x += leftVector.x /500;
+	player.y += leftVector.y /500;
+	console.log(leftVector.x);
+}
 bgpos-=speed;
 if (bgpos <= - width ){
   bgpos= 0;

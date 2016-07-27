@@ -63,7 +63,7 @@ context2.clearRect(0,0,width, height);
 
       context2.beginPath();
       context2.fillStyle = "white";
-      context2.fillText("touch id : "+touch.identifier+" x:"+touch.clientX+" y:"+touch.clientY, touch.clientX+30, touch.clientY-30);
+      // context2.fillText("touch id : "+touch.identifier+" x:"+touch.clientX+" y:"+touch.clientY, touch.clientX+30, touch.clientY-30);
 
       context2.beginPath();
       context2.strokeStyle = "red";

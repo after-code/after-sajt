@@ -21,8 +21,18 @@ function changeScene(){
     $(".fold-actions").css({"display":"none"});
   });
 }
+var scrollTop = 0;
+var scrollDirection = 'bottom';
 $(document).bind('mousewheel', function(evt) {
-  var scrollTop = $(window).scrollTop();
+  if (scrollTop < $(window).scrollTop()){
+    scrollTop = $(window).scrollTop();
+    scrollDirection = 'bottom';
+    console.log(scrollDirection);
+  } else {
+      scrollTop = $(window).scrollTop();
+      scrollDirection = 'top';
+      console.log(scrollDirection);
+  }
     if (first){
       changeScene();
       showHeader();
@@ -30,6 +40,25 @@ $(document).bind('mousewheel', function(evt) {
       console.log('scrolling');
     } else {
       // $(".header").removeClass("foreverBlack");
+    }
+    if (scrollDirection == 'bottom'){
+      if(scrollTop > $(".viewport__container").height() - 70 && scrollTop <  $(".viewport__container").height() * 2 -30){
+        $(".header").addClass("black");
+        $(".header").removeClass("white");
+      } else {
+        $(".header").addClass("white");
+        $(".header").removeClass("black");
+
+      }
+    } else {
+      if(scrollTop > $(".viewport__container").height() - 16 && scrollTop <  $(".viewport__container").height() * 2+ -16){
+        $(".header").addClass("black");
+        $(".header").removeClass("white");
+      } else {
+        $(".header").addClass("white");
+        $(".header").removeClass("black");
+
+      }
     }
     if (scrollTop>=$(document).height()-$(window).height()-190){
       $(".footer").addClass("shown");

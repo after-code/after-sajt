@@ -34,7 +34,7 @@ canvas2.style.height = canvas2.height + "px";
 var score = 0;
 var gameIsOver = false;
 var gameStatus = 0;
-var godMode = true;
+var godMode = false;
 
 
 

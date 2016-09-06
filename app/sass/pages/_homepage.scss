@@ -57,8 +57,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', e
 .section--nebojsa {
   background-color:black;
   margin:0;
-  padding:150px 0;
+  padding: 0;
+  height: 100vh;
   .main-container {
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
     position: relative;
     background-image: url("../../assets/img/nebojsa-bck.png");
     @include breakpoint(mobile){
@@ -169,6 +175,9 @@ li {
   display: inline-block;
   margin:10px;
 }
+.foreverBlack {
+  background-color: rgba(0,0,0,0) !important;
+}
 .header {
   height: 64px;
   line-height: 64px;
@@ -176,14 +185,42 @@ li {
   position: fixed;
   width: 100%;
   top: -64px;
-  -webkit-transition: top 900ms;
-  -o-transition: top 900ms;
-  transition: top 900ms;
+  -webkit-transition: top 900ms, background-color 400ms;
+  -o-transition: top 900ms, background-color 400ms;
+  transition: top 900ms, background-color 400ms;
   z-index: 17;
   &.shown {
     top: 0px;
   }
-  background-color: rgba(255, 255, 255, 0.61);
+  &.black {
+    .header__link a {
+      color:#666;
+    }
+    background-color: rgba(255, 255, 255, 0.0);
+    .after-logo {
+      &.black {
+        opacity: 0;
+      }
+      &.white {
+        opacity: 1;
+        margin-left: -102px;
+        margin-top: 23px;
+        width: 82px;
+      }
+    }
+  }
+  &.white {
+    background-color: rgba(255, 255, 255, 0.61);
+    .after-logo {
+      &.black {
+        opacity: 1;
+      }
+      &.white {
+        opacity: 0;
+      }
+    }
+  }
+  background-color: rgba(255, 255, 255, 0);
   @include breakpoint(mobile){
     position: absolute;
     top:0;
@@ -207,12 +244,21 @@ li {
   a {
     color:#333;
     margin-right: 20px;
+    font-weight: 400;
+    -webkit-transition: color 400ms;
+    -o-transition: color 400ms;
+    transition: color 400ms;
+
   }
 }
 .after-logo {
   width: 104px;
+  float: left;
   margin-top: -27px;
   margin-left: -9px;
+  -webkit-transition: opacity 400ms;
+  -o-transition: opacity 400ms;
+  transition: opacity 400ms;
   @include breakpoint(mobile){
     width: 104px;
   }

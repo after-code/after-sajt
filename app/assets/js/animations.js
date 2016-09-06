@@ -10,9 +10,11 @@ function showActions(){
 var first = true;
 
 function changeScene(){
-  $("body, html").animate({scrollTop: $(".viewport").height()-67},600, 'easeInOutCubic', function(){
+  $("body, html").animate({scrollTop: $(".viewport").height()},600, 'easeInOutCubic', function(){
     $("body").css({"overflow-y":"scroll"});
     first = false;
+    $(".header").addClass("black");
+    $(".header").removeClass("white");
     console.log('finished');
   });
   $(".fold-actions").animate({"opacity":"0"}, 300, function(){
@@ -26,13 +28,22 @@ $(document).bind('mousewheel', function(evt) {
       showHeader();
       first = false;
       console.log('scrolling');
+    } else {
+      // $(".header").removeClass("foreverBlack");
     }
     if (scrollTop>=$(document).height()-$(window).height()-190){
       $(".footer").addClass("shown");
     } else {
       $(".footer").removeClass("shown");
     }
+    if(scrollTop > $(".viewport__container").height() - 70 && scrollTop <  $(".viewport__container").height() * 2 -64){
+      $(".header").addClass("black");
+      $(".header").removeClass("white");
+    } else {
+      $(".header").addClass("white");
+      $(".header").removeClass("black");
 
+    }
 });
 $(document).bind('DOMMouseScroll', function(evt) {
   var scrollTop = $(window).scrollTop();

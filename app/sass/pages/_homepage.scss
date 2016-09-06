@@ -66,9 +66,22 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', e
     -o-transform: translateY(-50%);
     transform: translateY(-50%);
     position: relative;
-    background-image: url("../../assets/img/nebojsa-bck.png");
+    background: rgba(0, 0, 0, 0.55);
     @include breakpoint(mobile){
       background-position: 17% 19%;
+    }
+  }
+  .video-nebojsa {
+    position: absolute;
+    margin: 0 auto;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+    margin-top: 6%;
+    @include breakpoint(mobile) {
+      width: 250%;
     }
   }
   .text-block {

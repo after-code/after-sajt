@@ -216,10 +216,22 @@ body {
     -o-transform: translateY(-50%);
     transform: translateY(-50%);
     position: relative;
-    background-image: url("../../assets/img/nebojsa-bck.png"); }
+    background: rgba(0, 0, 0, 0.55); }
     @media (max-width: 1000px) {
       .section--nebojsa .main-container {
         background-position: 17% 19%; } }
+  .section--nebojsa .video-nebojsa {
+    position: absolute;
+    margin: 0 auto;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+    margin-top: 6%; }
+    @media (max-width: 1000px) {
+      .section--nebojsa .video-nebojsa {
+        width: 250%; } }
   .section--nebojsa .text-block {
     width: 100%;
     max-width: 100%;

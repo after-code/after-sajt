@@ -57,6 +57,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', e
 .section--nebojsa {
   background-color:black;
   margin:0;
+  position: relative;
   padding: 0;
   height: 100vh;
   .main-container {
@@ -66,7 +67,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', e
     -o-transform: translateY(-50%);
     transform: translateY(-50%);
     position: relative;
-    background: rgba(0, 0, 0, 0.55);
+    background: rgba(0, 0, 0, 0.65);
     @include breakpoint(mobile){
       background-position: 17% 19%;
     }
@@ -80,8 +81,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', e
     -o-transform: translateX(-50%);
     transform: translateX(-50%);
     margin-top: 6%;
-    @include breakpoint(mobile) {
+    @include breakpoint(littlemobile) {
       width: 250%;
+      display: none;
     }
   }
   .text-block {

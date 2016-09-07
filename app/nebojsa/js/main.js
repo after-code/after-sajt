@@ -11,10 +11,10 @@ var leftVector = {
 
 var canvas = document.getElementById("context");
 var context = canvas.getContext("2d"),
-// width = window.innerWidth - 100,
-width = window.innerWidth,
-// height = window.innerHeight - 200;
-height = window.innerHeight;
+width = window.innerWidth - 40,
+// width = window.innerWidth,
+height = window.innerHeight - 40;
+// height = window.innerHeight;
 canvas.width = width;
 canvas.height = height;
 canvas.style.width = canvas.width + "px";

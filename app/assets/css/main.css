@@ -80,6 +80,10 @@ html {
   src: local("Press Start 2P"), local("PressStart2P-Regular"), url(https://fonts.gstatic.com/s/pressstart2p/v4/8Lg6LX8-ntOHUQnvQ0E7o69WAFmVxfVhVkWhl-QDeAk.woff2) format("woff2");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000; }
 
+@font-face {
+  font-family: 'Press';
+  src: url(../../assets/font/PressStart2P.ttf); }
+
 .main-container {
   width: 100%;
   max-width: 1260px;
@@ -207,6 +211,7 @@ body {
 .section--nebojsa {
   background-color: black;
   margin: 0;
+  position: relative;
   padding: 0;
   height: 100vh; }
   .section--nebojsa .main-container {
@@ -216,7 +221,7 @@ body {
     -o-transform: translateY(-50%);
     transform: translateY(-50%);
     position: relative;
-    background: rgba(0, 0, 0, 0.55); }
+    background: rgba(0, 0, 0, 0.65); }
     @media (max-width: 1000px) {
       .section--nebojsa .main-container {
         background-position: 17% 19%; } }
@@ -229,9 +234,10 @@ body {
     -o-transform: translateX(-50%);
     transform: translateX(-50%);
     margin-top: 6%; }
-    @media (max-width: 1000px) {
+    @media (max-width: 600px) {
       .section--nebojsa .video-nebojsa {
-        width: 250%; } }
+        width: 250%;
+        display: none; } }
   .section--nebojsa .text-block {
     width: 100%;
     max-width: 100%;

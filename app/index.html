@@ -93,7 +93,7 @@ We practice production approach of using common sense & teaming up with clients.
      <h1 class="main-heading">WE ARE CREATIVE</h1>
    </div>
    <div class="section section--nebojsa">
-     <video src="assets/video/nebojsa-video.mp4" autoplay loop class='video-nebojsa'></video>
+     <video src="assets/video/nebojsaFinal.mp4" loop class='video-nebojsa' id='video-nebojsa' ></video>
      <div class="main-container">
        <!-- <div style=' margin-bottom: 0;' class="section section--padding"> -->
        <div class="section section--padding">
@@ -226,6 +226,7 @@ We practice production approach of using common sense & teaming up with clients.
 $( document ).ready( function(){
   console.info("dom loaded");
   console.info($('body').height());
+  document.getElementById('video-nebojsa').play();
 } );
 </script>
 <script src="vendor/three.min.js"></script>

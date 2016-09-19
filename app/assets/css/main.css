@@ -238,6 +238,18 @@ body {
       .section--nebojsa .video-nebojsa {
         width: 250%;
         display: none; } }
+  .section--nebojsa .nebojsa-gif {
+    display: none; }
+    @media (max-width: 1000px) {
+      .section--nebojsa .nebojsa-gif {
+        display: block;
+        position: absolute;
+        top: 50%;
+        height: 64%;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        -o-transform: translateY(-50%);
+        transform: translateY(-50%); } }
   .section--nebojsa .text-block {
     width: 100%;
     max-width: 100%;

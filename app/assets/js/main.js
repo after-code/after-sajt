@@ -30,15 +30,16 @@
     var cameraInertia = 0;
 
     scene = new THREE.Scene();
-
+    scene.background = new THREE.Color( 0xff0000 );
     scene.rotation.x = 0;
     scene.rotation.y = 0;
     scene.rotation.z = 0;
-    renderer = new THREE.WebGLRenderer({antialias: true});
+    renderer = new THREE.WebGLRenderer({antialias: true, alpha:true});
 
     renderer.setSize(WIDTH, HEIGHT);
     renderer.setPixelRatio( window.devicePixelRatio );
     renderer.setClearColor( 0xffffff, 1 );
+    // renderer.setClearColorHex( 0xffffff, 0);
     container.appendChild(renderer.domElement);
 
     camera = new THREE.PerspectiveCamera(VIEW_ANGLE, ASPECT, NEAR, FAR);
@@ -62,12 +63,8 @@
 
     //
 
-    var ambient = new THREE.AmbientLight( 0xFFFFFF);
-    var point = new THREE.PointLight( 0xFFFFFF, 0.3, 1000 );
+    var ambient = new THREE.AmbientLight( 0x00FFFF);
     scene.add(ambient);
-    point.position.x = 1;
-    point.position.y = 3;
-    point.position.z = 5;
     scene.add(mirrorCamera);
     var mesh, container;
     // var floor_geometry = new THREE.BoxGeometry( 10, 0.001, 10);
@@ -83,17 +80,17 @@
 
     var maze_geometry = new THREE.BoxGeometry(1,0.3,0.01);
     var maze_geometry2 = new THREE.BoxGeometry(5,0.3,0.01);
-    var maze_material = new THREE.MeshLambertMaterial(
+    var maze_material = new THREE.MeshBasicMaterial(
     { color: 0x000000}
     );
-    var yellow_material = new THREE.MeshLambertMaterial(
+    var yellow_material = new THREE.MeshBasicMaterial(
     { color: 0xff4646 }
   );
-    var textured_material = new THREE.MeshLambertMaterial({
+    var textured_material = new THREE.MeshBasicMaterial({
     // { map: THREE.ImageUtils.loadTexture('assets/img/dotted-texture5.png')}
       color:0x000000
     });
-      var circle_material = new THREE.MeshLambertMaterial( { color: 0xffff00} );
+      var circle_material = new THREE.MeshBasicMaterial( { color: 0xffff00} );
     var maze = new THREE.Mesh(
       maze_geometry,
       maze_material

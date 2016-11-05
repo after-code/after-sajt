@@ -3,7 +3,8 @@ $text__family--UniSans:  'Uni Sans', sans-serif;
 $text__family--Press:  'Press', sans-serif;
 $base__font-size: 16px !default;
 $base__line: 20 !default;
-
+$text__family--Roboto-Condensed: 'Roboto Condensed', sans-serif;
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700');
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,900,700,500,300);
 @import url(https://fonts.googleapis.com/css?family=VT323);
 @font-face {
@@ -15,6 +16,9 @@ html {
   -moz-osx-font-smoothing: grayscale;
   font-family: $text__family--Roboto;
 	font-size: $base__font-size;
+}
+a {
+  color: inherit;
 }
 @font-face {
   font-family: 'Press';

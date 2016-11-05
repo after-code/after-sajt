@@ -54,7 +54,52 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', e
     padding:0;
   }
 }
+.section--hos {
+  position: relative;
+  margin-top:0;
+  img {
+    width: 100%;
+  }
+}
+.b-hos-text {
+  position:absolute;
+  width: 35%;
+  font-family: $text__family--Roboto-Condensed;
+  font-weight: bold;
+  font-style: italic;
+  top: 25%;
+  left: 43%;
+  font-size: 85px;
+  line-height: 84px;
+  @include breakpoint(middle){
+    font-size:cvp(97px,1800px);
+    line-height:cvp(88px,1800px);
+  }
+  @include breakpoint(xlarge){
+    font-size:cvp(100px,1800px);
+    line-height:cvp(98px,1800px);
+  }
+
+}
+.b-hos-link {
+  margin-left: 15%;
+  display: none;
+  font-style: normal;
+  color: white;
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 30px;
+  margin-top: 8%;
+  font-size: 20px;
+  @include breakpoint(middle){
+    font-size: font-size:cvp(20px,2000px);
+  }
+  @include breakpoint(middle){
+    font-size:cvp(16px,1800px);
+  }
+}
 .section--nebojsa {
+  display: none;
   background-color:black;
   margin:0;
   position: relative;

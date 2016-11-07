@@ -57,6 +57,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', e
 .section--hos {
   position: relative;
   margin-top:0;
+  display: none;
   img {
     width: 100%;
   }
@@ -92,7 +93,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', e
   margin-top: 8%;
   font-size: 20px;
   @include breakpoint(middle){
-    font-size: font-size:cvp(20px,2000px);
+    font-size:cvp(20px,2000px);
   }
   @include breakpoint(middle){
     font-size:cvp(16px,1800px);

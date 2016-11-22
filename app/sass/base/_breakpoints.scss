@@ -8,6 +8,9 @@
   @if $point == large {
      @media (min-width: 1170px)  { @content ; }
   }
+  @if $point == middle {
+     @media (max-width: 1600px)  { @content ; }
+  }
   @if $point == xlarge {
      @media (min-width: 1681px)  { @content ; }
   }

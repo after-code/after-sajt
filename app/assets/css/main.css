@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700");
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,900,700,500,300);
 @import url(https://fonts.googleapis.com/css?family=VT323);
 html, body, div, span, applet, object, iframe,
@@ -65,6 +66,9 @@ html {
   -moz-osx-font-smoothing: grayscale;
   font-family: "Roboto", sans-serif;
   font-size: 16px; }
+
+a {
+  color: inherit; }
 
 @font-face {
   font-family: 'Press';
@@ -208,7 +212,51 @@ body {
   .section--phones .main-container {
     padding: 0; }
 
+.section--hos {
+  position: relative;
+  margin-top: 0;
+  display: none; }
+  .section--hos img {
+    width: 100%; }
+
+.b-hos-text {
+  position: absolute;
+  width: 35%;
+  font-family: "Roboto Condensed", sans-serif;
+  font-weight: bold;
+  font-style: italic;
+  top: 25%;
+  left: 43%;
+  font-size: 85px;
+  line-height: 84px; }
+  @media (max-width: 1600px) {
+    .b-hos-text {
+      font-size: 5.38889vw;
+      line-height: 4.88889vw; } }
+  @media (min-width: 1681px) {
+    .b-hos-text {
+      font-size: 5.55556vw;
+      line-height: 5.44444vw; } }
+
+.b-hos-link {
+  margin-left: 15%;
+  display: none;
+  font-style: normal;
+  color: white;
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 30px;
+  margin-top: 8%;
+  font-size: 20px; }
+  @media (max-width: 1600px) {
+    .b-hos-link {
+      font-size: 1vw; } }
+  @media (max-width: 1600px) {
+    .b-hos-link {
+      font-size: 0.88889vw; } }
+
 .section--nebojsa {
+  display: none;
   background-color: black;
   margin: 0;
   position: relative;
@@ -238,6 +286,18 @@ body {
       .section--nebojsa .video-nebojsa {
         width: 250%;
         display: none; } }
+  .section--nebojsa .nebojsa-gif {
+    display: none; }
+    @media (max-width: 1000px) {
+      .section--nebojsa .nebojsa-gif {
+        display: block;
+        position: absolute;
+        top: 50%;
+        height: 64%;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        -o-transform: translateY(-50%);
+        transform: translateY(-50%); } }
   .section--nebojsa .text-block {
     width: 100%;
     max-width: 100%;

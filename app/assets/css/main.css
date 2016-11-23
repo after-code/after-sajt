@@ -184,7 +184,7 @@ body {
   position: absolute;
   top: 0%;
   left: 0%;
-  background-image: url("../../assets/img/dotted-texture22.png");
+  background-image: url(../../assets/img/dotted-texture22.png);
   background-size: 7px;
   opacity: 0.41;
   z-index: 2;
@@ -332,9 +332,9 @@ body {
 
 @keyframes twich {
   0% {
-    background-image: url("../../assets/img/dotted-texture22.png"); }
+    background-image: url(../../assets/img/dotted-texture22.png); }
   50% {
-    background-image: url("../../assets/img/dotted-texture20.png"); } }
+    background-image: url(../../assets/img/dotted-texture20.png); } }
 
 @keyframes tilt {
   0% {
@@ -494,7 +494,7 @@ li {
 .arrow {
   display: inline-block;
   height: 100%;
-  background-image: url("../../assets/img/arrow.png");
+  background-image: url(../../assets/img/arrow.png);
   height: 100%;
   width: 30px;
   background-repeat: no-repeat;
@@ -721,7 +721,7 @@ li {
   left: 25%;
   top: 10%;
   height: 49%;
-  background-image: url("../../assets/img/soundcloud-lines.png");
+  background-image: url(../../assets/img/soundcloud-lines.png);
   background-repeat: no-repeat;
   background-size: contain; }
   @media (max-width: 1000px) {

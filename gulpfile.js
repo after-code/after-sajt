@@ -8,6 +8,7 @@ var gulp = require("gulp"),
     sass = require("gulp-sass"),
     plumber = require("gulp-plumber"),
     browserSync = require("browser-sync"),
+    concat = require("gulp-concat"),
     reload = browserSync.reload;
 
 // /////////////////////////////////////////////////
@@ -15,7 +16,17 @@ var gulp = require("gulp"),
 // /////////////////////////////////////////////////
 
 gulp.task("scripts",function(){
-    gulp.src(["app/assets/js/**/*.js", '!app/assets/js/**/*.min.js'])
+    gulp.src([
+      "app/vendor/three.min.js",
+      "app/vendor/orbitControls.js",
+      "app/vendor/mirror.js",
+      "app/bower_components/tween.js/src/Tween.js",
+      "app/assets/js/jquery-easing.js",
+      "app/assets/js/animations.js",
+      "app/assets/js/main.js",
+      "app/assets/js/texture-controls.js",
+    ])
+    .pipe(concat('main.js'))
     .pipe(rename({suffix:'.min'}))
     .pipe(uglify())
     .pipe(gulp.dest('app/assets/js'))
@@ -70,4 +81,4 @@ gulp.task("watch",function(){
 // /////////////////////////////////////////////////
 // Default Task
 // /////////////////////////////////////////////////
-gulp.task("default",[ 'styles', 'html', 'browser-sync', 'watch']);
+gulp.task("default",[ 'scripts','styles', 'html', 'browser-sync', 'watch']);

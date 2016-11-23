@@ -28,16 +28,16 @@
     color: #4a4a4a;
   }
   .fb {
-      background-image: url(../../assets/img/fb-dark.png);
+      background-image: url(#{$assetpath}img/fb-dark.png);
   }
   .twitter {
-      background-image: url(../../assets/img/twitter-dark.png);
+      background-image: url(#{$assetpath}img/twitter-dark.png);
   }
   .gplus {
-      background-image: url(../../assets/img/gplus-dark.png);
+      background-image: url(#{$assetpath}img/gplus-dark.png);
   }
   .insta {
-      background-image: url(../../assets/img/insta-dark.png);
+      background-image: url(#{$assetpath}img/insta-dark.png);
   }
 }
 .lab-projects-container {

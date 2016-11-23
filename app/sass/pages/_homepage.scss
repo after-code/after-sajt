@@ -25,7 +25,7 @@ body {
   top: 0%;
   // transform: translateX(50%);
   left: 0%;
-  background-image: url("../../assets/img/dotted-texture22.png");
+  background-image: url(#{$assetpath}img/dotted-texture22.png);
   background-size: 7px;
   opacity: 0.41;
   // -webkit-transform: translateX(-10%) rotate(-30deg);
@@ -190,10 +190,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', e
 
 }
 @keyframes twich {
-  0% {background-image: url("../../assets/img/dotted-texture22.png"); }
-  // 49% {background-image: url("../../assets/img/dotted-texture22.png"); }
-  50% {background-image: url("../../assets/img/dotted-texture20.png"); }
-  // 99% {background-image: url("../../assets/img/dotted-texture20.png"); }
+  0% {background-image: url(#{$assetpath}img/dotted-texture22.png); }
+  // 49% {background-image: url(#{$assetpath}img/dotted-texture22.png); }
+  50% {background-image: url(#{$assetpath}img/dotted-texture20.png); }
+  // 99% {background-image: url(#{$assetpath}img/dotted-texture20.png); }
  }
 @keyframes tilt {
   0%   {left:-2px;}
@@ -364,7 +364,7 @@ li {
 .arrow {
   display: inline-block;
   height: 100%;
-  background-image: url("../../assets/img/arrow.png");
+  background-image: url(#{$assetpath}img/arrow.png);
   height: 100%;
   width: 30px;
   background-repeat: no-repeat;
@@ -600,7 +600,7 @@ li {
   left:25%;
   top:10%;
   height: 49%;
-  background-image: url("../../assets/img/soundcloud-lines.png");
+  background-image: url(#{$assetpath}img/soundcloud-lines.png);
   background-repeat: no-repeat;
   background-size: contain;
   // max-height: 371px
@@ -699,20 +699,20 @@ li {
   margin-top:60px;
 }
 .fb {
-    background-image: url(../../assets/img/fb.png);
+    background-image: url(#{$assetpath}img/fb.png);
     margin-top: 17px;
 }
 .twitter {
-    background-image: url(../../assets/img/twitt.png);
+    background-image: url(#{$assetpath}img/twitt.png);
 }
 .gplus {
-    background-image: url(../../assets/img/gplus.png);
+    background-image: url(#{$assetpath}img/gplus.png);
 }
 .insta {
-    background-image: url(../../assets/img/insta.png);
+    background-image: url(#{$assetpath}img/insta.png);
 }
 .shapes-background {
-  background-image: url(../../assets/img/shapes-background.png);
+  background-image: url(#{$assetpath}img/shapes-background.png);
   background-size: 100%;
   background-size: 100%;
   background-position: 0 73%;

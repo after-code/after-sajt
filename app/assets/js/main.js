@@ -1,5 +1,5 @@
 
-    var container, scene, renderer, camera, light, clock, loader;
+    var container, scene, renderer, camera, light, clock, loader, mirrorCamera ;
     var WIDTH, HEIGHT, VIEW_ANGLE, ASPECT, NEAR, FAR;
 
     container = document.querySelector('.viewport');
@@ -12,8 +12,7 @@
     VIEW_ANGLE = 45,
     ASPECT = WIDTH / HEIGHT,
     NEAR = 0.01,
-    FAR = 100,
-    mouseLinked = false;
+    FAR = 100;
 
     // alert(window.innerWidth);
     var rendering = true;

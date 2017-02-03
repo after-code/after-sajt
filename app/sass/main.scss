@@ -6,9 +6,14 @@ $assetpath: '../../assets/' !default;
 @import 'base/functions';
 
 @import 'layout/layout';
+@import 'layout/header';
+@import 'layout/l-division';
 
 @import 'pages/homepage';
 @import 'pages/about-page';
 @import 'pages/lab-page';
 
 @import 'helpers/shapes';
+
+@import 'blocks/b-section-info';
+@import 'blocks/b-text-block';

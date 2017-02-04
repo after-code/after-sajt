@@ -1,7 +1,8 @@
 .l-division {
   display:block;
-  overflow: hidden;
+  // overflow: hidden;
   margin-bottom: 9%;
+  @extend .clearfix;
   img {
     width: 100%;
   }
@@ -50,6 +51,14 @@
       left: -20.7%;
     }
   }
+  &.img-mini {
+    img {
+      margin-right: 26%;
+      float: right;
+      width: 51%;
+      margin-top: 3%;
+    }
+  }
   .b-text-block {
     width: 74%;
     float: right;
@@ -66,12 +75,22 @@
     img {
       width: 115%;
       position: relative;
-      right: -20.7%;
+      right: -3.7%;
+      margin-top: 5%;
+    }
+  }
+  &.img-mini {
+    img {
+      width: 55%;
+      margin-left: 26%;
     }
   }
   .b-text-block {
     margin-left: 13%;
     margin-top: 34%;
     width: 74%;
+  }
+  .b-text-block--no-top {
+    margin-top:0;
   }
 }

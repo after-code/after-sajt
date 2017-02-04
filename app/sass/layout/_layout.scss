@@ -3,7 +3,8 @@
   max-width: 1260px;
   padding: 30px;
   margin: 0 auto;
-  overflow: hidden;
+  // overflow: hidden
+  @extend .clearfix;
   @include breakpoint(large){
     max-width: 1400px;
   }
@@ -76,7 +77,7 @@
   text-align: center;
 }
 .main-wrapper {
-  // overflow: hidden;
+  // overflow: auto;
   width: 100%;
   max-width: 1700px;
   margin:0 auto;

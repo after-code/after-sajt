@@ -2,7 +2,6 @@ body {
   font-family: "Roboto", sans-serif;
   color:#222;
   font-weight: 300;
-  overflow: hidden;
   position: relative;
   @include breakpoint(mobile){
     overflow-x: scroll;
@@ -16,7 +15,8 @@ body {
   padding:0;
 }
 .main-wrapper {
-  overflow: hidden;
+  // overflow: hidden;
+  @extend .clearfix;
 }
 .mask  {
   width: 100%;
@@ -145,7 +145,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', e
       transform: translateY(-50%);
     }
   }
-  
+
   .button {
     display: inline-block;
     float: none;

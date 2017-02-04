@@ -1,0 +1,16 @@
+.b-insta-division {
+  @extend .clearfix;
+  display: block;
+  padding:0 11%;
+}
+.b-insta__element {
+  width:33%;
+  float: left;
+  img {
+    width: 100%;
+    display: block;
+  }
+  @include breakpoint(mobile){
+    width: 100%;
+  }
+}

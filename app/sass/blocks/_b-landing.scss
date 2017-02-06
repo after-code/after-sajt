@@ -4,6 +4,9 @@
   padding-top: 14%;
   @extend .clearfix;
   margin-bottom: 29%;
+  @include breakpoint(mobile){
+    margin-bottom: 37%;
+  }
 }
 .b-landing__left, .b-landing__right {
   width: 52%;

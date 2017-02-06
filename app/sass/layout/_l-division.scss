@@ -50,7 +50,7 @@
 // }
 .l-division__first {
   @include breakpoint(mobile) {
-    margin-bottom: 15%;
+    margin-bottom: 0%;
   }
   &.img-small {
     img {
@@ -89,7 +89,7 @@
     @include breakpoint(mobile) {
       margin-left: 3%;
       margin-top: 20%;
-      width: 74%;
+      width: 97%;
       float: left;
     }
   }
@@ -132,10 +132,13 @@
     @include breakpoint(mobile) {
       margin-left: 3%;
       margin-top: 20%;
-      width: 74%;
+      width: 97%;
     }
   }
   .b-text-block--no-top {
     margin-top:0;
+    @include breakpoint(mobile){
+      margin-top:20%;
+    }
   }
 }

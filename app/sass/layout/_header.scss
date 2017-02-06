@@ -79,11 +79,14 @@
   float: left;
   margin-top: -27px;
   margin-left: -9px;
+
   -webkit-transition: opacity 400ms;
   -o-transition: opacity 400ms;
   transition: opacity 400ms;
   @include breakpoint(mobile){
     width: 104px;
+    top:8px;
+    position: relative;
   }
   @include breakpoint(large){
     width:122px;

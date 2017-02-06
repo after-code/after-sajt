@@ -13,6 +13,10 @@
     content: '';
     left: 50%;
     top: -35%;
+    @include breakpoint(mobile){
+      display: none;
+      // return to this and fix the line
+    }
   }
   h2 {
     font-size: 70px;

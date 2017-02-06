@@ -11,12 +11,20 @@
   // position: relative;
   img {
     width: 75%;
-    float: right
+    float: right;
+    @include breakpoint(mobile) {
+      float: left;
+      width: 60%;
+    }
   }
   h1 {
     position: absolute;
     bottom:0;
     font-size: 22px;
+
+  }
+  @include breakpoint(mobile) {
+    width: 100%;
   }
 }
 .b-landing__right {
@@ -29,5 +37,20 @@
     font-weight: bold;
     font-weight: 400;
     margin-bottom: 5%;
+    @include breakpoint(mobile) {
+      position: relative;
+      width: 100%;
+      font-size: 35px;
+      line-height: 40px;
+    }
+  }
+  @include breakpoint(mobile) {
+    width: 100%;
+  }
+}
+.b-landing__left {
+  @include breakpoint(mobile) {
+    padding-top: 26%;
+    margin-bottom: 7%;
   }
 }

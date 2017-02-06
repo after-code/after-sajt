@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="1114.176 17256.5 292.324 124.625">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #222;
+        font-size: 20px;
+        font-family: Roboto-Bold, Roboto;
+        font-weight: 700;
+      }
+
+      .cls-2 {
+        fill: none;
+        stroke: #222;
+        stroke-width: 4px;
+      }
+    </style>
+  </defs>
+  <g id="Group_163" data-name="Group 163" transform="translate(712 245)">
+    <g id="Symbol_1_1" data-name="Symbol 1 – 1">
+      <text id="WE_ARE_CREATIVE_STUDIO" data-name="WE ARE 
+CREATIVE 
+STUDIO" class="cls-1" transform="translate(582 17073)"><tspan x="0" y="0">WE ARE </tspan><tspan x="0" y="24">CREATIVE </tspan><tspan x="0" y="48">STUDIO</tspan></text>
+    </g>
+    <line id="Line_20" data-name="Line 20" class="cls-2" x2="112" transform="translate(582.5 17013.5)"/>
+    <g id="Group_33" data-name="Group 33" transform="translate(402.176 17012.061)">
+      <path id="Path_59" data-name="Path 59" d="M130.14,0H108.77L70.6,108.138H90.747l8.69-25.747h40.1L149,108.138h19.7ZM105.166,63.081l14.1-39.136,14.1,39.136Z" transform="translate(-25.156)"/>
+      <path id="Path_60" data-name="Path 60" d="M0,155.535H12.745l-3.6,15.448h8.046L24.653,157.4a13.664,13.664,0,0,0,1.738-6.694V128.5H0Z" transform="translate(0 -46.918)"/>
+    </g>
+  </g>
+</svg>

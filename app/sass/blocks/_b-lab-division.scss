@@ -3,6 +3,9 @@
   @extend .clearfix;
   padding:0 11%;
   margin-bottom: 18%;
+  @include breakpoint(mobile) {
+    padding:0;
+  }
 }
 .b-lab-division__50 {
   width: 50%;
@@ -11,6 +14,9 @@
   img {
     width: 100%;
     display: block;
+  }
+  @include breakpoint(mobile) {
+    width: 100%;
   }
 }
 .b-lab-division__full {

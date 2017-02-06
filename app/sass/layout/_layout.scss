@@ -82,4 +82,7 @@
   max-width: 1700px;
   margin:0 auto;
   padding:0 50px;
+  @include breakpoint(mobile) {
+    padding:0 5%;
+  }
 }

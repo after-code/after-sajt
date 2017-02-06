@@ -27,9 +27,9 @@
 .b-text-block__heading {
   font-weight: bold;
   margin-bottom: cvp(44px, 1200px);
-  font-size: cvp(68px, 1200px);
+  font-size: 54px;
   @include breakpoint(large){
-    font-size: 68px;
+    font-size: 54px;
     margin-bottom: 44px;
   }
   @include breakpoint(mobile){

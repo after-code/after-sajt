@@ -19,15 +19,25 @@
     font-weight: bold;
     text-transform: uppercase;
     margin-bottom: 32px;
+    @include breakpoint(mobile) {
+      font-size: 33px;
+    }
   }
   h4 {
     font-size: 25px;
     text-align: center;
     font-weight: bold;
-      margin-bottom: 39px;
+    margin-bottom: 39px;
+    @include breakpoint(mobile) {
+      font-size: 20px;
+      padding: 0 12%;
+    }
   }
   p {
     text-align: center;
+  }
+  @include breakpoint(mobile) {
+    margin-bottom: 18%;
   }
 }
 .b-section-info__nbr {
@@ -40,4 +50,8 @@
   font-weight: bold;
   color: #eee;
   z-index: -1;
+  @include breakpoint(mobile) {
+    font-size: 132px;
+    top: -33px;
+  }
 }

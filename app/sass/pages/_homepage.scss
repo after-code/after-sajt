@@ -514,20 +514,35 @@ li {
 .footer-elements__item {
   display: inline-block;
   width: 24%;
+  margin-left: 20%;
+  float:left;
   list-style-type: none;
   vertical-align: top;
   margin:0;
+  &:nth-child(1){
+    margin-left: 20%;
+    margin-right: 11%;
+    @include breakpoint(mobile) {
+      margin:0;
+    }
+  }
   .after-logo, .we-are {
     display: block;
     float: left;
     margin:0;
   }
   .after-logo {
-    width: 92px;
+    width: 295px;
     margin-right: 27px;
+    @include breakpoint(mobile) {
+      width: 100%;
+      margin-bottom: 13%;
+      margin-top: 10%;
+    }
   }
   @include breakpoint(mobile){
     width:100%;
+    margin:0px;
   }
 }
 .footer-elements__item:nth-child(3){
@@ -552,10 +567,16 @@ li {
   float: left;
   text-align: left;
   p {
-    margin-bottom:6px;
+    margin-bottom:0px;
+    line-height: 24px;
+    font-weight: 400;
+    color:#A0A0A0;
   }
   a {
-    color:#ff4646;
+    // color:#ff4646;
+    font-weight: 400;
+    color:#A0A0A0;
+    line-height: 24px;
   }
 }
 .map {
@@ -569,8 +590,8 @@ li {
 }
 .footer-social__item {
   background-repeat: no-repeat;
-  width: 30px;
-  height: 20px;
+  width: 32px;
+  height: 32px;
   display: block;
   margin: 0;
   margin-right: 13px;
@@ -578,23 +599,24 @@ li {
   margin-top: 20px;
 }
 .footer-social {
-  margin-top:60px;
+  margin-top:10px;
+  margin-left: -10px;
 }
 .fb {
-    background-image: url(#{$assetpath}img/fb.png);
+    background-image: url(#{$assetpath}img/fb.svg);
     margin-top: 17px;
 }
 .twitter {
-    background-image: url(#{$assetpath}img/twitt.png);
+    background-image: url(#{$assetpath}img/twitter.svg);
 }
 .gplus {
-    background-image: url(#{$assetpath}img/gplus.png);
+    background-image: url(#{$assetpath}img/gplus.svg);
 }
 .insta {
-    background-image: url(#{$assetpath}img/insta.png);
+    background-image: url(#{$assetpath}img/insta.svg);
 }
 .shapes-background {
-  background-image: url(#{$assetpath}img/shapes-background.png);
+  background-image: url(#{$assetpath}img/shapes-background.svg);
   background-size: 100%;
   background-size: 100%;
   background-position: 0 73%;

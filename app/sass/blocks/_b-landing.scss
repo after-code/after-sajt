@@ -2,8 +2,18 @@
   display: block;
   position: relative;
   padding-top: 14%;
+  margin-bottom: 20%;
+  &:before {
+    width: 82px;
+    height: 3px;
+    position: absolute;
+    bottom: -18%;
+    content: '';
+    left: 50%;
+    background: black;
+    transform: translateX(-50%);
+  }
   @extend .clearfix;
-  margin-bottom: 29%;
   @include breakpoint(mobile){
     margin-bottom: 37%;
   }

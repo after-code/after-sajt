@@ -4,15 +4,15 @@
   position: relative;
   margin:0 auto;
   padding-top: 10%;
-  margin-bottom: 12%;
+  margin-bottom: 9%;
   &:before {
     position: absolute;
-    height: 48%;
+    height:150px;
     width: 1px;
     background: #eee;
     content: '';
     left: 50%;
-    top: -35%;
+    top: -82px;
     @include breakpoint(mobile){
       display: none;
       // return to this and fix the line

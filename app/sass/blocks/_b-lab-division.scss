@@ -3,6 +3,10 @@
   @extend .clearfix;
   padding:0 11%;
   margin-bottom: 18%;
+  &>a {
+    display: block;
+    // float: left;
+  }
   @include breakpoint(mobile) {
     padding:0;
   }
@@ -22,9 +26,13 @@
 .b-lab-division__full {
   width: 100%;
   position: relative;
+  clear: both;
   img {
     width: 100%;
     display: block;
+  }
+  @include breakpoint(mobile){
+    display: none;
   }
 }
 .b-lab-division__tags {

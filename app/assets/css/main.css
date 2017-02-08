@@ -80,6 +80,12 @@ p {
   font-size: 16px;
   line-height: 30px; }
 
+strong {
+  font-weight: bold; }
+
+.button {
+  text-transform: uppercase; }
+
 @font-face {
   font-family: 'Press';
   font-style: normal;
@@ -176,12 +182,30 @@ p {
 .section--landing h4 {
   width: 100%;
   text-align: center;
-  color: red;
+  color: #ff4646;
   font-size: 26px;
   margin-bottom: 7%; }
+  @media (max-width: 1000px) {
+    .section--landing h4 {
+      margin-bottom: 18%;
+      font-size: 20px; } }
 
 .section--hos-hp {
   margin-bottom: 16%; }
+  .section--hos-hp .l-division__second .b-text-block {
+    margin-top: 10%; }
+
+.section--power-nap .l-division__first .b-text-block {
+  margin-top: -5%; }
+
+.section--kolege .l-division__second .b-text-block {
+  margin-top: 7%; }
+
+.section--omar .l-division__second .b-text-block {
+  margin-top: 15%; }
+
+.section--health .l-division__first .b-text-block {
+  margin-top: 6%; }
 
 .foreverBlack {
   background-color: transparent !important; }
@@ -334,6 +358,13 @@ p {
       margin-top: 20%;
       width: 97%;
       float: left; } }
+
+.l-division__second .video {
+  width: 75%;
+  display: block;
+  position: relative;
+  padding: 21.1%;
+  margin: 0 auto; }
 
 .l-division__second.img-small img {
   width: 73%;
@@ -1215,7 +1246,6 @@ li {
   .b-section-info h2 {
     font-size: 70px;
     font-weight: bold;
-    text-transform: uppercase;
     margin-bottom: 32px; }
     @media (max-width: 1000px) {
       .b-section-info h2 {
@@ -1231,6 +1261,9 @@ li {
         padding: 0 12%; } }
   .b-section-info p {
     text-align: center; }
+    @media (max-width: 1000px) {
+      .b-section-info p {
+        text-align: left; } }
   @media (max-width: 1000px) {
     .b-section-info {
       margin-bottom: 18%; } }
@@ -1301,12 +1334,8 @@ li {
       font-size: 22px; } }
 
 .b-text-block__text {
-  font-size: 1.33333vw;
-  line-height: 2vw; }
-  @media (min-width: 1170px) {
-    .b-text-block__text {
-      font-size: 16px;
-      line-height: 24px; } }
+  font-size: 16px;
+  line-height: 30px; }
   @media (max-width: 1000px) {
     .b-text-block__text {
       font-size: 15px;
@@ -1326,6 +1355,8 @@ li {
   display: block;
   padding: 0 11%;
   margin-bottom: 18%; }
+  .b-lab-division > a {
+    display: block; }
   @media (max-width: 1000px) {
     .b-lab-division {
       padding: 0; } }
@@ -1343,10 +1374,14 @@ li {
 
 .b-lab-division__full {
   width: 100%;
-  position: relative; }
+  position: relative;
+  clear: both; }
   .b-lab-division__full img {
     width: 100%;
     display: block; }
+  @media (max-width: 1000px) {
+    .b-lab-division__full {
+      display: none; } }
 
 .b-lab-division__tags {
   position: absolute;

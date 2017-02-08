@@ -21,7 +21,6 @@
   h2 {
     font-size: 70px;
     font-weight: bold;
-    text-transform: uppercase;
     margin-bottom: 32px;
     @include breakpoint(mobile) {
       font-size: 33px;
@@ -39,6 +38,9 @@
   }
   p {
     text-align: center;
+    @include breakpoint(mobile){
+      text-align: left;
+    }
   }
   @include breakpoint(mobile) {
     margin-bottom: 18%;

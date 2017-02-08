@@ -90,11 +90,41 @@
   h4 {
     width: 100%;
     text-align: center;
-    color:red;
+    color:#ff4646;
     font-size: 26px;
     margin-bottom: 7%;
+    @include breakpoint(mobile){
+      margin-bottom: 18%;
+      font-size: 20px;
+    }
   }
 }
 .section--hos-hp {
   margin-bottom: 16%;
+  .l-division__second .b-text-block {
+    margin-top:10%;
+    @include breakpoint(mobile){
+
+    }
+  }
+}
+.section--power-nap {
+  .l-division__first .b-text-block {
+    margin-top:-5%;
+  }
+}
+.section--kolege {
+  .l-division__second .b-text-block {
+    margin-top:7%;
+  }
+}
+.section--omar {
+  .l-division__second .b-text-block {
+    margin-top: 15%;
+  }
+}
+.section--health {
+  .l-division__first .b-text-block {
+    margin-top: 6%;
+  }
 }

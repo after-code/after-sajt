@@ -98,6 +98,13 @@
   @include breakpoint(mobile) {
     // margin-bottom: 20%;
   }
+  .video {
+    width: 75%;
+    display: block;
+    position: relative;
+    padding: 21.1%;
+    margin: 0 auto;
+  }
   &.img-small {
     img {
       width: 73%;

@@ -18,6 +18,9 @@
     background: black;
     content: '';
   }
+  @include breakpoint(mobile) {
+    display: none;
+  }
 }
 .line--gray {
   @extend .line;

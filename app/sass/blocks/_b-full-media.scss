@@ -10,4 +10,8 @@
   @extend .b-full-media;
   padding:0 23%;
   margin-bottom: 16%;
+  @include breakpoint(mobile) {
+    padding:0; 
+    margin-bottom: 25%;
+  }
 }

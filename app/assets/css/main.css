@@ -28,7 +28,8 @@ footer, header, hgroup, menu, nav, section {
 
 body {
   line-height: 1;
-  overflow-x: hidden; }
+  overflow-x: hidden;
+  background: white; }
 
 html {
   overflow-x: hidden; }
@@ -206,6 +207,13 @@ strong {
 
 .section--health .l-division__first .b-text-block {
   margin-top: 6%; }
+
+.section--infographics {
+  padding-bottom: 5%; }
+  .section--infographics .l-division__second.img-mini img {
+    margin-top: 8%; }
+  .section--infographics .b-section-info {
+    margin-bottom: 13%; }
 
 .foreverBlack {
   background-color: transparent !important; }

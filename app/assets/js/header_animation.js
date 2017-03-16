@@ -1,0 +1,18 @@
+$(function(){
+  setTimeout(function(){
+    $('.st3').animate({'stroke-dashoffset':'0'},2200);
+    $('.st10').animate({'stroke-dashoffset':'0'},2200);
+    $('.st12').animate({'stroke-dashoffset':'0'},2200);
+    setTimeout(function(){
+      $('.st5').animate({'stroke-dashoffset':'0'},2200);
+      $('.st8').animate({'stroke-dashoffset':'0'},2200);
+      $('.st11').animate({'stroke-dashoffset':'0'},2200);
+    },1300)
+    setTimeout(function(){
+      $('.st11').animate({'stroke-dashoffset':'0'},2200);
+    },1600)
+    setTimeout(function(){
+      $('.circle').css({'transform':'scale(13)'});
+    },1600)
+  },2200);
+});

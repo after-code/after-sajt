@@ -17,18 +17,11 @@ var gulp = require("gulp"),
 
 gulp.task("scripts",function(){
     gulp.src([
-      "app/vendor/three.min.js",
-      "app/vendor/orbitControls.js",
-      "app/vendor/mirror.js",
-      "app/bower_components/tween.js/src/Tween.js",
-      "app/assets/js/jquery-easing.js",
-      "app/assets/js/animations.js",
-      "app/assets/js/main.js",
-      "app/assets/js/texture-controls.js",
+      'app/bower_components/velocity/velocity.js'
     ])
     .pipe(concat('main.js'))
     .pipe(rename({suffix:'.min'}))
-    .pipe(uglify())
+    // .pipe(uglify())
     .pipe(gulp.dest('app/assets/js'))
     .pipe(reload({stream:true}));
 });

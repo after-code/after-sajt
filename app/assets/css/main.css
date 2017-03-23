@@ -1447,3 +1447,72 @@ li {
   @media (max-width: 1000px) {
     .b-insta__element {
       width: 50%; } }
+
+.b-heading-animation {
+  display: block;
+  overflow: hidden; }
+
+.b-heading-animation__lines {
+  position: absolute;
+  top: -0.11%;
+  left: 0;
+  -webkit-animation: lineDance 2.2s infinite linear; }
+
+.b-heading-animation__typo {
+  position: relative;
+  top: 0;
+  left: 0;
+  margin-top: -3.9%; }
+  .b-heading-animation__typo path:not(.st0) {
+    fill: red;
+    -webkit-animation: color 1.2s infinite linear; }
+  .b-heading-animation__typo .st0 {
+    fill: none !important; }
+
+@-webkit-keyframes lineDance {
+  0% {
+    top: -0.02%; }
+  20% {
+    top: -0.02%; }
+  21% {
+    top: -0.05%; }
+  41% {
+    top: -0.05%; }
+  42% {
+    top: -0.11%; }
+  62% {
+    top: -0.11%; }
+  63% {
+    top: -0.03%; }
+  94% {
+    top: -0.03%; }
+  94% {
+    top: -0.09%; }
+  95% {
+    top: -0.11%; }
+  100% {
+    top: -0.11%; } }
+
+@-webkit-keyframes color {
+  0% {
+    fill: cyan; }
+  10% {
+    fill: blue; }
+  20% {
+    fill: red; }
+  30% {
+    fill: yellow; }
+  40% {
+    fill: orange; }
+  50% {
+    fill: gray; }
+  60% {
+    fill: purple; }
+  70% {
+    fill: blue; }
+  80% {
+    fill: red; }
+  90% {
+    fill: yellow; }
+  100% {
+    fill: pink; } }

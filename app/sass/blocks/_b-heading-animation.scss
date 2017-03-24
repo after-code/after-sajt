@@ -1,12 +1,19 @@
 .b-heading-animation {
   display: block;
   overflow: hidden;
+  height: 100vh;
+  position: relative;
+  // padding-top:100%;
+  // transform: translateZ(0);
+  svg {
+    overflow: hidden;
+  }
 }
 .b-heading-animation__lines {
   position: absolute;
   top: -0.11%;
   left:0;
-  -webkit-animation: lineDance 2.2s infinite linear;
+  -webkit-animation: lineDance 2.0s infinite linear;
   // margin-top:-3%;
 }
 .b-heading-animation__typo {
@@ -15,47 +22,16 @@
   left:0;
   margin-top:-3.9%;
   path:not(.st0) {
-    fill:red;
-    -webkit-animation:color 1.2s infinite linear;
+    // fill:red;
+    // -webkit-animation:color 1.2s infinite linear;
   }
   .st0 {
     fill:none !important;
   }
 }
 @-webkit-keyframes lineDance {
-  0% {
-    top: -0.02%;
-  }
-  20% {
-    top: -0.02%;
-  }
-  21% {
-    top: -0.05%;
-  }
-  41% {
-    top: -0.05%;
-  }
-  42% {
-    top: -0.11%;
-  }
-  62% {
-    top: -0.11%;
-  }
-  63% {
-    top: -0.03%;
-  }
-  94% {
-    top: -0.03%;
-  }
-  94% {
-    top: -0.09%;
-  }
-  95% {
-    top: -0.11%;
-  }
-  100% {
-    top: -0.11%;
-  }
+  0%{ top: -2.8%;}
+  100%{top:-1.4%}
 }
 @-webkit-keyframes color {
   0% { fill:cyan}

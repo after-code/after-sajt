@@ -57,9 +57,9 @@
   width: auto;
   height: 100%;
   line-height: 40px;
-  padding-top: 21%;
   margin-left: 19%;
   transform: translateY(-20%);
+  padding-top: 45vh;
   &:hover {
     li {
       color:#424242;
@@ -69,10 +69,13 @@
 .header__link {
   margin-top:0;
   margin-bottom:0;
-  line-height: 96px;
-  font-size: 80px;
+  // line-height: 96px;
+  // font-size: 80px;
   display: block;
   text-align: left;
+
+  line-height: 10.1vh;
+  font-size: 8.5vh;
   a {
     color:inherit;
     margin-right: 20px;
@@ -83,36 +86,53 @@
 
   }
 }
-.after-logo {
-  width: 104px;
-  float: left;
-  margin-top: -27px;
-  margin-left: -9px;
-
+.header .after-logo {
+  width: 48px;
+  left: 41px;
+  margin: 0;
+  position: relative;
+  top: 23px;
+  &.active {
+    position:fixed;
+    z-index: 1923;
+    .cls-1 {
+      fill:#fff;
+      opacity: 0.2;
+    }
+  }
   -webkit-transition: opacity 400ms;
   -o-transition: opacity 400ms;
   transition: opacity 400ms;
   @include breakpoint(mobile){
-    width: 104px;
-    top:8px;
-    position: relative;
+    width: 34px;
+    left: 15px;
+    top: 15px;
   }
   @include breakpoint(large){
-    width:122px;
+    // width:122px;
   }
 }
 .menu-ico {
-  position: absolute;
-  right:35px;
-  top:15px;
+  position: fixed;
+  right: 31px;
+  top: 16px;
   opacity: 1;
-  background-image:url(../../assets/img/menu.svg);
-  background-size:contain;
-  background-repeat:no-repeat;
-  background-position:center;
-  width:50px;
-  height:50px;
+  background-image: url(../../assets/img/menu.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 38px;
+  height: 50px;
+  cursor: pointer;
   z-index: 9999;
+  @include breakpoint(mobile) {
+    top: 8px;
+    right: 15px;
+  }
+}
+.active.menu-ico {
+  background-image:url(../../assets/img/close-nav-ico.svg);
+  background-size: 22px;
 }
 .header__nav {
   position: fixed;
@@ -121,13 +141,16 @@
   color:white;
   opacity: 0;
   display: none;
+  top: 0px;
   background: #151515;
   li {
     p {
       opacity: 0;
-      top: -15px;
+      // top: -15px;
       position: relative;
       transition:opacity 400ms;
+      font-size: 1.8vh;
+      top: -1.8vh;
     }
     &:hover {
       color:white !important;
@@ -140,16 +163,20 @@
 }
 .header__social {
   position: relative;
-  top:22%;
-  float: right;
-  right:20%;
+  top: 38vh;
+  float: left;
+  left: 18%;
   li {
     display:block;
     text-align: left;
     color:#424242;
-    line-height: 29px;
+    font-size: 16px;
+    line-height: 20px;
   }
   li:first-child {
     color:white;
+  }
+  ul:first-child {
+    margin-bottom: 4vh;
   }
 }

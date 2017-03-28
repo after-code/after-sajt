@@ -1,12 +1,20 @@
+.b-heading-animation__holder {
+  position: relative;
+  @extend .clearfix;
+}
 .b-heading-animation {
   display: block;
   overflow: hidden;
-  height: 100vh;
+  // height: 100vh;
+  padding-top: 53%;
   position: relative;
   // padding-top:100%;
   // transform: translateZ(0);
   svg {
     overflow: hidden;
+  }
+  @include breakpoint(mobile){
+    padding-top: 178%;
   }
 }
 .b-heading-animation__lines {
@@ -35,19 +43,20 @@
   @include breakpoint(mobile) {
     width: 250%;
     left: -75%;
-
+    opacity: 1;
   }
 }
 .go-down-line {
   opacity: 0;
-  width: 2px;
-  height: 100px;
+  width: 3px;
+  height: 120px;
   margin-top:-70px;
   margin-left:-1px;
   position: absolute;
-  top:100vh;
+  bottom:0%;
   background: #FF184B;
   left:50%;
+  // transform:translateZ(1124%);
   z-index: 10;
   -webkit-animation:lineDance 2.4s infinite ease-in-out;
           animation:lineDance 2.4s infinite ease-in-out;
@@ -56,8 +65,9 @@
 }
 .b-heading-animation__typo {
   opacity: 0;
-  position: relative;
-  top:-6%;
+  position: absolute;
+  width: 100%;
+  top:-3%;
   left:0;
   path:not(.st0) {
     // fill:red;

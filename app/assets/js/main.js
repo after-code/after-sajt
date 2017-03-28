@@ -45,6 +45,10 @@ $(function(){
       });
     }
   }
+  // function animationStop(){
+  //   $lines.velocity("stop");
+  //   // alert("stopped");
+  // }
   animationStart();
   setTimeout(initAnimation, 500);
   function initAnimation(){
@@ -58,5 +62,8 @@ $(function(){
       $(".go-down-line").animate({opacity:"1"}, {duration:600})
     },1800)
   }
-
+  // var el=document.getElementById("body");
+  // el.ontouchstart = animationStop;
+  // el.ontouchend = animationStart;
 });
+// var vasa;

@@ -60,6 +60,11 @@
   margin-left: 19%;
   transform: translateY(-20%);
   padding-top: 45vh;
+  li p {
+    @include breakpoint(mobile){
+      display: none;
+    }
+  }
   &:hover {
     li {
       color:#424242;
@@ -72,8 +77,14 @@
     }
   }
   @include breakpoint(mobile) {
-    margin-left: 4%;
-    padding-top: 40vh;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0;
+    height: auto;
+    overflow: hidden;
+    margin-left:2%;
+    width: 100%;
   }
 }
 .header__link {
@@ -89,7 +100,7 @@
   a {
     color:inherit;
     margin-right: 20px;
-    font-weight: 400;
+    font-weight: 500;
     -webkit-transition: color 400ms;
     -o-transition: color 400ms;
     transition: color 400ms;
@@ -98,6 +109,7 @@
   @include breakpoint(mobile) {
     font-size: 52px;
     line-height: 45px;
+    margin: 12% 14%;
   }
 }
 .header .after-logo {
@@ -180,11 +192,18 @@
     color:#424242;
     font-size: 16px;
     line-height: 20px;
+
   }
   li:first-child {
     color:#f2f2f2;
   }
   ul:first-child {
     margin-bottom: 4vh;
+    li:hover {
+      color:#696969;
+    }
+  }
+  @include breakpoint(mobile){
+    display: none;
   }
 }

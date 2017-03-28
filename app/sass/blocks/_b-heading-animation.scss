@@ -10,6 +10,7 @@
   }
 }
 .b-heading-animation__lines {
+  opacity: 0;
   width: 100%;
   img, svg {
     width: 100%;
@@ -38,9 +39,10 @@
   }
 }
 .go-down-line {
+  opacity: 0;
   width: 2px;
-  height: 120px;
-  margin-top:-100px;
+  height: 100px;
+  margin-top:-70px;
   margin-left:-1px;
   position: absolute;
   top:100vh;
@@ -48,13 +50,15 @@
   left:50%;
   z-index: 10;
   -webkit-animation:lineDance 2.4s infinite ease-in-out;
+          animation:lineDance 2.4s infinite ease-in-out;
+  -webkit-animation: bounce 2s infinite;
+  animation: bounce 2s infinite;
 }
 .b-heading-animation__typo {
+  opacity: 0;
   position: relative;
-  top:0;
+  top:-6%;
   left:0;
-  top:50%;
-  transform:translateY(-50%);
   path:not(.st0) {
     // fill:red;
 
@@ -65,6 +69,8 @@
   @include breakpoint(mobile) {
     width: 250%;
     left: -75%;
+    top:50%;
+    transform:translateY(-50%);
   }
 }
 @-webkit-keyframes lineDance {
@@ -85,4 +91,15 @@
   90% { fill:yellow}
   100% { fill:pink}
 
+}
+@-webkit-keyframes bounce {
+	 0% { transform: translateY(6%); }
+	 50%   { transform: translateY(20%); }
+	 100% { transform: translateY(6%); }
+}
+
+@keyframes bounce {
+	 0% { transform: translateY(6%); }
+	 50%   { transform: translateY(20%); }
+	 100% { transform: translateY(6%); }
 }

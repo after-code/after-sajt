@@ -65,6 +65,16 @@
       color:#424242;
     }
   }
+  li:hover {
+    color:#f2f2f2 !important;
+    p {
+      opacity: 1;
+    }
+  }
+  @include breakpoint(mobile) {
+    margin-left: 4%;
+    padding-top: 40vh;
+  }
 }
 .header__link {
   margin-top:0;
@@ -85,6 +95,10 @@
     transition: color 400ms;
 
   }
+  @include breakpoint(mobile) {
+    font-size: 52px;
+    line-height: 45px;
+  }
 }
 .header .after-logo {
   width: 48px;
@@ -92,6 +106,7 @@
   margin: 0;
   position: relative;
   top: 23px;
+  opacity: 0;
   &.active {
     position:fixed;
     z-index: 1923;
@@ -100,9 +115,6 @@
       opacity: 0.2;
     }
   }
-  -webkit-transition: opacity 400ms;
-  -o-transition: opacity 400ms;
-  transition: opacity 400ms;
   @include breakpoint(mobile){
     width: 34px;
     left: 15px;
@@ -113,10 +125,10 @@
   }
 }
 .menu-ico {
+  opacity: 0;
   position: fixed;
   right: 31px;
   top: 16px;
-  opacity: 1;
   background-image: url(../../assets/img/menu.svg);
   background-size: contain;
   background-repeat: no-repeat;
@@ -138,11 +150,12 @@
   position: fixed;
   width: 100%;
   height: 100vh;
-  color:white;
+  color:#f2f2f2;
   opacity: 0;
   display: none;
   top: 0px;
   background: #151515;
+  -webkit-font-smoothing: auto;
   li {
     p {
       opacity: 0;
@@ -152,12 +165,7 @@
       font-size: 1.8vh;
       top: -1.8vh;
     }
-    &:hover {
-      color:white !important;
-      p {
-        opacity: 1;
-      }
-    }
+
   }
 
 }
@@ -174,7 +182,7 @@
     line-height: 20px;
   }
   li:first-child {
-    color:white;
+    color:#f2f2f2;
   }
   ul:first-child {
     margin-bottom: 4vh;

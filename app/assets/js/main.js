@@ -46,5 +46,17 @@ $(function(){
     }
   }
   animationStart();
+  setTimeout(initAnimation, 500);
+  function initAnimation(){
+    $(".b-heading-animation__lines").animate({opacity:"1"}, {duration:1500})
+    setTimeout(function(){
+      $(".b-heading-animation__typo").animate({opacity:"1"}, {duration:3000})
+    },1100)
+    setTimeout(function(){
+      $(".header .after-logo").animate({opacity:"1"}, {duration:600})
+      $(".menu-ico").animate({opacity:"1"}, {duration:600})
+      $(".go-down-line").animate({opacity:"1"}, {duration:600})
+    },1800)
+  }
 
 });

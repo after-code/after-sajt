@@ -49,6 +49,7 @@
 //   }
 // }
 .l-division__first {
+  position: relative;
   @include breakpoint(mobile) {
     margin-bottom: 0%;
   }
@@ -95,6 +96,7 @@
   }
 }
 .l-division__second {
+  position: relative;
   @include breakpoint(mobile) {
     // margin-bottom: 20%;
   }

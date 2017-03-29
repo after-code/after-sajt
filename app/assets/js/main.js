@@ -65,5 +65,11 @@ $(function(){
   // var el=document.getElementById("body");
   // el.ontouchstart = animationStop;
   // el.ontouchend = animationStart;
+  $(".b-mediabox-slider").slick({
+    arrows:false,
+    autoplay:true,
+    autoplaySpeed:5000,
+    speed:1500
+  });
 });
 // var vasa;

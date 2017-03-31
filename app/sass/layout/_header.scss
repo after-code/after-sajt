@@ -74,7 +74,7 @@
   @include breakpoint(mobile) {
     margin-left: 4%;
     padding-top: 40vh;
-
+    height: auto;
   }
 }
 .header__link {
@@ -99,6 +99,10 @@
   @include breakpoint(mobile) {
     font-size: 52px;
     line-height: 45px;
+    margin: 20px 0px;
+    p {
+      display: none;
+    }
   }
 }
 .header .after-logo {

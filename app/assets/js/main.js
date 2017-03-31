@@ -69,7 +69,8 @@ $(function(){
     arrows:false,
     autoplay:true,
     autoplaySpeed:5000,
-    speed:1500
+    speed:1500,
+    pauseOnHover:false
   });
 });
 // var vasa;

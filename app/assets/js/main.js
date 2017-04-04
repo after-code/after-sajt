@@ -45,10 +45,6 @@ $(function(){
       });
     }
   }
-  // function animationStop(){
-  //   $lines.velocity("stop");
-  //   // alert("stopped");
-  // }
   animationStart();
   setTimeout(initAnimation, 500);
   function initAnimation(){
@@ -62,9 +58,6 @@ $(function(){
       $(".go-down-line").animate({opacity:"1"}, {duration:600})
     },1800)
   }
-  // var el=document.getElementById("body");
-  // el.ontouchstart = animationStop;
-  // el.ontouchend = animationStart;
   $(".b-mediabox-slider").slick({
     arrows:false,
     autoplay:true,
@@ -73,4 +66,3 @@ $(function(){
     pauseOnHover:false
   });
 });
-// var vasa;

@@ -243,6 +243,12 @@ strong {
 .section--omar .l-division__second .b-text-block {
   margin-top: 15%; }
 
+.section--omar .omar-video {
+  position: absolute;
+  top: 7.40%;
+  left: -5.2%;
+  width: 84.1%; }
+
 .section--health .l-division__first .b-text-block {
   margin-top: 6%; }
 
@@ -268,9 +274,9 @@ strong {
   position: absolute !important;
   z-index: 20;
   top: 0;
-  width: 39.7%;
-  left: 30.2%;
-  margin-top: -0.2%; }
+  width: 52.64%;
+  left: 23.74%;
+  margin-top: 0%; }
   @media (max-width: 1000px) {
     .section--soundcloud div.b-mediabox-slider {
       width: 73.7%;
@@ -348,7 +354,7 @@ strong {
   .header__link a {
     color: inherit;
     margin-right: 20px;
-    font-weight: 400;
+    font-weight: 500;
     -webkit-transition: color 400ms;
     -o-transition: color 400ms;
     transition: color 400ms; }
@@ -1499,7 +1505,7 @@ li {
     width: 100%; }
 
 .b-full-media--slim {
-  padding: 0 23%;
+  padding: 0  14%;
   margin-bottom: 16%; }
   @media (max-width: 1000px) {
     .b-full-media--slim {

@@ -8,10 +8,10 @@
 }
 .b-full-media--slim {
   @extend .b-full-media;
-  padding:0 23%;
+  padding:0  14%;
   margin-bottom: 16%;
   @include breakpoint(mobile) {
-    padding:0; 
+    padding:0;
     margin-bottom: 25%;
   }
 }

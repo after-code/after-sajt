@@ -90,10 +90,11 @@
   a {
     color:inherit;
     margin-right: 20px;
-    font-weight: 400;
+    font-weight: 500;
     -webkit-transition: color 400ms;
     -o-transition: color 400ms;
     transition: color 400ms;
+
 
   }
   @include breakpoint(mobile) {

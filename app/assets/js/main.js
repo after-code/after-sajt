@@ -61,7 +61,7 @@ $(function(){
   $(".b-mediabox-slider").slick({
     arrows:false,
     autoplay:true,
-    autoplaySpeed:5000,
+    autoplaySpeed:3000,
     speed:1500,
     pauseOnHover:false
   });

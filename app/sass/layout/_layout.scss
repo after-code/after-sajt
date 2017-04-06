@@ -164,6 +164,12 @@
   .l-division__second .b-text-block {
     margin-top: 15%;
   }
+  .omar-video {
+    position: absolute;
+    top: 7.40%;
+    left: -5.2%;
+    width: 84.1%;
+  }
 }
 .section--health {
   .l-division__first .b-text-block {
@@ -195,9 +201,9 @@
     position: absolute !important;
     z-index: 20;
     top: 0;
-    width: 39.7%;
-    left: 30.2%;
-    margin-top: -0.2%;
+    width: 52.64%;
+    left: 23.74%;
+    margin-top: 0%;
     @include breakpoint(mobile) {
       width: 73.7%;
       left: 13.2%;

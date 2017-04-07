@@ -415,7 +415,7 @@ strong {
   opacity: 0;
   display: none;
   top: 0px;
-  background: #151515;
+  background: rgba(21, 21, 21, 0.93);
   -webkit-font-smoothing: auto; }
   .header__nav li p {
     opacity: 0;

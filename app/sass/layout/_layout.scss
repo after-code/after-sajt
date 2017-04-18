@@ -169,6 +169,10 @@
     top: 7.40%;
     left: -5.2%;
     width: 84.1%;
+    @include breakpoint(mobile){
+      width: 112.3%;
+      left: -33.2%;
+    }
   }
 }
 .section--health {

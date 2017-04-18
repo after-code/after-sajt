@@ -16,7 +16,7 @@ $(function(){
       }
       menu_active = !menu_active;
     }
-
+    $("body, html").toggleClass("no-scroll");
   });
   $line = $('.go-down-line');
   $lines = $('.b-heading-animation__lines');
